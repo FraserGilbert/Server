@@ -19,6 +19,8 @@ data/pack/dbrow.pack
 data/players/
 data/symbols/
 
+app.db
+
 dump/
 
 node_modules/

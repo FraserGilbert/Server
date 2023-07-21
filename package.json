@@ -18,6 +18,9 @@
     "server:clean": "ts-node --esm src/lostcity/tools/server/clean.ts",
     "server:build": "npm run server:pack && npm run script:symbols && npm run script:compile",
     "server:watch": "watch \"npm run server:build\" ./data/src/scripts",
+    "web:start": "ts-node --esm src/lostcity/web/app.ts",
+    "db:latest": "knex --knexfile knexfile.cjs migrate:latest",
+    "db:down": "knex --knexfile knexfile.cjs migrate:down",
     "test": "jest",
     "lint": "eslint . --ext .ts --ext .js"
   },
