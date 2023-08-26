@@ -1365,6 +1365,11 @@ export default class Player extends PathingEntity {
             case 'close': {
                 this.closeModal();
             } break;
+            case 'bench': {
+                for (let index = 0; index < 100_000; index++) {
+                    World.pathFinder.findPath(this.level, this.x, this.z, this.x, this.z + 10);
+                }
+            } break;
             default: {
                 if (cmd.length <= 0) {
                     return;

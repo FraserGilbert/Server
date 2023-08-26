@@ -421,7 +421,7 @@ class World {
         }
 
         const end = Date.now();
-        // console.log(`tick ${this.currentTick} took ${end - start}ms`);
+        console.log(`tick ${this.currentTick} took ${end - start}ms`);
 
         this.currentTick++;
         const nextTick = 600 - (end - start);
