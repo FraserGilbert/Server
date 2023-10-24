@@ -1,38 +1,38 @@
-import {buildCollisionMap, buildCollisionMapWithFlag} from "#rsmod/PathFinder.test.js";
-import StepValidator from "#rsmod/StepValidator.js";
-import CollisionFlag from "#rsmod/flag/CollisionFlag.js";
-import CollisionStrategies from "#rsmod/collision/CollisionStrategies.js";
-import CollisionFlagMap from "#rsmod/collision/CollisionFlagMap.js";
+import { buildCollisionMap, buildCollisionMapWithFlag } from 'rsmod/PathFinder.test.js';
+import StepValidator from 'rsmod/StepValidator.js';
+import CollisionFlag from 'rsmod/flag/CollisionFlag.js';
+import CollisionStrategies from 'rsmod/collision/CollisionStrategies.js';
+import CollisionFlagMap from 'rsmod/collision/CollisionFlagMap.js';
 
 describe('StepValidator', () => {
     const srcX = 3200;
     const srcZ = 3200;
 
     const args = [
-        [ 1, 0, -1 ],
-        [ 1, 0, 1 ],
-        [ 1, -1, 0 ],
-        [ 1, 1, 0 ],
-        [ 1, -1, -1 ],
-        [ 1, -1, 1 ],
-        [ 1, 1, -1 ],
-        [ 1, 1, 1 ],
-        [ 2, 0, -1 ],
-        [ 2, 0, 1 ],
-        [ 2, -1, 0 ],
-        [ 2, 1, 0 ],
-        [ 2, -1, -1 ],
-        [ 2, -1, 1 ],
-        [ 2, 1, -1 ],
-        [ 2, 1, 1 ],
-        [ 3, 0, -1 ],
-        [ 3, 0, 1 ],
-        [ 3, -1, 0 ],
-        [ 3, 1, 0 ],
-        [ 3, -1, -1 ],
-        [ 3, -1, 1 ],
-        [ 3, 1, -1 ],
-        [ 3, 1, 1 ],
+        [1, 0, -1],
+        [1, 0, 1],
+        [1, -1, 0],
+        [1, 1, 0],
+        [1, -1, -1],
+        [1, -1, 1],
+        [1, 1, -1],
+        [1, 1, 1],
+        [2, 0, -1],
+        [2, 0, 1],
+        [2, -1, 0],
+        [2, 1, 0],
+        [2, -1, -1],
+        [2, -1, 1],
+        [2, 1, -1],
+        [2, 1, 1],
+        [3, 0, -1],
+        [3, 0, 1],
+        [3, -1, 0],
+        [3, 1, 0],
+        [3, -1, -1],
+        [3, -1, 1],
+        [3, 1, -1],
+        [3, 1, 1],
     ];
 
     const extraFlags = [
@@ -118,8 +118,8 @@ describe('StepValidator', () => {
     test.each(args)('test indoors flag strategy', (size, dirX, dirZ) => {
         const destX = srcX + dirX;
         const destZ = srcZ + dirZ;
-        const outdoorsX = destX + dirX
-        const outdoorsZ = destZ + dirZ
+        const outdoorsX = destX + dirX;
+        const outdoorsZ = destZ + dirZ;
 
         const map = new CollisionFlagMap();
         for (let level = 0; level < 4; level++) {
@@ -150,8 +150,8 @@ describe('StepValidator', () => {
     test.each(args)('test outdoors flag strategy', (size, dirX, dirZ) => {
         const destX = srcX + dirX;
         const destZ = srcZ + dirZ;
-        const indoorsX = destX + dirX
-        const indoorsZ = destZ + dirZ
+        const indoorsX = destX + dirX;
+        const indoorsZ = destZ + dirZ;
 
         const map = new CollisionFlagMap();
         for (let level = 0; level < 4; level++) {
@@ -182,8 +182,8 @@ describe('StepValidator', () => {
     test.each(args)('test line of sight flag strategy', (size, dirX, dirZ) => {
         const destX = srcX + dirX;
         const destZ = srcZ + dirZ;
-        const blockedX = destX + dirX
-        const blockedZ = destZ + dirZ
+        const blockedX = destX + dirX;
+        const blockedZ = destZ + dirZ;
 
         const map = new CollisionFlagMap();
         for (let level = 0; level < 4; level++) {

@@ -1,11 +1,11 @@
-import Packet from '#jagex2/io/Packet.js';
+import Packet from 'jagex2/io/Packet.js';
 
-import { PACKFILE, ConfigValue, ConfigLine } from '#lostcity/tools/packconfig/PackShared.js';
-import HuntModeType from '#lostcity/engine/hunt/HuntModeType.js';
-import HuntVis from '#lostcity/engine/hunt/HuntVis.js';
-import HuntCheckNotTooStrong from '#lostcity/engine/hunt/HuntCheckNotTooStrong.js';
-import HuntNobodyNear from '#lostcity/engine/hunt/HuntNobodyNear.js';
-import NpcMode from '#lostcity/entity/NpcMode.js';
+import { PACKFILE, ConfigValue, ConfigLine } from 'lostcity/tools/packconfig/PackShared.js';
+import HuntModeType from 'lostcity/engine/hunt/HuntModeType.js';
+import HuntVis from 'lostcity/engine/hunt/HuntVis.js';
+import HuntCheckNotTooStrong from 'lostcity/engine/hunt/HuntCheckNotTooStrong.js';
+import HuntNobodyNear from 'lostcity/engine/hunt/HuntNobodyNear.js';
+import NpcMode from 'lostcity/entity/NpcMode.js';
 
 export function parseHuntConfig(key: string, value: string): ConfigValue | null | undefined {
     const stringKeys: string[] = [];

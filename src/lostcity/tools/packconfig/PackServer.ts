@@ -1,26 +1,26 @@
-import Packet from '#jagex2/io/Packet.js';
+import Packet from 'jagex2/io/Packet.js';
 
-import { shouldBuild, shouldBuildFile } from '#lostcity/util/PackFile.js';
-import { listFilesExt } from '#lostcity/util/Parse.js';
+import { shouldBuild, shouldBuildFile } from 'lostcity/util/PackFile.js';
+import { listFilesExt } from 'lostcity/util/Parse.js';
 
-import DbTableType from '#lostcity/cache/DbTableType.js';
+import DbTableType from 'lostcity/cache/DbTableType.js';
 
-import { PACKFILE, readConfigs } from '#lostcity/tools/packconfig/PackShared.js';
-import { packFloServer, parseFloConfig } from '#lostcity/tools/packconfig/FloConfig.js';
-import { packIdkServer, parseIdkConfig } from '#lostcity/tools/packconfig/IdkConfig.js';
-import { packLocServer, parseLocConfig } from '#lostcity/tools/packconfig/LocConfig.js';
-import { packNpcServer, parseNpcConfig } from '#lostcity/tools/packconfig/NpcConfig.js';
-import { packObjServer, parseObjConfig } from '#lostcity/tools/packconfig/ObjConfig.js';
-import { packSeqServer, parseSeqConfig } from '#lostcity/tools/packconfig/SeqConfig.js';
-import { packSpotAnimServer, parseSpotAnimConfig } from '#lostcity/tools/packconfig/SpotAnimConfig.js';
-import { packVarpServer, parseVarpConfig } from '#lostcity/tools/packconfig/VarpConfig.js';
-import { packDbRowConfigs, parseDbRowConfig } from '#lostcity/tools/packconfig/DbRowConfig.js';
-import { packDbTableConfigs, parseDbTableConfig } from '#lostcity/tools/packconfig/DbTableConfig.js';
-import { packEnumConfigs, parseEnumConfig } from '#lostcity/tools/packconfig/EnumConfig.js';
-import { packInvConfigs, parseInvConfig } from '#lostcity/tools/packconfig/InvConfig.js';
-import { packMesAnimConfigs, parseMesAnimConfig } from '#lostcity/tools/packconfig/MesAnimConfig.js';
-import { packStructConfigs, parseStructConfig } from '#lostcity/tools/packconfig/StructConfig.js';
-import { packHuntConfigs, parseHuntConfig } from '#lostcity/tools/packconfig/HuntConfig.js';
+import { PACKFILE, readConfigs } from 'lostcity/tools/packconfig/PackShared.js';
+import { packFloServer, parseFloConfig } from 'lostcity/tools/packconfig/FloConfig.js';
+import { packIdkServer, parseIdkConfig } from 'lostcity/tools/packconfig/IdkConfig.js';
+import { packLocServer, parseLocConfig } from 'lostcity/tools/packconfig/LocConfig.js';
+import { packNpcServer, parseNpcConfig } from 'lostcity/tools/packconfig/NpcConfig.js';
+import { packObjServer, parseObjConfig } from 'lostcity/tools/packconfig/ObjConfig.js';
+import { packSeqServer, parseSeqConfig } from 'lostcity/tools/packconfig/SeqConfig.js';
+import { packSpotAnimServer, parseSpotAnimConfig } from 'lostcity/tools/packconfig/SpotAnimConfig.js';
+import { packVarpServer, parseVarpConfig } from 'lostcity/tools/packconfig/VarpConfig.js';
+import { packDbRowConfigs, parseDbRowConfig } from 'lostcity/tools/packconfig/DbRowConfig.js';
+import { packDbTableConfigs, parseDbTableConfig } from 'lostcity/tools/packconfig/DbTableConfig.js';
+import { packEnumConfigs, parseEnumConfig } from 'lostcity/tools/packconfig/EnumConfig.js';
+import { packInvConfigs, parseInvConfig } from 'lostcity/tools/packconfig/InvConfig.js';
+import { packMesAnimConfigs, parseMesAnimConfig } from 'lostcity/tools/packconfig/MesAnimConfig.js';
+import { packStructConfigs, parseStructConfig } from 'lostcity/tools/packconfig/StructConfig.js';
+import { packHuntConfigs, parseHuntConfig } from 'lostcity/tools/packconfig/HuntConfig.js';
 
 // not a config but we want the server to know all the possible categories
 if (shouldBuildFile('data/pack/category.pack', 'data/pack/server/category.dat') ||

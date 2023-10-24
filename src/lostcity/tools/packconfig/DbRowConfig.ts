@@ -1,10 +1,10 @@
-import Packet from '#jagex2/io/Packet.js';
+import Packet from 'jagex2/io/Packet.js';
 
-import DbTableType from '#lostcity/cache/DbTableType.js';
-import ScriptVarType from '#lostcity/cache/ScriptVarType.js';
+import DbTableType from 'lostcity/cache/DbTableType.js';
+import ScriptVarType from 'lostcity/cache/ScriptVarType.js';
 
-import { PACKFILE, ConfigValue, ConfigLine, packStepError } from '#lostcity/tools/packconfig/PackShared.js';
-import { lookupParamValue } from '#lostcity/tools/packconfig/ParamConfig.js';
+import { PACKFILE, ConfigValue, ConfigLine, packStepError } from 'lostcity/tools/packconfig/PackShared.js';
+import { lookupParamValue } from 'lostcity/tools/packconfig/ParamConfig.js';
 
 function parseCsv(str: string): string[] {
     const result = [];

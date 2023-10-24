@@ -1,8 +1,8 @@
 import fs from 'fs';
 
-import Jagfile from '#jagex2/io/Jagfile.js';
-import { pixSize, unpackPix } from '#lostcity/tools/client/unpack/Pix.js';
-import { loadPack } from '#lostcity/util/NameMap.js';
+import Jagfile from 'jagex2/io/Jagfile.js';
+import { pixSize, unpackPix } from 'lostcity/tools/client/unpack/Pix.js';
+import { loadPack } from 'lostcity/util/NameMap.js';
 
 let textures = Jagfile.load('dump/client/textures');
 let pack = loadPack('dump/pack/texture.pack');

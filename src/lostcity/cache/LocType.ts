@@ -1,6 +1,8 @@
-import Packet from '#jagex2/io/Packet.js';
 import fs from 'fs';
-import { ConfigType } from '#lostcity/cache/ConfigType.js';
+
+import Packet from 'jagex2/io/Packet.js';
+
+import { ConfigType } from 'lostcity/cache/ConfigType.js';
 
 export default class LocType extends ConfigType {
     static configNames: Map<string, number> = new Map();

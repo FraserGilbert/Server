@@ -1,8 +1,8 @@
 import fs from 'fs';
 
-import Jagfile from '#jagex2/io/Jagfile.js';
-import Packet from '#jagex2/io/Packet.js';
-import Model from '#lostcity/tools/client/models/Model.js';
+import Jagfile from 'jagex2/io/Jagfile.js';
+import Packet from 'jagex2/io/Packet.js';
+import Model from 'lostcity/tools/client/models/Model.js';
 
 let models = Jagfile.load('dump/client/models');
 

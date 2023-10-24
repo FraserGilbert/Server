@@ -1,7 +1,7 @@
 import fs from 'fs';
 
-import BZip2 from '#jagex2/io/BZip2.js';
-import Packet from '#jagex2/io/Packet.js';
+import BZip2 from 'jagex2/io/BZip2.js';
+import Packet from 'jagex2/io/Packet.js';
 
 let maps = fs.readdirSync('data/pack/client/maps');
 

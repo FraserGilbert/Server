@@ -1,6 +1,7 @@
-import { CommandHandlers } from '#lostcity/engine/script/ScriptRunner.js';
-import ScriptOpcode from '#lostcity/engine/script/ScriptOpcode.js';
-import { bitcount, clearBitRange, MASK, setBitRange } from '#lostcity/util/Numbers.js';
+import { CommandHandlers } from 'lostcity/engine/script/ScriptRunner.js';
+import ScriptOpcode from 'lostcity/engine/script/ScriptOpcode.js';
+
+import { bitcount, clearBitRange, MASK, setBitRange } from 'lostcity/util/Numbers.js';
 
 const NumberOps: CommandHandlers = {
     [ScriptOpcode.ADD]: (state) => {

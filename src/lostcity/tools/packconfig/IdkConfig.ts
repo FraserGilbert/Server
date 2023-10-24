@@ -1,6 +1,6 @@
-import Packet from '#jagex2/io/Packet.js';
+import Packet from 'jagex2/io/Packet.js';
 
-import { PACKFILE, ConfigValue, ConfigLine } from '#lostcity/tools/packconfig/PackShared.js';
+import { PACKFILE, ConfigValue, ConfigLine } from 'lostcity/tools/packconfig/PackShared.js';
 
 export function parseIdkConfig(key: string, value: string): ConfigValue | null | undefined {
     const stringKeys: string[] = [];

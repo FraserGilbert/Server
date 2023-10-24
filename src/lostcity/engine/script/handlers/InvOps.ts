@@ -1,11 +1,13 @@
-import { CommandHandlers } from '#lostcity/engine/script/ScriptRunner.js';
-import ScriptOpcode from '#lostcity/engine/script/ScriptOpcode.js';
-import InvType from '#lostcity/cache/InvType.js';
-import ObjType from '#lostcity/cache/ObjType.js';
-import Obj from '#lostcity/entity/Obj.js';
-import World from '#lostcity/engine/World.js';
-import {Inventory} from '#lostcity/engine/Inventory.js';
-import { Position } from '#lostcity/entity/Position.js';
+import { CommandHandlers } from 'lostcity/engine/script/ScriptRunner.js';
+import ScriptOpcode from 'lostcity/engine/script/ScriptOpcode.js';
+
+import InvType from 'lostcity/cache/InvType.js';
+import ObjType from 'lostcity/cache/ObjType.js';
+
+import Obj from 'lostcity/entity/Obj.js';
+import World from 'lostcity/engine/World.js';
+import { Inventory } from 'lostcity/engine/Inventory.js';
+import { Position } from 'lostcity/entity/Position.js';
 
 const InvOps: CommandHandlers = {
     [ScriptOpcode.INV_ADD]: (state) => {
@@ -248,7 +250,7 @@ const InvOps: CommandHandlers = {
         const [fromInv, toInv, fromSlot] = state.popInts(3);
 
         const player = state.activePlayer;
-        const {overflow, fromObj} = player.invMoveFromSlot(fromInv, toInv, fromSlot);
+        const { overflow, fromObj } = player.invMoveFromSlot(fromInv, toInv, fromSlot);
         if (overflow > 0) {
             const floorObj = new Obj(
                 player.level,

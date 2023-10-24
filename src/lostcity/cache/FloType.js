@@ -1,5 +1,6 @@
 import fs from 'fs';
-import Packet from '#jagex2/io/Packet.js';
+
+import Packet from 'jagex2/io/Packet.js';
 
 export default class FloType {
     static configNames = new Map();

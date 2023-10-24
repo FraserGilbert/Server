@@ -1,8 +1,8 @@
-import CollisionFlag from "#rsmod/flag/CollisionFlag.js";
-import RayCast from "#rsmod/RayCast.js";
-import CollisionFlagMap from "#rsmod/collision/CollisionFlagMap.js";
-import RouteCoordinates from "#rsmod/RouteCoordinates.js";
-import Line from "#rsmod/Line.js";
+import CollisionFlag from 'rsmod/flag/CollisionFlag.js';
+import RayCast from 'rsmod/RayCast.js';
+import CollisionFlagMap from 'rsmod/collision/CollisionFlagMap.js';
+import RouteCoordinates from 'rsmod/RouteCoordinates.js';
+import Line from 'rsmod/Line.js';
 
 export default class LinePathFinder {
     private readonly flags: CollisionFlagMap;
@@ -37,7 +37,7 @@ export default class LinePathFinder {
             Line.SIGHT_BLOCKED_NORTH | extraFlag,
             CollisionFlag.LOC | extraFlag,
             true
-        )
+        );
     }
 
     lineOfWalk(
@@ -66,7 +66,7 @@ export default class LinePathFinder {
             Line.WALK_BLOCKED_NORTH | extraFlag,
             CollisionFlag.LOC | extraFlag,
             false
-        )
+        );
     }
 
     rayCast(
@@ -110,7 +110,7 @@ export default class LinePathFinder {
         let xFlags = travelEast ? flagWest : flagEast;
         let zFlags = travelNorth ? flagSouth : flagNorth;
 
-        const coordinates = Array<RouteCoordinates>()
+        const coordinates = Array<RouteCoordinates>();
         if (absoluteDeltaX > absoluteDeltaZ) {
             const offsetX = travelEast ? 1 : -1;
             const offsetZ = travelNorth ? 0 : -1;

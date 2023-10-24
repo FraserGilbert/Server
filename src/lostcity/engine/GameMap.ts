@@ -1,11 +1,15 @@
-import Packet from '#jagex2/io/Packet.js';
-import Npc from '#lostcity/entity/Npc.js';
 import fs from 'fs';
-import World from '#lostcity/engine/World.js';
-import CollisionManager from '#lostcity/engine/collision/CollisionManager.js';
-import ZoneManager from '#lostcity/engine/zone/ZoneManager.js';
-import Obj from '#lostcity/entity/Obj.js';
-import NpcType from '#lostcity/cache/NpcType.js';
+
+import Packet from 'jagex2/io/Packet.js';
+
+import NpcType from 'lostcity/cache/NpcType.js';
+
+import Npc from 'lostcity/entity/Npc.js';
+import World from 'lostcity/engine/World.js';
+import CollisionManager from 'lostcity/engine/collision/CollisionManager.js';
+import ZoneManager from 'lostcity/engine/zone/ZoneManager.js';
+
+import Obj from 'lostcity/entity/Obj.js';
 
 export default class GameMap {
     readonly collisionManager = new CollisionManager();

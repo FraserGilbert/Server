@@ -1,17 +1,17 @@
-import Jagfile from '#jagex2/io/Jagfile.js';
-import Packet from '#jagex2/io/Packet.js';
+import Jagfile from 'jagex2/io/Jagfile.js';
+import Packet from 'jagex2/io/Packet.js';
 
-import { shouldBuild } from '#lostcity/util/PackFile.js';
+import { shouldBuild } from 'lostcity/util/PackFile.js';
 
-import { readConfigs } from '#lostcity/tools/packconfig/PackShared.js';
-import { packFloClient, parseFloConfig } from '#lostcity/tools/packconfig/FloConfig.js';
-import { packIdkClient, parseIdkConfig } from '#lostcity/tools/packconfig/IdkConfig.js';
-import { packLocClient, parseLocConfig } from '#lostcity/tools/packconfig/LocConfig.js';
-import { packNpcClient, parseNpcConfig } from '#lostcity/tools/packconfig/NpcConfig.js';
-import { packObjClient, parseObjConfig } from '#lostcity/tools/packconfig/ObjConfig.js';
-import { packSeqClient, parseSeqConfig } from '#lostcity/tools/packconfig/SeqConfig.js';
-import { packSpotAnimClient, parseSpotAnimConfig } from '#lostcity/tools/packconfig/SpotAnimConfig.js';
-import { packVarpClient, parseVarpConfig } from '#lostcity/tools/packconfig/VarpConfig.js';
+import { readConfigs } from 'lostcity/tools/packconfig/PackShared.js';
+import { packFloClient, parseFloConfig } from 'lostcity/tools/packconfig/FloConfig.js';
+import { packIdkClient, parseIdkConfig } from 'lostcity/tools/packconfig/IdkConfig.js';
+import { packLocClient, parseLocConfig } from 'lostcity/tools/packconfig/LocConfig.js';
+import { packNpcClient, parseNpcConfig } from 'lostcity/tools/packconfig/NpcConfig.js';
+import { packObjClient, parseObjConfig } from 'lostcity/tools/packconfig/ObjConfig.js';
+import { packSeqClient, parseSeqConfig } from 'lostcity/tools/packconfig/SeqConfig.js';
+import { packSpotAnimClient, parseSpotAnimConfig } from 'lostcity/tools/packconfig/SpotAnimConfig.js';
+import { packVarpClient, parseVarpConfig } from 'lostcity/tools/packconfig/VarpConfig.js';
 
 const jag = new Jagfile();
 

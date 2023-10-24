@@ -1,6 +1,6 @@
-import CollisionFlag from "#rsmod/flag/CollisionFlag.js";
-import CollisionFlagMap from "#rsmod/collision/CollisionFlagMap.js";
-import Line from "#rsmod/Line.js";
+import CollisionFlag from 'rsmod/flag/CollisionFlag.js';
+import CollisionFlagMap from 'rsmod/collision/CollisionFlagMap.js';
+import Line from 'rsmod/Line.js';
 
 export default class LineValidator {
     private readonly flags: CollisionFlagMap;
@@ -35,7 +35,7 @@ export default class LineValidator {
             Line.SIGHT_BLOCKED_NORTH | extraFlag,
             CollisionFlag.LOC | extraFlag,
             true
-        )
+        );
     }
 
     hasLineOfWalk(
@@ -64,7 +64,7 @@ export default class LineValidator {
             Line.WALK_BLOCKED_NORTH | extraFlag,
             CollisionFlag.LOC | extraFlag,
             false
-        )
+        );
     }
 
     rayCast(

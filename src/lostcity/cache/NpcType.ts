@@ -1,8 +1,11 @@
 import fs from 'fs';
-import Packet from '#jagex2/io/Packet.js';
-import { ConfigType } from './ConfigType.js';
-import MoveRestrict from '#lostcity/entity/MoveRestrict.js';
-import NpcMode from '#lostcity/entity/NpcMode.js';
+
+import Packet from 'jagex2/io/Packet.js';
+
+import { ConfigType } from 'lostcity/cache/ConfigType.js';
+
+import MoveRestrict from 'lostcity/entity/MoveRestrict.js';
+import NpcMode from 'lostcity/entity/NpcMode.js';
 
 export default class NpcType extends ConfigType {
     static configNames = new Map();

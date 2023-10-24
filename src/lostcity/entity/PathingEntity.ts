@@ -1,15 +1,18 @@
-import Entity from '#lostcity/entity/Entity.js';
-import {Direction, Position} from '#lostcity/entity/Position.js';
-import World from '#lostcity/engine/World.js';
-import RouteCoordinates from '#rsmod/RouteCoordinates.js';
-import Npc from '#lostcity/entity/Npc.js';
-import MoveRestrict from '#lostcity/entity/MoveRestrict.js';
-import CollisionFlag from '#rsmod/flag/CollisionFlag.js';
-import Player from '#lostcity/entity/Player.js';
-import {Interaction} from '#lostcity/entity/Interaction.js';
-import ReachStrategy from '#rsmod/reach/ReachStrategy.js';
-import Loc from '#lostcity/entity/Loc.js';
-import LocType from '#lostcity/cache/LocType.js';
+import LocType from 'lostcity/cache/LocType.js';
+
+import Entity from 'lostcity/entity/Entity.js';
+import { Direction, Position } from 'lostcity/entity/Position.js';
+import Npc from 'lostcity/entity/Npc.js';
+import MoveRestrict from 'lostcity/entity/MoveRestrict.js';
+import Player from 'lostcity/entity/Player.js';
+import { Interaction } from 'lostcity/entity/Interaction.js';
+import Loc from 'lostcity/entity/Loc.js';
+
+import World from 'lostcity/engine/World.js';
+
+import RouteCoordinates from 'rsmod/RouteCoordinates.js';
+import ReachStrategy from 'rsmod/reach/ReachStrategy.js';
+import CollisionFlag from 'rsmod/flag/CollisionFlag.js';
 
 export default abstract class PathingEntity extends Entity {
     // constructor properties
@@ -19,7 +22,7 @@ export default abstract class PathingEntity extends Entity {
     walkDir: number = -1;
     runDir: number = -1;
     walkStep: number = -1;
-    walkQueue: { x: number, z: number }[] = [];
+    walkQueue: { x: number, z: number; }[] = [];
     lastX: number = -1;
     lastZ: number = -1;
     forceMove: boolean = false;

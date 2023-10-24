@@ -1,6 +1,6 @@
-import Packet from '#jagex2/io/Packet.js';
-import { loadDir, loadOrder, loadPack } from '#lostcity/util/NameMap.js';
-import { shouldBuild } from '#lostcity/util/PackIds.js';
+import Packet from 'jagex2/io/Packet.js';
+import { loadDir, loadOrder, loadPack } from 'lostcity/util/NameMap.js';
+import { shouldBuild } from 'lostcity/util/PackIds.js';
 
 // binary formats
 let modelPack = loadPack('data/pack/model.pack');

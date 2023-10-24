@@ -1,5 +1,5 @@
-import { CommandHandler } from '#lostcity/engine/script/ScriptRunner.js';
-import ScriptState from '#lostcity/engine/script/ScriptState.js';
+import { CommandHandler } from 'lostcity/engine/script/ScriptRunner.js';
+import ScriptState from 'lostcity/engine/script/ScriptState.js';
 
 /**
  * Enumeration of possible pointer states used for runtime safety checks.

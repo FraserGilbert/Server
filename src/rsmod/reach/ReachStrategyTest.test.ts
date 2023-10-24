@@ -1,19 +1,19 @@
-import { buildCollisionMap, flag } from "#rsmod/PathFinder.test.js";
-import CollisionFlag from "#rsmod/flag/CollisionFlag.js";
-import ReachStrategy from "#rsmod/reach/ReachStrategy.js";
-import BlockAccessFlag from "#rsmod/flag/BlockAccessFlag.js";
+import { buildCollisionMap, flag } from 'rsmod/PathFinder.test.js';
+import CollisionFlag from 'rsmod/flag/CollisionFlag.js';
+import ReachStrategy from 'rsmod/reach/ReachStrategy.js';
+import BlockAccessFlag from 'rsmod/flag/BlockAccessFlag.js';
 
 describe('ReachStrategyTest', () => {
     const ROTATED_OBJECT_TEST_ARGS = [
-        [ 3203, 3203, { width: 1, height: 1 } ],
-        [ 3203, 3203, { width: 1, height: 2 } ],
-        [ 3203, 3203, { width: 1, height: 3 } ],
-        [ 3203, 3203, { width: 2, height: 1 } ],
-        [ 3203, 3203, { width: 2, height: 2 } ],
-        [ 3203, 3203, { width: 2, height: 3 } ],
-        [ 3203, 3203, { width: 3, height: 1 } ],
-        [ 3203, 3203, { width: 3, height: 2 } ],
-        [ 3203, 3203, { width: 3, height: 3 } ],
+        [3203, 3203, { width: 1, height: 1 }],
+        [3203, 3203, { width: 1, height: 2 }],
+        [3203, 3203, { width: 1, height: 3 }],
+        [3203, 3203, { width: 2, height: 1 }],
+        [3203, 3203, { width: 2, height: 2 }],
+        [3203, 3203, { width: 2, height: 3 }],
+        [3203, 3203, { width: 3, height: 1 }],
+        [3203, 3203, { width: 3, height: 2 }],
+        [3203, 3203, { width: 3, height: 3 }],
     ] as const;
 
     /**
@@ -62,9 +62,9 @@ describe('ReachStrategyTest', () => {
                 rot,
                 -2, // Use rectangular excludive strategy
                 blockAccessFlags
-            )
+            );
         };
-        
+
         for (let x = 0; x < width; x++) {
             // Test coming from south tiles.
             expect(reached(objX + x, objZ - 1, 0)).toBeTruthy();
@@ -79,7 +79,7 @@ describe('ReachStrategyTest', () => {
             expect(reached(objX + x, objZ + height, 0, BlockAccessFlag.BLOCK_NORTH)).toBeFalsy();
             expect(reached(objX + x, objZ + height, 2, BlockAccessFlag.BLOCK_SOUTH)).toBeFalsy();
         }
-        
+
         for (let z = 0; z < height; z++) {
             // Test coming from west tiles.
             expect(reached(objX - 1, objZ + z, 0)).toBeTruthy();
@@ -93,7 +93,7 @@ describe('ReachStrategyTest', () => {
             // Test coming from east tiles with access blocked.
             expect(reached(objX + width, objZ + z, 0, BlockAccessFlag.BLOCK_EAST)).toBeFalsy();
             expect(reached(objX + width, objZ + z, 2, BlockAccessFlag.BLOCK_WEST)).toBeFalsy();
-        }        
+        }
     });
 
     /**
@@ -121,13 +121,13 @@ describe('ReachStrategyTest', () => {
      */
     test.each(ROTATED_OBJECT_TEST_ARGS)('test rotated object flipped', (objX, objZ, { width, height }) => {
         const LEVEL = 0;
-    
+
         const minX = objX - 16, minZ = objZ - 16;
         const maxX = objX + 16, maxZ = objZ + 16;
 
         const map = buildCollisionMap(minX, minZ, maxX, maxZ);
         flag(map, objX, objZ, width, height, CollisionFlag.LOC);
-    
+
         const reached = (srcX: number, srcZ: number, rot: number, blockAccessFlags: number = 0) => {
             return ReachStrategy.reached(
                 map,
@@ -142,9 +142,9 @@ describe('ReachStrategyTest', () => {
                 rot,
                 -2, // Use rectangular exclusive strategy
                 blockAccessFlags
-            )
+            );
         };
-            
+
         for (let x = 0; x < height; x++) {  // width and height are swapped
             // Test coming from south tiles.
             expect(reached(objX + x, objZ - 1, 1)).toBeTruthy();
@@ -159,7 +159,7 @@ describe('ReachStrategyTest', () => {
             expect(reached(objX + x, objZ + width, 1, BlockAccessFlag.BLOCK_WEST)).toBeFalsy();  // width and height are swapped
             expect(reached(objX + x, objZ + width, 3, BlockAccessFlag.BLOCK_EAST)).toBeFalsy();  // width and height are swapped
         }
-            
+
         for (let z = 0; z < width; z++) {  // width and height are swapped
             // Test coming from west tiles.
             expect(reached(objX - 1, objZ + z, 1)).toBeTruthy();
@@ -173,6 +173,6 @@ describe('ReachStrategyTest', () => {
             // Test coming from east tiles with access blocked.
             expect(reached(objX + height, objZ + z, 1, BlockAccessFlag.BLOCK_NORTH)).toBeFalsy();  // width and height are swapped
             expect(reached(objX + height, objZ + z, 3, BlockAccessFlag.BLOCK_SOUTH)).toBeFalsy();  // width and height are swapped
-        }        
+        }
     });
 });

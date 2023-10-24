@@ -1,5 +1,5 @@
-import CollisionFlag from '#rsmod/flag/CollisionFlag.js';
-import CollisionStrategy from '#rsmod/collision/CollisionStrategy.js';
+import CollisionFlag from 'rsmod/flag/CollisionFlag.js';
+import CollisionStrategy from 'rsmod/collision/CollisionStrategy.js';
 
 class Normal implements CollisionStrategy {
     canMove(tileFlag: number, blockFlag: number): boolean {
@@ -38,8 +38,8 @@ class LineOfSight implements CollisionStrategy {
         CollisionFlag.LOC;
 
     canMove(tileFlag: number, blockFlag: number): boolean {
-        const movementFlags = (blockFlag & LineOfSight.BLOCK_MOVEMENT) << 9
-        return (tileFlag & movementFlags) == CollisionFlag.OPEN
+        const movementFlags = (blockFlag & LineOfSight.BLOCK_MOVEMENT) << 9;
+        return (tileFlag & movementFlags) == CollisionFlag.OPEN;
     }
 }
 

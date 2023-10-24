@@ -1,4 +1,4 @@
-import NonPathingEntity from '#lostcity/entity/NonPathingEntity.js';
+import NonPathingEntity from 'lostcity/entity/NonPathingEntity.js';
 
 export default class Obj extends NonPathingEntity {
     // constructor properties

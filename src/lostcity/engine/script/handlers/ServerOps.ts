@@ -1,14 +1,18 @@
-import { CommandHandlers } from '#lostcity/engine/script/ScriptRunner.js';
-import ScriptOpcode from '#lostcity/engine/script/ScriptOpcode.js';
-import World from '#lostcity/engine/World.js';
-import SeqType from '#lostcity/cache/SeqType.js';
-import FontType from '#lostcity/cache/FontType.js';
-import ParamType from '#lostcity/cache/ParamType.js';
-import StructType from '#lostcity/cache/StructType.js';
-import { ParamHelper } from '#lostcity/cache/ParamHelper.js';
-import MesanimType from '#lostcity/cache/MesanimType.js';
-import CollisionFlag from '#rsmod/flag/CollisionFlag.js';
-import { Position } from '#lostcity/entity/Position.js';
+import { CommandHandlers } from 'lostcity/engine/script/ScriptRunner.js';
+import ScriptOpcode from 'lostcity/engine/script/ScriptOpcode.js';
+
+import SeqType from 'lostcity/cache/SeqType.js';
+import FontType from 'lostcity/cache/FontType.js';
+import ParamType from 'lostcity/cache/ParamType.js';
+import StructType from 'lostcity/cache/StructType.js';
+import { ParamHelper } from 'lostcity/cache/ParamHelper.js';
+import MesanimType from 'lostcity/cache/MesanimType.js';
+
+import World from 'lostcity/engine/World.js';
+
+import { Position } from 'lostcity/entity/Position.js';
+
+import CollisionFlag from 'rsmod/flag/CollisionFlag.js';
 
 const ServerOps: CommandHandlers = {
     [ScriptOpcode.MAP_CLOCK]: (state) => {
@@ -85,7 +89,7 @@ const ServerOps: CommandHandlers = {
     },
 
     [ScriptOpcode.LINEOFWALK]: (state) => {
-        const [ c1, c2 ] = state.popInts(2);
+        const [c1, c2] = state.popInts(2);
 
         if (c1 < 0 || c1 > Position.max) {
             throw new Error(`LINEOFWALK attempted to use coord that was out of range: ${c1}. Range should be: 0 to ${Position.max}`);
@@ -277,7 +281,7 @@ const ServerOps: CommandHandlers = {
     },
 
     [ScriptOpcode.LINEOFSIGHT]: (state) => {
-        const [ c1, c2 ] = state.popInts(2);
+        const [c1, c2] = state.popInts(2);
 
         if (c1 < 0 || c1 > Position.max) {
             throw new Error(`LINEOFSIGHT attempted to use coord that was out of range: ${c1}. Range should be: 0 to ${Position.max}`);

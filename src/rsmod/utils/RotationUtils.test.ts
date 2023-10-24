@@ -1,5 +1,5 @@
-import RotationUtils from "#rsmod/utils/RotationUtils";
-import BlockAccessFlag from "#rsmod/flag/BlockAccessFlag";
+import RotationUtils from 'rsmod/utils/RotationUtils';
+import BlockAccessFlag from 'rsmod/flag/BlockAccessFlag';
 
 describe('RotationUtils', () => {
     test('test rotate width', () => {

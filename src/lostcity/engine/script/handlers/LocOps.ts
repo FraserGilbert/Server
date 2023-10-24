@@ -1,12 +1,15 @@
-import { CommandHandlers } from '#lostcity/engine/script/ScriptRunner.js';
-import ScriptOpcode from '#lostcity/engine/script/ScriptOpcode.js';
-import ParamType from '#lostcity/cache/ParamType.js';
-import LocType from '#lostcity/cache/LocType.js';
-import { ParamHelper } from '#lostcity/cache/ParamHelper.js';
-import ScriptPointer, { checkedHandler } from '#lostcity/engine/script/ScriptPointer.js';
-import World from '#lostcity/engine/World.js';
-import Loc from '#lostcity/entity/Loc.js';
-import { Position } from '#lostcity/entity/Position.js';
+import { CommandHandlers } from 'lostcity/engine/script/ScriptRunner.js';
+import ScriptOpcode from 'lostcity/engine/script/ScriptOpcode.js';
+import ScriptPointer, { checkedHandler } from 'lostcity/engine/script/ScriptPointer.js';
+
+import ParamType from 'lostcity/cache/ParamType.js';
+import LocType from 'lostcity/cache/LocType.js';
+import { ParamHelper } from 'lostcity/cache/ParamHelper.js';
+
+import World from 'lostcity/engine/World.js';
+
+import Loc from 'lostcity/entity/Loc.js';
+import { Position } from 'lostcity/entity/Position.js';
 
 const ActiveLoc = [ScriptPointer.ActiveLoc, ScriptPointer.ActiveLoc2];
 
@@ -86,7 +89,7 @@ const LocOps: CommandHandlers = {
     }),
 
     [ScriptOpcode.LOC_FIND]: (state) => {
-        const [ coord, locId ] = state.popInts(2);
+        const [coord, locId] = state.popInts(2);
 
         if (coord < 0 || coord > Position.max) {
             throw new Error(`LOC_FIND attempted to use coord that was out of range: ${coord}. Range should be: 0 to ${Position.max}`);
@@ -152,7 +155,7 @@ const LocOps: CommandHandlers = {
 
     [ScriptOpcode.LOC_NAME]: checkedHandler(ActiveLoc, (state) => {
         const loc = LocType.get(state.activeLoc.type);
-        
+
         state.pushString(loc.name ?? 'null');
     }),
 

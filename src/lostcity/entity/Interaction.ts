@@ -1,9 +1,10 @@
-import ServerTriggerType from '#lostcity/engine/script/ServerTriggerType.js';
-import Loc from '#lostcity/entity/Loc.js';
-import Npc from '#lostcity/entity/Npc.js';
-import NpcMode from '#lostcity/entity/NpcMode.js';
-import Obj from '#lostcity/entity/Obj.js';
-import Player from '#lostcity/entity/Player.js';
+import ServerTriggerType from 'lostcity/engine/script/ServerTriggerType.js';
+
+import Loc from 'lostcity/entity/Loc.js';
+import Npc from 'lostcity/entity/Npc.js';
+import NpcMode from 'lostcity/entity/NpcMode.js';
+import Obj from 'lostcity/entity/Obj.js';
+import Player from 'lostcity/entity/Player.js';
 
 export type Interaction = {
     mode: ServerTriggerType | NpcMode;
@@ -13,4 +14,4 @@ export type Interaction = {
     ap: boolean;
     apRange: number;
     apRangeCalled: boolean;
-}
+};

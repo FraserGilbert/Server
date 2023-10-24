@@ -1,7 +1,9 @@
 import fs from 'fs';
-import Packet from '#jagex2/io/Packet.js';
-import { ConfigType } from '#lostcity/cache/ConfigType.js';
-import SeqFrame from '#lostcity/cache/SeqFrame.js';
+
+import Packet from 'jagex2/io/Packet.js';
+
+import { ConfigType } from 'lostcity/cache/ConfigType.js';
+import SeqFrame from 'lostcity/cache/SeqFrame.js';
 
 export default class SeqType extends ConfigType {
     private static configNames = new Map<string, number>();

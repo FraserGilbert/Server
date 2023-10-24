@@ -1,7 +1,7 @@
 import fs from 'fs';
 
-import Jagfile from '#jagex2/io/Jagfile.js';
-import { loadPack } from '#lostcity/util/NameMap.js';
+import Jagfile from 'jagex2/io/Jagfile.js';
+import { loadPack } from 'lostcity/util/NameMap.js';
 
 let pack = loadPack('dump/pack/interface.pack');
 let objPack = loadPack('dump/pack/obj.pack');

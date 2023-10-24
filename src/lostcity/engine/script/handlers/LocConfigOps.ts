@@ -1,8 +1,9 @@
-import { CommandHandlers } from '#lostcity/engine/script/ScriptRunner.js';
-import ScriptOpcode from '#lostcity/engine/script/ScriptOpcode.js';
-import LocType from '#lostcity/cache/LocType.js';
-import ParamType from '#lostcity/cache/ParamType.js';
-import { ParamHelper } from '#lostcity/cache/ParamHelper.js';
+import { CommandHandlers } from 'lostcity/engine/script/ScriptRunner.js';
+import ScriptOpcode from 'lostcity/engine/script/ScriptOpcode.js';
+
+import LocType from 'lostcity/cache/LocType.js';
+import ParamType from 'lostcity/cache/ParamType.js';
+import { ParamHelper } from 'lostcity/cache/ParamHelper.js';
 
 const LocConfigOps: CommandHandlers = {
     [ScriptOpcode.LC_NAME]: (state) => {
@@ -24,7 +25,7 @@ const LocConfigOps: CommandHandlers = {
     },
 
     [ScriptOpcode.LC_CATEGORY]: (state) => {
-        const locId= state.popInt();
+        const locId = state.popInt();
         const locType = LocType.get(locId);
 
         state.pushInt(locType.category);

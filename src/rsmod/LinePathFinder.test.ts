@@ -1,17 +1,17 @@
-import CollisionFlagMap from "#rsmod/collision/CollisionFlagMap.js";
-import CollisionFlag from "#rsmod/flag/CollisionFlag.js";
-import LinePathFinder from "#rsmod/LinePathFinder.js";
-import {buildCollisionMap} from "#rsmod/PathFinder.test.js";
+import CollisionFlagMap from 'rsmod/collision/CollisionFlagMap.js';
+import CollisionFlag from 'rsmod/flag/CollisionFlag.js';
+import LinePathFinder from 'rsmod/LinePathFinder.js';
+import { buildCollisionMap } from 'rsmod/PathFinder.test.js';
 
 describe('LinePathFinder', () => {
     const srcX = 3200;
     const srcZ = 3200;
 
     const args = [
-        [ 0, -1 ],
-        [ 0, 1 ],
-        [ -1, 0 ],
-        [ 1, 0 ]
+        [0, -1],
+        [0, 1],
+        [-1, 0],
+        [1, 0]
     ];
 
     const flags = [
@@ -182,7 +182,7 @@ describe('LinePathFinder', () => {
                 const map = buildCollisionMap(srcX, srcZ, destX, destZ);
 
                 for (let level = 0; level < 4; level++) {
-                    map.set(srcX +dirX, srcZ + dirZ, level, CollisionFlag.LOC_PROJ_BLOCKER);
+                    map.set(srcX + dirX, srcZ + dirZ, level, CollisionFlag.LOC_PROJ_BLOCKER);
 
                     const pf = new LinePathFinder(map);
                     const rayCast = pf.lineOfSight(level, srcX, srcZ, destX, destZ);

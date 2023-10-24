@@ -1,6 +1,6 @@
-import CollisionFlagMap from '#rsmod/collision/CollisionFlagMap.js';
-import BlockAccessFlag from '#rsmod/flag/BlockAccessFlag.js';
-import CollisionFlag from '#rsmod/flag/CollisionFlag.js';
+import CollisionFlagMap from 'rsmod/collision/CollisionFlagMap.js';
+import BlockAccessFlag from 'rsmod/flag/BlockAccessFlag.js';
+import CollisionFlag from 'rsmod/flag/CollisionFlag.js';
 import RectangleBoundaryUtils from './RectangleBoundaryUtils.js';
 
 describe('RectangleBoundaryUtils', () => {

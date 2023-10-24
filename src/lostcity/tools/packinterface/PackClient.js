@@ -1,7 +1,7 @@
-import Jagfile from '#jagex2/io/Jagfile.js';
-import Packet from '#jagex2/io/Packet.js';
+import Jagfile from 'jagex2/io/Jagfile.js';
+import Packet from 'jagex2/io/Packet.js';
 
-import { loadDir, loadOrder, loadPack } from '#lostcity/util/NameMap.js';
+import { loadDir, loadOrder, loadPack } from 'lostcity/util/NameMap.js';
 
 console.log('Packing interface.jag');
 //console.time('interface.jag');

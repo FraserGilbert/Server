@@ -1,6 +1,6 @@
 import fs from 'fs';
-import Packet from '#jagex2/io/Packet.js';
-import BZip2 from '#jagex2/io/BZip2.js';
+import Packet from 'jagex2/io/Packet.js';
+import BZip2 from 'jagex2/io/BZip2.js';
 
 function genHash(name) {
     let hash = 0;

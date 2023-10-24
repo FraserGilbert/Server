@@ -1,12 +1,13 @@
-import { CommandHandlers } from '#lostcity/engine/script/ScriptRunner.js';
-import ScriptOpcode from '#lostcity/engine/script/ScriptOpcode.js';
-import { ScriptArgument } from '#lostcity/entity/EntityQueueRequest.js';
-import ScriptProvider from '#lostcity/engine/script/ScriptProvider.js';
-import ScriptState from '#lostcity/engine/script/ScriptState.js';
-import World from '#lostcity/engine/World.js';
-import ScriptPointer, { checkedHandler } from '#lostcity/engine/script/ScriptPointer.js';
-import ServerTriggerType from '#lostcity/engine/script/ServerTriggerType.js';
-import { Position } from '#lostcity/entity/Position.js';
+import { CommandHandlers } from 'lostcity/engine/script/ScriptRunner.js';
+import ScriptOpcode from 'lostcity/engine/script/ScriptOpcode.js';
+import { ScriptArgument } from 'lostcity/entity/EntityQueueRequest.js';
+import ScriptProvider from 'lostcity/engine/script/ScriptProvider.js';
+import ScriptState from 'lostcity/engine/script/ScriptState.js';
+import ScriptPointer, { checkedHandler } from 'lostcity/engine/script/ScriptPointer.js';
+import ServerTriggerType from 'lostcity/engine/script/ServerTriggerType.js';
+
+import World from 'lostcity/engine/World.js';
+import { Position } from 'lostcity/entity/Position.js';
 
 const ActivePlayer = [ScriptPointer.ActivePlayer, ScriptPointer.ActivePlayer2];
 const ProtectedActivePlayer = [ScriptPointer.ProtectedActivePlayer, ScriptPointer.ProtectedActivePlayer2];

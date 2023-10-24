@@ -1,7 +1,7 @@
-import World from '#lostcity/engine/World.js';
-import ScriptProvider from '#lostcity/engine/script/ScriptProvider.js';
-import ScriptRunner from '#lostcity/engine/script/ScriptRunner.js';
-import Player from '#lostcity/entity/Player.js';
+import World from 'lostcity/engine/World.js';
+import ScriptProvider from 'lostcity/engine/script/ScriptProvider.js';
+import ScriptRunner from 'lostcity/engine/script/ScriptRunner.js';
+import Player from 'lostcity/entity/Player.js';
 
 process.env.CLIRUNNER = 'true';
 

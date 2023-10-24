@@ -1,4 +1,4 @@
-import CollisionFlag from "#rsmod/flag/CollisionFlag.js";
+import CollisionFlag from 'rsmod/flag/CollisionFlag.js';
 
 export default class Line {
     static SIGHT_BLOCKED_NORTH: number = CollisionFlag.LOC_PROJ_BLOCKER | CollisionFlag.WALL_NORTH_PROJ_BLOCKER;
@@ -14,7 +14,7 @@ export default class Line {
     static HALF_TILE: number = this.scaleUp(1) / 2;
 
     static scaleUp(tiles: number): number {
-        return tiles << 16
+        return tiles << 16;
     }
 
     static scaleDown(tiles: number): number {

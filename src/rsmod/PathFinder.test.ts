@@ -1,6 +1,6 @@
-import PathFinder from "#rsmod/PathFinder.js";
-import CollisionFlagMap from "#rsmod/collision/CollisionFlagMap.js";
-import CollisionFlag from "#rsmod/flag/CollisionFlag.js";
+import PathFinder from 'rsmod/PathFinder.js';
+import CollisionFlagMap from 'rsmod/collision/CollisionFlagMap.js';
+import CollisionFlag from 'rsmod/flag/CollisionFlag.js';
 
 export function buildCollisionMap(x1: number, z1: number, x2: number, z2: number) {
     let map = new CollisionFlagMap();
@@ -97,7 +97,7 @@ describe('PathFinder', () => {
         expect(route.waypoints).toHaveLength(0);
     });
 
-    test('single exit point', () => {            
+    test('single exit point', () => {
         const srcX = 3200, srcZ = 3200;
         const destX = 3200, destZ = 3205;
 
@@ -144,7 +144,7 @@ describe('PathFinder', () => {
             const objX = 3200, objZ = 3210 + size;
 
             const map = buildCollisionMap(srcX, srcZ, objX, objZ);
-            map.set(srcX, srcZ + 1, 0, CollisionFlag.LOC)
+            map.set(srcX, srcZ + 1, 0, CollisionFlag.LOC);
             const pathFinder = new PathFinder(map);
 
             const route = pathFinder.findPath(0, srcX, srcZ, objX, objZ, size);

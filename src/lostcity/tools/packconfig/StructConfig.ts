@@ -1,10 +1,10 @@
-import Packet from '#jagex2/io/Packet.js';
+import Packet from 'jagex2/io/Packet.js';
 
-import ParamType from '#lostcity/cache/ParamType.js';
-import ScriptVarType from '#lostcity/cache/ScriptVarType.js';
+import ParamType from 'lostcity/cache/ParamType.js';
+import ScriptVarType from 'lostcity/cache/ScriptVarType.js';
 
-import { PACKFILE, ConfigValue, ConfigLine, ParamValue } from '#lostcity/tools/packconfig/PackShared.js';
-import { lookupParamValue } from '#lostcity/tools/packconfig/ParamConfig.js';
+import { PACKFILE, ConfigValue, ConfigLine, ParamValue } from 'lostcity/tools/packconfig/PackShared.js';
+import { lookupParamValue } from 'lostcity/tools/packconfig/ParamConfig.js';
 
 export function parseStructConfig(key: string, value: string): ConfigValue | null | undefined {
     const stringKeys: string[] = [];

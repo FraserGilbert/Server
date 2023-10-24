@@ -1,60 +1,60 @@
-import {buildCollisionMap, flag} from "#rsmod/PathFinder.test.js";
-import CollisionFlag from "#rsmod/flag/CollisionFlag.js";
-import ReachStrategy from "#rsmod/reach/ReachStrategy.js";
-import DirectionFlag from "#rsmod/flag/DirectionFlag.js";
+import { buildCollisionMap, flag } from 'rsmod/PathFinder.test.js';
+import CollisionFlag from 'rsmod/flag/CollisionFlag.js';
+import ReachStrategy from 'rsmod/reach/ReachStrategy.js';
+import DirectionFlag from 'rsmod/flag/DirectionFlag.js';
 
 describe('RectangularReachStrategy', () => {
     const BLOCK_ACCESS_FLAG_TEST_ARGS = [
-        [ 0, 1, DirectionFlag.NORTH ],
-        [ 1, 0, DirectionFlag.EAST ],
-        [ 0, -1, DirectionFlag.SOUTH ],
-        [ -1, 0, DirectionFlag.WEST ]
+        [0, 1, DirectionFlag.NORTH],
+        [1, 0, DirectionFlag.EAST],
+        [0, -1, DirectionFlag.SOUTH],
+        [-1, 0, DirectionFlag.WEST]
     ] as const;
 
     const DIMENSIONS_TEST_ARGS = [
-        [ 1, 1 ],
-        [ 1, 2 ],
-        [ 1, 3 ],
-        [ 2, 1 ],
-        [ 2, 2 ],
-        [ 2, 3 ],
-        [ 3, 1 ],
-        [ 3, 2 ],
-        [ 3, 3 ]
+        [1, 1],
+        [1, 2],
+        [1, 3],
+        [2, 1],
+        [2, 2],
+        [2, 3],
+        [3, 1],
+        [3, 2],
+        [3, 3]
     ] as const;
 
     const WALL_STRAIGHT_STRATEGY_TEST_ARGS = [
-        [ 0, 0, 1, CollisionFlag.WALL_SOUTH ],
-        [ 0, 0, -1, CollisionFlag.WALL_NORTH ],
-        [ 1, -1, 0, CollisionFlag.WALL_EAST ],
-        [ 1, 1, 0, CollisionFlag.WALL_WEST ],
-        [ 2, 0, 1, CollisionFlag.WALL_SOUTH ],
-        [ 2, 0, -1, CollisionFlag.WALL_NORTH ],
-        [ 3, -1, 0, CollisionFlag.WALL_EAST ],
-        [ 3, 1, 0, CollisionFlag.WALL_WEST ]
+        [0, 0, 1, CollisionFlag.WALL_SOUTH],
+        [0, 0, -1, CollisionFlag.WALL_NORTH],
+        [1, -1, 0, CollisionFlag.WALL_EAST],
+        [1, 1, 0, CollisionFlag.WALL_WEST],
+        [2, 0, 1, CollisionFlag.WALL_SOUTH],
+        [2, 0, -1, CollisionFlag.WALL_NORTH],
+        [3, -1, 0, CollisionFlag.WALL_EAST],
+        [3, 1, 0, CollisionFlag.WALL_WEST]
     ] as const;
 
     const WALL_L_STRATEGY_TEST_ARGS = [
-        [ 0, 1, 0, CollisionFlag.WALL_WEST ],
-        [ 0, 0, -1, CollisionFlag.WALL_NORTH ],
-        [ 1, -1, 0, CollisionFlag.WALL_EAST ],
-        [ 1, 0, -1, CollisionFlag.BLOCK_NORTH ],
-        [ 2, -1, 0, CollisionFlag.BLOCK_EAST ],
-        [ 2, 0, 1, CollisionFlag.BLOCK_NORTH ],
-        [ 3, 0, 1, CollisionFlag.BLOCK_SOUTH ],
-        [ 3, 1, 0, CollisionFlag.BLOCK_WEST ]
+        [0, 1, 0, CollisionFlag.WALL_WEST],
+        [0, 0, -1, CollisionFlag.WALL_NORTH],
+        [1, -1, 0, CollisionFlag.WALL_EAST],
+        [1, 0, -1, CollisionFlag.BLOCK_NORTH],
+        [2, -1, 0, CollisionFlag.BLOCK_EAST],
+        [2, 0, 1, CollisionFlag.BLOCK_NORTH],
+        [3, 0, 1, CollisionFlag.BLOCK_SOUTH],
+        [3, 1, 0, CollisionFlag.BLOCK_WEST]
     ] as const;
 
     const WALLDECOR_DIAGONAL_OFFSET_STRATEGY_TEST_ARGS = [
-        [ 0, 1, 0, CollisionFlag.WALL_WEST ],
-        [ 0, 0, -1, CollisionFlag.WALL_NORTH ],
-        [ 1, -1, 0, CollisionFlag.WALL_EAST ],
-        [ 1, 0, -1, CollisionFlag.WALL_NORTH ],
-        [ 2, -1, 0, CollisionFlag.WALL_EAST ],
-        [ 2, 0, 1, CollisionFlag.WALL_SOUTH ],
-        [ 3, 1, 0, CollisionFlag.WALL_WEST ],
-        [ 3, 0, 1, CollisionFlag.WALL_SOUTH ]
-    ]
+        [0, 1, 0, CollisionFlag.WALL_WEST],
+        [0, 0, -1, CollisionFlag.WALL_NORTH],
+        [1, -1, 0, CollisionFlag.WALL_EAST],
+        [1, 0, -1, CollisionFlag.WALL_NORTH],
+        [2, -1, 0, CollisionFlag.WALL_EAST],
+        [2, 0, 1, CollisionFlag.WALL_SOUTH],
+        [3, 1, 0, CollisionFlag.WALL_WEST],
+        [3, 0, 1, CollisionFlag.WALL_SOUTH]
+    ];
 
     describe('test wall decor strategy', () => {
         const srcX = 3200;
@@ -334,10 +334,10 @@ describe('RectangularReachStrategy', () => {
             flag(map, objX, objZ, 1, 1, CollisionFlag.LOC);
 
             const cardinal = [
-                [ 0, -1 ],
-                [ 0, 1 ],
-                [ -1, 0 ],
-                [ 1, 0 ]
+                [0, -1],
+                [0, 1],
+                [-1, 0],
+                [1, 0]
             ];
 
             for (const dir of cardinal) {
@@ -362,10 +362,10 @@ describe('RectangularReachStrategy', () => {
             flag(map, objX, objZ, 1, 1, CollisionFlag.LOC);
 
             const cardinal = [
-                [ 0, -1 ],
-                [ 0, 1 ],
-                [ -1, 0 ],
-                [ 1, 0 ]
+                [0, -1],
+                [0, 1],
+                [-1, 0],
+                [1, 0]
             ];
 
             for (const dir of cardinal) {

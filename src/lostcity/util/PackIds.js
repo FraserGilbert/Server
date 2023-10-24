@@ -1,5 +1,6 @@
 import fs from 'fs';
-import { loadDir } from '#lostcity/util/NameMap.js';
+
+import { loadDir } from 'lostcity/util/NameMap.js';
 
 export function getLatestModified(path, extension) {
     let files = fs.readdirSync(path);

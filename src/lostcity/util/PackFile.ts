@@ -1,6 +1,7 @@
 import fs from 'fs';
-import { listFilesExt, loadDirExtFull, loadFile } from '#lostcity/util/Parse.js';
-import {basename, dirname} from 'path';
+import { basename, dirname } from 'path';
+
+import { listFilesExt, loadDirExtFull, loadFile } from 'lostcity/util/Parse.js';
 
 export function loadOrder(path: string): number[] {
     if (!fs.existsSync(path)) {
@@ -47,7 +48,7 @@ export function loadPack(path: string): string[] {
         }
 
         const num = parseInt(index);
-        if (!isNaN(num)) {  
+        if (!isNaN(num)) {
             pack[num] = name;
         }
     }
@@ -283,7 +284,7 @@ export function validateConfigPack(packPath: string, ext: string, regen = false,
 
 export function validateCategoryPack() {
     if (shouldBuild('data/src/scripts', '.loc', 'data/pack/category.pack') || shouldBuild('data/src/scripts', '.npc', 'data/pack/category.pack') || shouldBuild('data/src/scripts', '.obj', 'data/pack/category.pack')) {
-        const names = crawlConfigCategories();    
+        const names = crawlConfigCategories();
         const pack = regenPack(loadPack('data/pack/category.pack'), names);
         packToFile(pack, 'data/pack/category.pack');
         return pack;

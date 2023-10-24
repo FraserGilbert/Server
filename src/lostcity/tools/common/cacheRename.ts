@@ -1,6 +1,6 @@
 import fs from 'fs';
 
-import { fromBase37 } from '#jagex2/jstring/JString.js';
+import { fromBase37 } from 'jagex2/jstring/JString.js';
 
 const args = process.argv.slice(2);
 

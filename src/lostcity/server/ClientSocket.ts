@@ -1,13 +1,14 @@
 import { Socket } from 'net';
-import { WebSocket } from 'ws';
-import Isaac from '#jagex2/io/Isaac';
-import Packet from '#jagex2/io/Packet';
+import { ServerWebSocket } from 'bun';
+
+import Isaac from 'jagex2/io/Isaac.js';
+import Packet from 'jagex2/io/Packet.js';
 
 export default class ClientSocket {
     static TCP = 0;
     static WEBSOCKET = 1;
 
-    socket: Socket | WebSocket;
+    socket: Socket | ServerWebSocket<unknown>;
     type = -1;
     state = -1;
     remoteAddress: string | null = null;
@@ -28,8 +29,11 @@ export default class ClientSocket {
     out = new Uint8Array(5000);
     outOffset = 0;
 
-    constructor(socket: Socket | WebSocket, remoteAddress: string | null = null, type = ClientSocket.TCP, state = -1) {
+    constructor(socket: Socket | ServerWebSocket<unknown>, remoteAddress: string | null = null, type = ClientSocket.TCP, state = -1) {
         this.socket = socket;
+        if (remoteAddress === '::1') {
+            remoteAddress = '127.0.0.1';
+        }
         this.remoteAddress = remoteAddress;
         this.type = type;
         this.state = state;
@@ -48,7 +52,7 @@ export default class ClientSocket {
         if (this.isTCP()) {
             (this.socket as Socket).write(data);
         } else if (this.isWebSocket()) {
-            (this.socket as WebSocket).send(data);
+            (this.socket as ServerWebSocket<unknown>).send(data);
         }
     }
 
@@ -59,7 +63,7 @@ export default class ClientSocket {
             if (this.isTCP()) {
                 (this.socket as Socket).end();
             } else if (this.isWebSocket()) {
-                (this.socket as WebSocket).close();
+                (this.socket as ServerWebSocket<unknown>).close();
             }
         }, 10);
     }
@@ -69,7 +73,7 @@ export default class ClientSocket {
         if (this.isTCP()) {
             (this.socket as Socket).destroy();
         } else if (this.isWebSocket()) {
-            (this.socket as WebSocket).terminate();
+            (this.socket as ServerWebSocket<unknown>).terminate();
         }
     }
 

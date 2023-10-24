@@ -1,8 +1,8 @@
-import RouteCoordinates from "#rsmod/RouteCoordinates.js";
+import RouteCoordinates from 'rsmod/RouteCoordinates.js';
 
 export default class RayCast {
     static FAILED: RayCast = new RayCast([], false, false);
-    static EMPTY_SUCCESS : RayCast = new RayCast([], false, true);
+    static EMPTY_SUCCESS: RayCast = new RayCast([], false, true);
 
     readonly coordinates: Array<RouteCoordinates>;
     readonly alternative: boolean;

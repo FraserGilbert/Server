@@ -1,12 +1,12 @@
 import fs from 'fs';
 
-import Packet from '#jagex2/io/Packet.js';
+import Packet from 'jagex2/io/Packet.js';
 
-import { shouldBuild, validateCategoryPack, validateConfigPack, validateFilesPack, validateInterfacePack, validateScriptPack } from '#lostcity/util/PackFile.js';
+import { shouldBuild, validateCategoryPack, validateConfigPack, validateFilesPack, validateInterfacePack, validateScriptPack } from 'lostcity/util/PackFile.js';
 
-import ParamType from '#lostcity/cache/ParamType.js';
+import ParamType from 'lostcity/cache/ParamType.js';
 
-import { packParamConfigs, parseParamConfig } from '#lostcity/tools/packconfig/ParamConfig.js';
+import { packParamConfigs, parseParamConfig } from 'lostcity/tools/packconfig/ParamConfig.js';
 
 console.log('Validating .pack files');
 // console.time('Validated .pack files');

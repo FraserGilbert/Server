@@ -1,6 +1,6 @@
-import Packet from '#jagex2/io/Packet.js';
-import { loadOrder, loadPack, listFiles } from '#lostcity/util/NameMap.js';
-import Jagfile from '#jagex2/io/Jagfile.js';
+import Packet from 'jagex2/io/Packet.js';
+import { loadOrder, loadPack, listFiles } from 'lostcity/util/NameMap.js';
+import Jagfile from 'jagex2/io/Jagfile.js';
 
 /* order:
   'base_label.dat',  'ob_point1.dat',

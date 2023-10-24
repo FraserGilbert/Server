@@ -1,11 +1,11 @@
-import Packet from '#jagex2/io/Packet.js';
+import Packet from 'jagex2/io/Packet.js';
 
-import ObjType from '#lostcity/cache/ObjType.js';
-import ParamType from '#lostcity/cache/ParamType.js';
-import ScriptVarType from '#lostcity/cache/ScriptVarType.js';
+import ObjType from 'lostcity/cache/ObjType.js';
+import ParamType from 'lostcity/cache/ParamType.js';
+import ScriptVarType from 'lostcity/cache/ScriptVarType.js';
 
-import { PACKFILE, ParamValue, ConfigValue, ConfigLine, packStepError } from '#lostcity/tools/packconfig/PackShared.js';
-import { lookupParamValue } from '#lostcity/tools/packconfig/ParamConfig.js';
+import { PACKFILE, ParamValue, ConfigValue, ConfigLine, packStepError } from 'lostcity/tools/packconfig/PackShared.js';
+import { lookupParamValue } from 'lostcity/tools/packconfig/ParamConfig.js';
 
 export function parseObjConfig(key: string, value: string): ConfigValue | null | undefined {
     const stringKeys = [

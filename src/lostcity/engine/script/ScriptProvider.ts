@@ -1,7 +1,9 @@
-import Packet from '#jagex2/io/Packet.js';
-import Script from '#lostcity/engine/script/Script.js';
-import ServerTriggerType from '#lostcity/engine/script/ServerTriggerType.js';
-import NpcMode from '#lostcity/entity/NpcMode.js';
+import Packet from 'jagex2/io/Packet.js';
+
+import Script from 'lostcity/engine/script/Script.js';
+import ServerTriggerType from 'lostcity/engine/script/ServerTriggerType.js';
+
+import NpcMode from 'lostcity/entity/NpcMode.js';
 
 // maintains a list of scripts (id <-> name)
 export default class ScriptProvider {

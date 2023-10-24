@@ -13,7 +13,7 @@ export default class RouteCoordinates {
     ) {
         this.packed = (z & RouteCoordinates.COORD_MASK) |
             ((x & RouteCoordinates.COORD_MASK) << RouteCoordinates.X_BITS) |
-            ((level & RouteCoordinates.LEVEL_MASK) << RouteCoordinates.LEVEL_BITS)
+            ((level & RouteCoordinates.LEVEL_MASK) << RouteCoordinates.LEVEL_BITS);
     }
 
     get x(): number {

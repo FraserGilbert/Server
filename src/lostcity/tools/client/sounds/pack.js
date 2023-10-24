@@ -1,8 +1,8 @@
 import fs from 'fs';
 
-import Jagfile from '#jagex2/io/Jagfile.js';
-import Packet from '#jagex2/io/Packet.js';
-import { loadOrder, loadPack } from '#lostcity/util/NameMap.js';
+import Jagfile from 'jagex2/io/Jagfile.js';
+import Packet from 'jagex2/io/Packet.js';
+import { loadOrder, loadPack } from 'lostcity/util/NameMap.js';
 
 console.log('Packing sounds.jag');
 //console.time('sounds.jag');

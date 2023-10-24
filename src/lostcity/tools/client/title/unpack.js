@@ -1,8 +1,8 @@
 import fs from 'fs';
 import Jimp from 'jimp';
 
-import Jagfile from '#jagex2/io/Jagfile.js';
-import { pixSize, countPix, unpackPix } from '#lostcity/tools/client/unpack/Pix.js';
+import Jagfile from 'jagex2/io/Jagfile.js';
+import { pixSize, countPix, unpackPix } from 'lostcity/tools/client/unpack/Pix.js';
 
 let title = Jagfile.load('dump/client/title');
 

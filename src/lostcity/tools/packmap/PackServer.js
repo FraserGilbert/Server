@@ -1,7 +1,7 @@
 import fs from 'fs';
 
-import Packet from '#jagex2/io/Packet.js';
-import { shouldBuildFile } from '#lostcity/util/PackIds.js';
+import Packet from 'jagex2/io/Packet.js';
+import { shouldBuildFile } from 'lostcity/util/PackIds.js';
 
 let queue = [];
 

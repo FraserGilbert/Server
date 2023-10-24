@@ -1,17 +1,20 @@
-import ScriptRunner from '#lostcity/engine/script/ScriptRunner.js';
-import ScriptState from '#lostcity/engine/script/ScriptState.js';
-import { EntityQueueRequest, ScriptArgument } from '#lostcity/entity/EntityQueueRequest.js';
-import Script from '#lostcity/engine/script/Script.js';
-import PathingEntity from '#lostcity/entity/PathingEntity.js';
-import ScriptProvider from '#lostcity/engine/script/ScriptProvider.js';
-import ServerTriggerType from '#lostcity/engine/script/ServerTriggerType.js';
-import NpcType from '#lostcity/cache/NpcType.js';
-import { Interaction } from '#lostcity/entity/Interaction.js';
-import MoveRestrict from '#lostcity/entity/MoveRestrict.js';
-import NpcMode from '#lostcity/entity/NpcMode.js';
-import Player from '#lostcity/entity/Player.js';
-import {Direction, Position} from '#lostcity/entity/Position.js';
-import World from '#lostcity/engine/World.js';
+import ScriptRunner from 'lostcity/engine/script/ScriptRunner.js';
+import ScriptState from 'lostcity/engine/script/ScriptState.js';
+import Script from 'lostcity/engine/script/Script.js';
+import ScriptProvider from 'lostcity/engine/script/ScriptProvider.js';
+import ServerTriggerType from 'lostcity/engine/script/ServerTriggerType.js';
+
+import NpcType from 'lostcity/cache/NpcType.js';
+
+import { EntityQueueRequest, ScriptArgument } from 'lostcity/entity/EntityQueueRequest.js';
+import PathingEntity from 'lostcity/entity/PathingEntity.js';
+import { Interaction } from 'lostcity/entity/Interaction.js';
+import MoveRestrict from 'lostcity/entity/MoveRestrict.js';
+import NpcMode from 'lostcity/entity/NpcMode.js';
+import Player from 'lostcity/entity/Player.js';
+import { Direction, Position } from 'lostcity/entity/Position.js';
+
+import World from 'lostcity/engine/World.js';
 
 export default class Npc extends PathingEntity {
     static ANIM = 0x2;
@@ -353,7 +356,7 @@ export default class Npc extends PathingEntity {
         }
 
         const distanceToTarget = Position.distanceTo(this, target);
-        const distanceToEscape = Position.distanceTo(this, {x: this.startX, z: this.startZ});
+        const distanceToEscape = Position.distanceTo(this, { x: this.startX, z: this.startZ });
         const type = NpcType.get(this.type);
 
         if (distanceToTarget > type.attackrange) {
@@ -362,7 +365,7 @@ export default class Npc extends PathingEntity {
         }
 
         // TODO check for ap
-        if (!this.inOperableDistance(this.interaction) && distanceToEscape <= type.maxrange || Position.distanceTo(target, {x: this.startX, z: this.startZ}) <= distanceToEscape) {
+        if (!this.inOperableDistance(this.interaction) && distanceToEscape <= type.maxrange || Position.distanceTo(target, { x: this.startX, z: this.startZ }) <= distanceToEscape) {
             this.playerFollowMode();
         }
 

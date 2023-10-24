@@ -1,6 +1,8 @@
-import Packet from '#jagex2/io/Packet.js';
 import fs from 'fs';
-import IfType from '#lostcity/cache/IfType.js';
+
+import Packet from 'jagex2/io/Packet.js';
+
+import IfType from 'lostcity/cache/IfType.js';
 
 describe('IfType', () => {
     describe('static load', () => {

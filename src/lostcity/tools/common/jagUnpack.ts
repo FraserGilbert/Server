@@ -1,6 +1,6 @@
 import path from 'path';
 
-import Jagfile from '#jagex2/io/Jagfile.js';
+import Jagfile from 'jagex2/io/Jagfile.js';
 
 const args = process.argv.slice(2);
 

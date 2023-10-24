@@ -1,4 +1,4 @@
-import Zone from '#lostcity/engine/zone/Zone.js';
+import Zone from 'lostcity/engine/zone/Zone.js';
 
 export default class ZoneManager {
     // 256x256 mapsquares (room for instances): 2048 * 2048 * 4 = ((256 * 256) * 64) * 4

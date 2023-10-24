@@ -58,7 +58,7 @@ export const Position = {
         return pos + Position.deltaZ(dir);
     },
 
-    distanceTo(pos: { x: number, z: number }, other: { x: number, z: number }) {
+    distanceTo(pos: { x: number, z: number; }, other: { x: number, z: number; }) {
         const deltaX = Math.abs(pos.x - other.x);
         const deltaZ = Math.abs(pos.z - other.z);
 
@@ -93,7 +93,7 @@ export const Position = {
         return 0;
     },
 
-    unpackCoord(coord: number): {level: number, x: number, z: number} {
+    unpackCoord(coord: number): { level: number, x: number, z: number; } {
         const level = (coord >> 28) & 0x3;
         const x = (coord >> 14) & 0x3fff;
         const z = coord & 0x3fff;

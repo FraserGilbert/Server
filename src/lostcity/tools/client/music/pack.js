@@ -1,5 +1,5 @@
 import fs from 'fs';
-import BZip2 from '#jagex2/io/BZip2.js';
+import BZip2 from 'jagex2/io/BZip2.js';
 import { basename } from 'path';
 
 console.log('Packing jingles');

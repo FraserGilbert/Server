@@ -1,6 +1,7 @@
-import { CommandHandlers } from '#lostcity/engine/script/ScriptRunner.js';
-import ScriptOpcode from '#lostcity/engine/script/ScriptOpcode.js';
-import EnumType from '#lostcity/cache/EnumType.js';
+import { CommandHandlers } from 'lostcity/engine/script/ScriptRunner.js';
+import ScriptOpcode from 'lostcity/engine/script/ScriptOpcode.js';
+
+import EnumType from 'lostcity/cache/EnumType.js';
 
 const EnumOps: CommandHandlers = {
     [ScriptOpcode.ENUM]: (state) => {

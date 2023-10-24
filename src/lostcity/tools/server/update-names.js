@@ -1,4 +1,4 @@
-import { loadDir } from '#lostcity/util/NameMap.js';
+import { loadDir } from 'lostcity/util/NameMap.js';
 import fs from 'fs';
 
 let older = [];

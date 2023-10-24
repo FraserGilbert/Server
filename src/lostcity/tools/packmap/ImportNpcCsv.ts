@@ -1,7 +1,7 @@
 import fs from 'fs';
 import { basename } from 'path';
 
-import { loadDir } from '#lostcity/util/Parse.js';
+import { loadDir } from 'lostcity/util/Parse.js';
 
 let allNpcs: { id: number, level: number, mapsquareX: number, mapsquareZ: number, localX: number, localZ: number }[] = [];
 

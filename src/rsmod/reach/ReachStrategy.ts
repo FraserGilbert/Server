@@ -1,9 +1,9 @@
 // noinspection DuplicatedCode
 
-import CollisionFlagMap from '#rsmod/collision/CollisionFlagMap.js';
-import RotationUtils from '#rsmod/utils/RotationUtils.js';
-import RectangleBoundaryUtils from '#rsmod/reach/RectangleBoundaryUtils.js';
-import CollisionFlag from "#rsmod/flag/CollisionFlag.js";
+import CollisionFlagMap from 'rsmod/collision/CollisionFlagMap.js';
+import RotationUtils from 'rsmod/utils/RotationUtils.js';
+import RectangleBoundaryUtils from 'rsmod/reach/RectangleBoundaryUtils.js';
+import CollisionFlag from 'rsmod/flag/CollisionFlag.js';
 
 export default class ReachStrategy {
     static WALL_STRATEGY: number = 0;
@@ -547,7 +547,7 @@ export default class ReachStrategy {
     ): boolean {
         // Faster check.
         if (locShape != 6 && locShape != 7 && locShape != 8) {
-            return false
+            return false;
         }
         const collisionFlags = flags.get(srcX, srcZ, level);
         switch (locShape) {
@@ -610,7 +610,7 @@ export default class ReachStrategy {
     ): boolean {
         // Faster check.
         if (locShape != 6 && locShape != 7 && locShape != 8) {
-            return false
+            return false;
         }
         const collisionFlags = flags.get(srcX, srcZ, level);
         const east = srcX + srcSize - 1;

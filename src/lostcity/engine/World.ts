@@ -1,39 +1,45 @@
-import Packet from '#jagex2/io/Packet.js';
-import { toBase37 } from '#jagex2/jstring/JString.js';
-import CategoryType from '#lostcity/cache/CategoryType.js';
-import EnumType from '#lostcity/cache/EnumType.js';
-import IfType from '#lostcity/cache/IfType.js';
-import InvType from '#lostcity/cache/InvType.js';
-import LocType from '#lostcity/cache/LocType.js';
-import NpcType from '#lostcity/cache/NpcType.js';
-import ObjType from '#lostcity/cache/ObjType.js';
-import ParamType from '#lostcity/cache/ParamType.js';
-import SeqFrame from '#lostcity/cache/SeqFrame.js';
-import SeqType from '#lostcity/cache/SeqType.js';
-import StructType from '#lostcity/cache/StructType.js';
-import VarPlayerType from '#lostcity/cache/VarPlayerType.js';
-import FontType from '#lostcity/cache/FontType.js';
-import ScriptProvider from '#lostcity/engine/script/ScriptProvider.js';
-import Npc from '#lostcity/entity/Npc.js';
-import Player from '#lostcity/entity/Player.js';
-import { ClientProtLengths } from '#lostcity/server/ClientProt.js';
-import ClientSocket from '#lostcity/server/ClientSocket.js';
-import MesanimType from '#lostcity/cache/MesanimType.js';
-import DbTableType from '#lostcity/cache/DbTableType.js';
-import DbRowType from '#lostcity/cache/DbRowType.js';
-import { Inventory } from './Inventory.js';
-import ScriptState from './script/ScriptState.js';
-import GameMap from '#lostcity/engine/GameMap.js';
-import { ServerProt } from '#lostcity/server/ServerProt.js';
-import Loc from '#lostcity/entity/Loc.js';
-import Obj from '#lostcity/entity/Obj.js';
-import PathFinder from '#rsmod/PathFinder.js';
-import LinePathFinder from '#rsmod/LinePathFinder.js';
-import { Position } from '#lostcity/entity/Position.js';
-import CollisionManager from '#lostcity/engine/collision/CollisionManager.js';
-import CollisionFlagMap from '#rsmod/collision/CollisionFlagMap.js';
-import ScriptRunner from '#lostcity/engine/script/ScriptRunner.js';
-import HuntType from '#lostcity/cache/HuntType.js';
+import Packet from 'jagex2/io/Packet.js';
+
+import { toBase37 } from 'jagex2/jstring/JString.js';
+
+import CategoryType from 'lostcity/cache/CategoryType.js';
+import EnumType from 'lostcity/cache/EnumType.js';
+import IfType from 'lostcity/cache/IfType.js';
+import InvType from 'lostcity/cache/InvType.js';
+import LocType from 'lostcity/cache/LocType.js';
+import NpcType from 'lostcity/cache/NpcType.js';
+import ObjType from 'lostcity/cache/ObjType.js';
+import ParamType from 'lostcity/cache/ParamType.js';
+import SeqFrame from 'lostcity/cache/SeqFrame.js';
+import SeqType from 'lostcity/cache/SeqType.js';
+import StructType from 'lostcity/cache/StructType.js';
+import VarPlayerType from 'lostcity/cache/VarPlayerType.js';
+import FontType from 'lostcity/cache/FontType.js';
+import MesanimType from 'lostcity/cache/MesanimType.js';
+import DbTableType from 'lostcity/cache/DbTableType.js';
+import DbRowType from 'lostcity/cache/DbRowType.js';
+import HuntType from 'lostcity/cache/HuntType.js';
+
+import ScriptProvider from 'lostcity/engine/script/ScriptProvider.js';
+import ScriptState from 'lostcity/engine/script/ScriptState.js';
+import { Inventory } from 'lostcity/engine/Inventory.js';
+import GameMap from 'lostcity/engine/GameMap.js';
+import CollisionManager from 'lostcity/engine/collision/CollisionManager.js';
+import ScriptRunner from 'lostcity/engine/script/ScriptRunner.js';
+
+import Npc from 'lostcity/entity/Npc.js';
+import Player from 'lostcity/entity/Player.js';
+import Loc from 'lostcity/entity/Loc.js';
+import Obj from 'lostcity/entity/Obj.js';
+import { Position } from 'lostcity/entity/Position.js';
+
+import { ClientProtLengths } from 'lostcity/server/ClientProt.js';
+import ClientSocket from 'lostcity/server/ClientSocket.js';
+import { ServerProt } from 'lostcity/server/ServerProt.js';
+
+import PathFinder from 'rsmod/PathFinder.js';
+import LinePathFinder from 'rsmod/LinePathFinder.js';
+import CollisionFlagMap from 'rsmod/collision/CollisionFlagMap.js';
 
 class World {
     members = process.env.MEMBERS_WORLD === 'true';

@@ -1,7 +1,7 @@
 import fs from 'fs';
 
-import Jagfile from '#jagex2/io/Jagfile.js';
-import { loadPack } from '#lostcity/util/NameMap.js';
+import Jagfile from 'jagex2/io/Jagfile.js';
+import { loadPack } from 'lostcity/util/NameMap.js';
 
 if (!fs.existsSync('dump/client/config')) {
     console.error('dump/client/config does not exist');
