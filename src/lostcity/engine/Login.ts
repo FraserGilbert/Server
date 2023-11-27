@@ -18,7 +18,8 @@ class Login {
     readIn(socket: ClientSocket, data: Packet) {
         const opcode = data.g1();
 
-        if (opcode === 16 || opcode === 18) {
+        // todo: opcode 18 reconnect when login can re-establish connection to old player
+        if (opcode === 16) {
             const login = data.gPacket(data.g1());
 
             const revision = login.g1();

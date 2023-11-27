@@ -55,6 +55,10 @@ export default class WSServer {
 
             ws.on('close', () => {
                 console.log(`[WSWorld]: Disconnected from ${ip}`);
+
+                if (socket.player) {
+                    socket.player.logoutRequested = true;
+                }
             });
         });
     }

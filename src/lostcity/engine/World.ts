@@ -266,6 +266,21 @@ class World {
         }
 
         // player logout
+        for (let i = 0; i < this.playerIds.length; i++) {
+            if (this.playerIds[i] === -1) {
+                continue;
+            }
+
+            const player = this.players[this.playerIds[i]];
+            if (!player) {
+                this.playerIds[i] = -1;
+                continue;
+            }
+
+            if (player.logoutRequested && player.queue.length === 0) {
+                this.removePlayer(player);
+            }
+        }
 
         // loc/obj despawn/respawn
 
@@ -323,12 +338,7 @@ class World {
         this.currentTick++;
 
         if (this.shutdownTick > -1 && this.currentTick >= this.shutdownTick) {
-            for (let i = 0; i < this.players.length; i++) {
-                const player = this.players[i];
-                if (player) {
-                    player.logout();
-                }
-            }
+            this.players.forEach(p => this.removePlayer(p));
         }
 
         const nextTick = 600 - (end - start);
@@ -410,12 +420,21 @@ class World {
             return false;
         }
 
+        player.pid = pid;
         const index = this.players.push(player) - 1;
         this.playerIds[pid] = index;
 
         player.onLogin();
 
         return true;
+    }
+
+    removePlayer(player: Player) {
+        player.save();
+        player.logout();
+
+        this.players.splice(this.playerIds[player.pid], 1);
+        this.playerIds[player.pid] = -1;
     }
 
     // temp until login server tracks sessions independently

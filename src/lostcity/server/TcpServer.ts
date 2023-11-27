@@ -41,6 +41,10 @@ export default class TcpServer {
 
             s.on('close', () => {
                 console.log(`[World]: Disconnected from ${socket.remoteAddress}`);
+
+                if (socket.player) {
+                    socket.player.logoutRequested = true;
+                }
             });
 
             s.on('end', () => {
