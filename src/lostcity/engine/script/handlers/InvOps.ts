@@ -1,11 +1,14 @@
-import { CommandHandlers } from '#lostcity/engine/script/ScriptRunner.js';
-import ScriptOpcode from '#lostcity/engine/script/ScriptOpcode.js';
 import InvType from '#lostcity/cache/InvType.js';
 import ObjType from '#lostcity/cache/ObjType.js';
+
+import { Inventory } from '#lostcity/engine/Inventory.js';
+
+import ScriptOpcode from '#lostcity/engine/script/ScriptOpcode.js';
+import { CommandHandlers } from '#lostcity/engine/script/ScriptRunner.js';
+
 import Obj from '#lostcity/entity/Obj.js';
-import World from '#lostcity/engine/World.js';
-import {Inventory} from '#lostcity/engine/Inventory.js';
 import { Position } from '#lostcity/entity/Position.js';
+import World from '#lostcity/engine/World.js';
 
 const InvOps: CommandHandlers = {
     [ScriptOpcode.INV_ADD]: (state) => {
@@ -30,7 +33,6 @@ const InvOps: CommandHandlers = {
                 obj,
                 overflow
             );
-            World.addObj(floorObj, player, 200);
         }
     },
 
@@ -257,7 +259,6 @@ const InvOps: CommandHandlers = {
                 fromObj,
                 overflow
             );
-            World.addObj(floorObj, player, 200);
         }
     },
 
@@ -297,7 +298,6 @@ const InvOps: CommandHandlers = {
         }
 
         const floorObj = new Obj(pos.level, pos.x, pos.z, obj.id, completed);
-        World.addObj(floorObj, player, duration);
     },
 
     [ScriptOpcode.INV_DROPITEM]: (state) => {
@@ -328,7 +328,6 @@ const InvOps: CommandHandlers = {
         }
 
         const floorObj = new Obj(pos.level, pos.x, pos.z, obj, completed);
-        World.addObj(floorObj, player, duration);
     },
 
     [ScriptOpcode.BOTH_MOVEINV]: (state) => {

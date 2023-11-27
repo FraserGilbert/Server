@@ -1,18 +1,16 @@
-import Packet from '#jagex2/io/Packet.js';
-import Npc from '#lostcity/entity/Npc.js';
 import fs from 'fs';
-import World from '#lostcity/engine/World.js';
-import CollisionManager from '#lostcity/engine/collision/CollisionManager.js';
-import ZoneManager from '#lostcity/engine/zone/ZoneManager.js';
-import Obj from '#lostcity/entity/Obj.js';
+
+import Packet from '#jagex2/io/Packet.js';
+
 import NpcType from '#lostcity/cache/NpcType.js';
+
+import CollisionManager from '#lostcity/engine/collision/CollisionManager.js';
 
 export default class GameMap {
     readonly collisionManager = new CollisionManager();
-    readonly zoneManager = new ZoneManager();
 
     init() {
-        this.collisionManager.init(this.zoneManager);
+        this.collisionManager.init();
 
         console.time('Loading game map');
         const maps = fs.readdirSync('data/pack/server/maps').filter(x => x[0] === 'm');
@@ -34,19 +32,17 @@ export default class GameMap {
                     const npcType = NpcType.get(id);
                     const size = npcType.size;
 
-                    const npc = new Npc(
-                        level,
-                        mapsquareX + localX,
-                        mapsquareZ + localZ,
-                        size,
-                        size,
-                        World.getNextNid(),
-                        id,
-                        npcType.moverestrict,
-                        npcType.blockwalk
-                    );
-
-                    World.addNpc(npc);
+                    // const npc = new Npc(
+                    //     level,
+                    //     mapsquareX + localX,
+                    //     mapsquareZ + localZ,
+                    //     size,
+                    //     size,
+                    //     World.getNextNid(),
+                    //     id,
+                    //     npcType.moverestrict,
+                    //     npcType.blockwalk
+                    // );
                 }
             }
 
@@ -62,15 +58,13 @@ export default class GameMap {
                     const objId = objMap.g2();
                     const objCount = objMap.g1();
 
-                    const obj = new Obj(
-                        level,
-                        mapsquareX + localX,
-                        mapsquareZ + localZ,
-                        objId,
-                        objCount
-                    );
-
-                    this.zoneManager.getZone(obj.x, obj.z, obj.level).addStaticObj(obj);
+                    // const obj = new Obj(
+                    //     level,
+                    //     mapsquareX + localX,
+                    //     mapsquareZ + localZ,
+                    //     objId,
+                    //     objCount
+                    // );
                 }
             }
         }

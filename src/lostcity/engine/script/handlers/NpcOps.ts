@@ -1,19 +1,22 @@
-import {CommandHandlers} from '#lostcity/engine/script/ScriptRunner.js';
-import ScriptOpcode from '#lostcity/engine/script/ScriptOpcode.js';
 import ParamType from '#lostcity/cache/ParamType.js';
 import NpcType from '#lostcity/cache/NpcType.js';
-import {ParamHelper} from '#lostcity/cache/ParamHelper.js';
-import ScriptProvider from '#lostcity/engine/script/ScriptProvider.js';
-import {Position} from '#lostcity/entity/Position.js';
-import ScriptPointer, {checkedHandler} from '#lostcity/engine/script/ScriptPointer.js';
-import ServerTriggerType from '#lostcity/engine/script/ServerTriggerType.js';
+import { ParamHelper } from '#lostcity/cache/ParamHelper.js';
+
 import World from '#lostcity/engine/World.js';
-import Npc from '#lostcity/entity/Npc.js';
+
+import ScriptOpcode from '#lostcity/engine/script/ScriptOpcode.js';
+import ScriptPointer, { checkedHandler } from '#lostcity/engine/script/ScriptPointer.js';
+import ScriptProvider from '#lostcity/engine/script/ScriptProvider.js';
+import { CommandHandlers } from '#lostcity/engine/script/ScriptRunner.js';
 import ScriptState from '#lostcity/engine/script/ScriptState.js';
-import NpcMode from '#lostcity/entity/NpcMode.js';
-import Player from '#lostcity/entity/Player.js';
+import ServerTriggerType from '#lostcity/engine/script/ServerTriggerType.js';
+
 import Loc from '#lostcity/entity/Loc.js';
 import Obj from '#lostcity/entity/Obj.js';
+import { Position } from '#lostcity/entity/Position.js';
+import Npc from '#lostcity/entity/Npc.js';
+import NpcMode from '#lostcity/entity/NpcMode.js';
+import Player from '#lostcity/entity/Player.js';
 
 const ActiveNpc = [ScriptPointer.ActiveNpc, ScriptPointer.ActiveNpc2];
 
