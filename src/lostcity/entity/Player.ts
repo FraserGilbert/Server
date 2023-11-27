@@ -1705,33 +1705,33 @@ export default class Player extends PathingEntity {
 
     processInteraction() {
         // check if the target currently exists, if not clear the interaction
-        if (this.interaction) {
-            const target = this.interaction.target;
-            if (target instanceof Player) {
-                if (World.getPlayer(target.pid) == null) {
-                    this.resetInteraction();
-                    return;
-                }
-            } else if (target instanceof Npc) {
-                const npc = World.getNpc(target.nid);
-                if (npc == null || npc.delayed() || npc.despawn !== -1 || npc.respawn !== -1) {
-                    this.resetInteraction();
-                    return;
-                }
-            } else if (target instanceof Loc) {
-                const loc = World.getLoc(target.x, target.z, target.level, target.type);
-                if (loc == null) {
-                    this.resetInteraction();
-                    return;
-                }
-            } else {
-                const obj = World.getObj(target.x, target.z, target.level, target.type);
-                if (obj == null) {
-                    this.resetInteraction();
-                    return;
-                }
-            }
-        }
+        // if (this.interaction) {
+        //     const target = this.interaction.target;
+        //     if (target instanceof Player) {
+        //         if (World.getPlayer(target.pid) == null) {
+        //             this.resetInteraction();
+        //             return;
+        //         }
+        //     } else if (target instanceof Npc) {
+        //         const npc = World.getNpc(target.nid);
+        //         if (npc == null || npc.delayed() || npc.despawn !== -1 || npc.respawn !== -1) {
+        //             this.resetInteraction();
+        //             return;
+        //         }
+        //     } else if (target instanceof Loc) {
+        //         const loc = World.getLoc(target.x, target.z, target.level, target.type);
+        //         if (loc == null) {
+        //             this.resetInteraction();
+        //             return;
+        //         }
+        //     } else {
+        //         const obj = World.getObj(target.x, target.z, target.level, target.type);
+        //         if (obj == null) {
+        //             this.resetInteraction();
+        //             return;
+        //         }
+        //     }
+        // }
 
         if (!this.interaction) {
             // skip the full interaction logic and just process movement
@@ -1820,44 +1820,6 @@ export default class Player extends PathingEntity {
         const rightX = Position.zone(this.loadedX) + 6;
         const topZ = Position.zone(this.loadedZ) + 6;
         const bottomZ = Position.zone(this.loadedZ) - 6;
-
-        // update 3 zones around the player
-        for (let x = centerX - 3; x <= centerX + 3; x++) {
-            for (let z = centerZ - 3; z <= centerZ + 3; z++) {
-                // check if the zone is within the build area
-                if (x < leftX || x > rightX || z > topZ || z < bottomZ) {
-                    continue;
-                }
-
-                const zone = World.getZone(x << 3, z << 3, this.level);
-
-                let newlyObserved = false;
-                if (typeof this.loadedZones[zone.index] === 'undefined') {
-                    // full update necessary to clear client zone memory
-                    this.updateZoneFullFollows(x << 3, z << 3);
-                    newlyObserved = true;
-                }
-
-                const buffer = World.getSharedEvents(zone.index);
-                if (buffer && buffer.length) {
-                    this.updateZonePartialEnclosed(x << 3, z << 3, buffer);
-                }
-
-                const updates = World.getReceiverUpdates(zone.index, this.pid).filter(event => {
-                    return newlyObserved || (!newlyObserved && !event.static && event.tick > this.loadedZones[zone.index]);
-                });
-                if (updates.length) {
-                    this.updateZonePartialFollows(x << 3, z << 3);
-
-                    for (let i = 0; i < updates.length; i++) {
-                        // have to copy because encryption will be applied to buffer
-                        this.netOut.push(new Packet(updates[i].buffer));
-                    }
-                }
-
-                this.loadedZones[zone.index] = zone.lastEvent;
-            }
-        }
     }
 
     // ----
@@ -1883,30 +1845,7 @@ export default class Player extends PathingEntity {
         const absBottomZ = this.loadedZ - 52;
 
         // update 2 zones around the player
-        const nearby = [];
-        for (let x = centerX - 2; x <= centerX + 2; x++) {
-            for (let z = centerZ - 2; z <= centerZ + 2; z++) {
-                // check if the zone is within the build area
-                if (x < leftX || x > rightX || z > topZ || z < bottomZ) {
-                    continue;
-                }
-
-                const { players } = World.getZone(x << 3, z << 3, this.level);
-
-                for (let i = 0; i < players.length; i++) {
-                    const player = players[i];
-                    if (player === this || player.x < absLeftX || player.x >= absRightX - 4 || player.z >= absTopZ - 4 || player.z < absBottomZ) {
-                        continue;
-                    }
-
-                    if (this.isWithinDistance(player)) {
-                        nearby.push(player);
-                    }
-                }
-            }
-        }
-
-        return nearby;
+        return [];
     }
 
     updatePlayers() {
@@ -2227,31 +2166,7 @@ export default class Player extends PathingEntity {
         const absTopZ = this.loadedZ + 52;
         const absBottomZ = this.loadedZ - 52;
 
-        // update 2 zones around the player
-        const nearby = [];
-        for (let x = centerX - 2; x <= centerX + 2; x++) {
-            for (let z = centerZ - 2; z <= centerZ + 2; z++) {
-                // check if the zone is within the build area
-                if (x < leftX || x > rightX || z > topZ || z < bottomZ) {
-                    continue;
-                }
-
-                const { npcs } = World.getZone(x << 3, z << 3, this.level);
-
-                for (let i = 0; i < npcs.length; i++) {
-                    const npc = npcs[i];
-                    if (npc.x < absLeftX || npc.x >= absRightX - 4 || npc.z >= absTopZ - 4 || npc.z < absBottomZ) {
-                        continue;
-                    }
-
-                    if (this.isWithinDistance(npc)) {
-                        nearby.push(npc);
-                    }
-                }
-            }
-        }
-
-        return nearby;
+        return [];
     }
 
     updateNpcs() {
@@ -2457,11 +2372,6 @@ export default class Player extends PathingEntity {
         if (index !== -1) {
             container.listeners.splice(index, 1);
         }
-    }
-
-    comIsTransmitting(com: number) {
-        // search all inventories for the com listener
-        return this.invs.values().findIndex(x => x && )
     }
 
     invGetSlot(inv: number, slot: number) {
@@ -3380,6 +3290,8 @@ export default class Player extends PathingEntity {
     }
 
     logout() {
+        this.logoutRequested = true;
+
         const out = new Packet();
         out.p1(ServerProt.LOGOUT);
 

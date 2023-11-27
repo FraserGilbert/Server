@@ -30,6 +30,7 @@ import GameMap from '#lostcity/engine/GameMap.js';
 import CollisionManager from '#lostcity/engine/collision/CollisionManager.js';
 
 import ScriptProvider from '#lostcity/engine/script/ScriptProvider.js';
+import ScriptState from '#lostcity/engine/script/ScriptState.js';
 
 import Npc from '#lostcity/entity/Npc.js';
 import Player from '#lostcity/entity/Player.js';
@@ -40,12 +41,22 @@ import ClientSocket from '#lostcity/server/ClientSocket.js';
 class World {
     members = process.env.MEMBERS_WORLD === 'true';
     currentTick = 0;
-    endTick = -1;
+    shutdownTick = -1;
 
-    players: (Player | null)[] = new Array<Player>(2048);
-    npcs: (Npc | null)[] = new Array<Npc>(8192);
     gameMap = new GameMap();
+
+    playerIds: number[] = new Array(2048); // indexes into players
+    players: Player[] = [];
+
+    npcIds: number[] = new Array(8192); // indexes into npcs
+    npcs: Npc[] = [];
+
     invs: Inventory[] = []; // shared inventories (shops)
+
+    constructor() {
+        this.playerIds.fill(-1);
+        this.npcIds.fill(-1);
+    }
 
     get collisionManager(): CollisionManager {
         return this.gameMap.collisionManager;
@@ -165,25 +176,163 @@ class World {
     cycle() {
         const start = Date.now();
 
+        // world processing
+        // - world queue
+        // - npc spawn scripts
+        // - npc hunt
+
+        // client input
+        // - decode packets
+        for (let i = 0; i < this.playerIds.length; i++) {
+            if (this.playerIds[i] === -1) {
+                continue;
+            }
+
+            const player = this.players[this.playerIds[i]];
+            if (!player) {
+                this.playerIds[i] = -1;
+                continue;
+            }
+
+            if (!player.client) {
+                continue;
+            }
+
+            player.decodeIn();
+        }
+
+        // npc processing (if npc is not busy)
+        // - resume suspended script
+        // - stat regen
+        // - timer
+        // - queue
+        // - movement
+        // - modes
+
+        // player processing
+        // - resume suspended script
+        // - primary queue
+        // - weak queue
+        // - timers
+        // - soft timers
+        // - engine queue
+        // - loc/obj interactions
+        // - movement
+        // - player/npc interactions
+        // - close interface if attempting to logout
+        for (let i = 0; i < this.playerIds.length; i++) {
+            if (this.playerIds[i] === -1) {
+                continue;
+            }
+
+            const player = this.players[this.playerIds[i]];
+            if (!player) {
+                this.playerIds[i] = -1;
+                continue;
+            }
+
+            player.playtime++;
+
+            if (player.delayed()) {
+                player.delay--;
+            }
+
+            if (player.activeScript && !player.delayed() && player.activeScript.execution === ScriptState.SUSPENDED) {
+                player.executeScript(player.activeScript);
+            }
+
+            player.queue = player.queue.filter(s => s);
+            if (player.queue.find(s => s.type === 'strong')) {
+                // the presence of a strong script closes modals before anything runs regardless of the order
+                player.closeModal();
+            }
+
+            player.processQueues();
+
+            player.processTimers('normal');
+            player.processTimers('soft');
+
+            player.processEngineQueue();
+
+            player.processInteraction();
+
+            if ((player.mask & Player.EXACT_MOVE) == 0) {
+                player.validateDistanceWalked();
+            }
+
+            if (player.logoutRequested) {
+                player.closeModal();
+            }
+        }
+
+        // player logout
+
+        // loc/obj despawn/respawn
+
+        // client output
+        // - map update
+        // - player info
+        // - npc info
+        // - zone updates
+        // - inv changes
+        // - stat changes
+        // - flush packets
+        for (let i = 0; i < this.playerIds.length; i++) {
+            if (this.playerIds[i] === -1) {
+                continue;
+            }
+
+            const player = this.players[this.playerIds[i]];
+            if (!player) {
+                this.playerIds[i] = -1;
+                continue;
+            }
+
+            if (!player.client) {
+                continue;
+            }
+
+            player.updateMap();
+            player.updatePlayers();
+            player.updateNpcs();
+            player.updateZones();
+            player.updateInvs();
+            player.updateStats();
+
+            player.encodeOut();
+        }
+
+        // reset entity masks
+        for (let i = 0; i < this.playerIds.length; i++) {
+            if (this.playerIds[i] === -1) {
+                continue;
+            }
+
+            const player = this.players[this.playerIds[i]];
+            if (!player) {
+                this.playerIds[i] = -1;
+                continue;
+            }
+
+            player.resetEntity(false);
+        }
+
         const end = Date.now();
         // console.log(`tick ${this.currentTick} took ${end - start}ms`);
 
         this.currentTick++;
+
+        if (this.shutdownTick > -1 && this.currentTick >= this.shutdownTick) {
+            for (let i = 0; i < this.players.length; i++) {
+                const player = this.players[i];
+                if (player) {
+                    player.logout();
+                }
+            }
+        }
+
         const nextTick = 600 - (end - start);
         setTimeout(this.cycle.bind(this), nextTick);
-    }
-
-    getInventory(inv: number) {
-        if (inv === -1) {
-            return null;
-        }
-
-        let container = this.invs.find(x => x.type == inv);
-        if (!container) {
-            container = Inventory.fromType(inv);
-            this.invs.push(container);
-        }
-        return container;
     }
 
     readIn(socket: ClientSocket, stream: Packet) {
@@ -223,6 +372,68 @@ class World {
             socket.in.set(stream.gdata(stream.pos - start, start, false), socket.inOffset);
             socket.inOffset += stream.pos - start;
         }
+    }
+
+    addPlayer(player: Player, client: ClientSocket | null) {
+        let pid = -1;
+
+        if (client) {
+            client.player = player;
+            player.client = client;
+
+            // pid = first available index starting from (low ip octet % 20) * 100
+            const ip = client.remoteAddress;
+            const octets = ip.split('.');
+            const start = (parseInt(octets[3]) % 20) * 100;
+
+            for (let i = 0; i < 100; i++) {
+                const index = start + i;
+                if (this.playerIds[index] === -1) {
+                    pid = index;
+                    break;
+                }
+            }
+        }
+
+        if (pid === -1) {
+            // pid = first available index starting at 0
+            for (let i = 0; i < this.playerIds.length; i++) {
+                if (this.playerIds[i] === -1) {
+                    pid = i;
+                    break;
+                }
+            }
+        }
+
+        if (pid === -1) {
+            // no free slots
+            return false;
+        }
+
+        const index = this.players.push(player) - 1;
+        this.playerIds[pid] = index;
+
+        player.onLogin();
+
+        return true;
+    }
+
+    // temp until login server tracks sessions independently
+    findPlayer(username: string) {
+        return this.players.find(x => x.username === username);
+    }
+
+    getInventory(inv: number) {
+        if (inv === -1) {
+            return null;
+        }
+
+        let container = this.invs.find(x => x.type == inv);
+        if (!container) {
+            container = Inventory.fromType(inv);
+            this.invs.push(container);
+        }
+        return container;
     }
 }
 

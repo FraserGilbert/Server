@@ -6,6 +6,8 @@ import Packet from '#jagex2/io/Packet.js';
 
 import { CrcBuffer32 } from '#lostcity/cache/CrcTable.js';
 
+import World from '#lostcity/engine/World.js';
+
 import Player from '#lostcity/entity/Player.js';
 
 import ClientSocket from '#lostcity/server/ClientSocket.js';
@@ -66,7 +68,7 @@ class Login {
             //     return;
             // }
 
-            if (World.getPlayerByUsername(username)) {
+            if (World.findPlayer(username)) {
                 socket.send(Uint8Array.from([5]));
                 socket.close();
                 return;
@@ -81,7 +83,8 @@ class Login {
                 seed[i] += 50;
             }
             socket.encryptor = new Isaac(seed);
-            World.addPlayer(player);
+
+            World.addPlayer(player, socket);
 
             socket.state = 1;
             if (opcode === 18) {
