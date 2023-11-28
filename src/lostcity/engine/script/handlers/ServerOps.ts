@@ -309,6 +309,11 @@ const ServerOps: CommandHandlers = {
 
         state.pushInt(lineOfSight.success ? 1 : 0);
     },
+
+    [ScriptOpcode.MAP_SHUTDOWN]: (state) => {
+        const delay = state.popInt();
+        World.shutdownTick = World.currentTick + delay;
+    },
 };
 
 export default ServerOps;

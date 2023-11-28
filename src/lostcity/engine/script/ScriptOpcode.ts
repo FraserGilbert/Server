@@ -57,6 +57,7 @@ const ScriptOpcode = {
     PLAYERCOUNT: 1023,
     MAP_BLOCKED: 1024,
     LINEOFSIGHT: 1025,
+    MAP_SHUTDOWN: 1026,
 
     // Player ops (2000-2499)
     FINDUID: 2000,
@@ -165,6 +166,7 @@ const ScriptOpcode = {
     HEADICONS_SET: 2103,
     P_OPOBJ: 2104,
     P_OPPLAYER: 2105,
+    P_STOPLOGOUT: 2106,
 
     // Npc ops (2500-2999)
     NPC_FINDUID: 2500,

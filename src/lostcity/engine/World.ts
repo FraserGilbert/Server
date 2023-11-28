@@ -30,7 +30,9 @@ import GameMap from '#lostcity/engine/GameMap.js';
 import CollisionManager from '#lostcity/engine/collision/CollisionManager.js';
 
 import ScriptProvider from '#lostcity/engine/script/ScriptProvider.js';
+import ScriptRunner from '#lostcity/engine/script/ScriptRunner.js';
 import ScriptState from '#lostcity/engine/script/ScriptState.js';
+import ServerTriggerType from '#lostcity/engine/script/ServerTriggerType.js';
 
 import Npc from '#lostcity/entity/Npc.js';
 import Player from '#lostcity/entity/Player.js';
@@ -41,6 +43,7 @@ import ClientSocket from '#lostcity/server/ClientSocket.js';
 class World {
     members = process.env.MEMBERS_WORLD === 'true';
     currentTick = 0;
+    tickRate = 600; // speeds up when we're processing server shutdown
     shutdownTick = -1;
 
     gameMap = new GameMap();
@@ -277,8 +280,25 @@ class World {
                 continue;
             }
 
-            if (player.logoutRequested && player.queue.length === 0) {
-                this.removePlayer(player);
+            if (!player.logoutRequested) {
+                continue;
+            }
+
+            if (player.queue.length === 0) {
+                const script = ScriptProvider.getByTriggerSpecific(ServerTriggerType.LOGOUT, -1, -1);
+                if (!script) {
+                    console.error('LOGOUT TRIGGER IS BROKEN!');
+                    this.removePlayer(player);
+                    continue;
+                }
+
+                const state = ScriptRunner.init(script, player);
+                ScriptRunner.execute(state);
+                if (player.logoutRequested) {
+                    this.removePlayer(player);
+                }
+            } else {
+                player.messageGame('[DEBUG]: Waiting for queue to empty before logging out.');
             }
         }
 
@@ -314,6 +334,10 @@ class World {
             player.updateInvs();
             player.updateStats();
 
+            if (this.shutdownTick > -1) {
+                player.updateRebootTimer(this.shutdownTick - this.currentTick);
+            }
+
             player.encodeOut();
         }
 
@@ -333,15 +357,61 @@ class World {
         }
 
         const end = Date.now();
-        // console.log(`tick ${this.currentTick} took ${end - start}ms`);
+        // console.log(`tick ${this.currentTick} took ${end - start}ms: ${this.players.length} players, ${this.npcs.length} npcs`);
 
         this.currentTick++;
 
+        // server shutdown
         if (this.shutdownTick > -1 && this.currentTick >= this.shutdownTick) {
-            this.players.forEach(p => this.removePlayer(p));
+            const duration = this.currentTick - this.shutdownTick; // how long have we been trying to shutdown
+
+            if (this.players.length > 0) {
+                for (let i = 0; i < this.playerIds.length; i++) {
+                    if (this.playerIds[i] === -1) {
+                        continue;
+                    }
+
+                    const player = this.players[this.playerIds[i]];
+                    if (!player) {
+                        this.playerIds[i] = -1;
+                        continue;
+                    }
+
+                    player.logoutRequested = true;
+
+                    if (player.client) {
+                        player.logout(); // visually log out
+
+                        // if it's been more than a few ticks and the client just won't leave us alone, close the socket
+                        if (player.client && duration > 2) {
+                            player.client.close();
+                        }
+                    }
+                }
+
+                if (this.npcs.length > 0) {
+                    this.npcs = [];
+                    this.npcIds.fill(-1);
+                }
+
+                if (duration > 2) {
+                    // we've already attempted to shutdown, now we speed things up
+                    if (this.tickRate > 1) {
+                        this.tickRate = 1;
+                    }
+
+                    // if we've exceeded 4000 ticks then we *really* need to shut down now
+                    if (duration > 4000) {
+                        this.players.forEach(p => this.removePlayer(p));
+                    }
+                }
+            } else {
+                process.exit(0);
+            }
         }
 
-        const nextTick = 600 - (end - start);
+        // console.log('tick rate', this.tickRate);
+        const nextTick = this.tickRate - (end - start);
         setTimeout(this.cycle.bind(this), nextTick);
     }
 
@@ -430,11 +500,19 @@ class World {
     }
 
     removePlayer(player: Player) {
-        player.save();
-        player.logout();
+        if (player.pid === -1) {
+            return;
+        }
 
         this.players.splice(this.playerIds[player.pid], 1);
         this.playerIds[player.pid] = -1;
+
+        player.save();
+        player.logout();
+
+        if (player.client) {
+            player.client.close();
+        }
     }
 
     // temp until login server tracks sessions independently

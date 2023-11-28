@@ -1,0 +1,6 @@
+[debugproc,queueloop]
+queue(queueloop, 0);
+
+[queue,queueloop]
+mes("loop <tostring(map_clock)>");
+queue(queueloop, 1);

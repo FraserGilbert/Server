@@ -1858,7 +1858,7 @@ export default class Player extends PathingEntity {
         const absBottomZ = this.loadedZ - 52;
 
         // update 2 zones around the player
-        return [];
+        return World.players.filter(p => p.username37 != this.username37);
     }
 
     updatePlayers() {

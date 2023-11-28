@@ -29,6 +29,7 @@
 [command,playercount]()(int)
 [command,map_blocked](coord $coord)(boolean)
 [command,lineofsight](coord $from, coord $to)(boolean)
+[command,map_shutdown](int $delay)
 
 // Player ops (2000-2499)
 [command,finduid](player_uid $player)(boolean)
@@ -134,6 +135,7 @@
 [command,headicons_set](int $icons)
 [command,p_opobj](int $op)
 [command,p_opplayer](int $op)
+[command,p_stoplogout]
 
 // Npc ops (2500-2999)
 [command,npc_finduid](npc_uid $uid)(boolean)

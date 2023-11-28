@@ -9,7 +9,6 @@ import { Interaction } from '#lostcity/entity/Interaction.js';
 import Loc from '#lostcity/entity/Loc.js';
 import Npc from '#lostcity/entity/Npc.js';
 import MoveRestrict from '#lostcity/entity/MoveRestrict.js';
-import Player from '#lostcity/entity/Player.js';
 import { Direction, Position } from '#lostcity/entity/Position.js';
 
 export default abstract class PathingEntity extends Entity {
