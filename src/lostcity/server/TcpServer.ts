@@ -31,7 +31,7 @@ export default class TcpServer {
             seed.p4(Math.floor(Math.random() * 0xFFFFFFFF));
             socket.send(seed.data);
 
-            s.on('data', async (data: Buffer) => {
+            s.on('data', async (data: any) => {
                 const packet = new Packet(data);
 
                 if (socket.state === 1) {

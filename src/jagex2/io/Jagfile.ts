@@ -34,7 +34,7 @@ export default class Jagfile {
     unpacked = false;
 
     fileQueue: FileQueueFile[] = [];
-    fileWrite: (Packet | Buffer)[] = [];
+    fileWrite: (Packet | any)[] = [];
 
     static load(path: string) {
         return new Jagfile(Packet.load(path));

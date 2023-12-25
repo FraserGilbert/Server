@@ -156,7 +156,7 @@ export class LoginServer {
         });
     }
 
-    private async write(socket: net.Socket, data: Uint8Array | Buffer, full: boolean = true) {
+    private async write(socket: net.Socket, data: Uint8Array | any, full: boolean = true) {
         if (socket === null) {
             return;
         }
@@ -289,7 +289,7 @@ export class LoginClient {
         return { reply, data };
     }
 
-    async save(username37: bigint, save: Packet | Uint8Array | Buffer) {
+    async save(username37: bigint, save: Packet | Uint8Array | any) {
         await this.connect();
 
         if (this.socket === null) {

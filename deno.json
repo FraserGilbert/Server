@@ -6,5 +6,7 @@
     },
     "tasks": {
         "dev": "deno run --allow-env --allow-net --allow-sys --allow-write --allow-read --watch src/lostcity/app.ts",
+        "build:windows": "deno compile --target x86_64-pc-windows-msvc --allow-env --allow-net --allow-sys --allow-write --allow-read src/lostcity/app.ts",
+        "build:linux": "deno compile --target x86_64-unknown-linux-gnu --allow-env --allow-net --allow-sys --allow-write --allow-read src/lostcity/app.ts"
     }
 }

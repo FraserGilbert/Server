@@ -9,7 +9,7 @@ export default class NetworkStream {
     private offset: number = 0;
     public waiting: number = 0; // number of bytes waiting to be read
 
-    received(buf: Buffer) {
+    received(buf: any) {
         this.queue.push(buf);
         this.available += buf.length;
     }

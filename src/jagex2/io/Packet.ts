@@ -34,7 +34,7 @@ export default class Packet {
     pos: number = 0;
     bitPos: number = 0;
 
-    constructor(src?: Uint8Array | Buffer | Packet) {
+    constructor(src?: Uint8Array | any | Packet) {
         if (src instanceof Packet) {
             this.data = new Uint8Array(src.data);
         } else if (src) {
@@ -75,7 +75,7 @@ export default class Packet {
 
     // ----
 
-    static crc32(src: Packet | Uint8Array | Buffer, length = src.length, offset = 0) {
+    static crc32(src: Packet | Uint8Array | any, length = src.length, offset = 0) {
         if (src instanceof Packet) {
             src = src.data;
         }
@@ -180,7 +180,7 @@ export default class Packet {
     //     this.pos += length;
     // }
 
-    pdata(src: Uint8Array | Buffer | Packet, advance: boolean = true) {
+    pdata(src: Uint8Array | any | Packet, advance: boolean = true) {
         if (src instanceof Packet) {
             src = src.data;
         }
@@ -412,7 +412,7 @@ export default class Packet {
             encrypted.set(temp, 64 - temp.length);
         }
 
-        let decrypted = new Uint8Array(Buffer.from(pem.decrypt(forge.util.binary.raw.encode(encrypted), 'RAW', 'NONE'), 'ascii'));
+        let decrypted = new Uint8Array(pem.decrypt(forge.util.binary.raw.encode(encrypted), 'RAW', 'NONE'));
         let pos = 0;
 
         // .toByteArray()
@@ -440,7 +440,7 @@ export default class Packet {
             decrypted.set(temp, 64 - temp.length);
         }
 
-        let encrypted = new Uint8Array(Buffer.from(pem.decrypt(forge.util.binary.raw.encode(decrypted), 'RAW', 'NONE'), 'ascii'));
+        let encrypted = new Uint8Array(pem.decrypt(forge.util.binary.raw.encode(decrypted), 'RAW', 'NONE'));
         let pos = 0;
 
         while (encrypted[pos] == 0) {

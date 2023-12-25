@@ -12,17 +12,7 @@ import ClientSocket from '#lostcity/server/ClientSocket.ts';
 import Environment from '#lostcity/util/Environment.ts';
 
 function getIp(req: IncomingMessage) {
-    let forwardedFor = req.headers['x-forwarded-for'];
-
-    if (!forwardedFor) {
-        return req.connection.remoteAddress;
-    }
-
-    if (Array.isArray(forwardedFor)) {
-        forwardedFor = forwardedFor[0];
-    }
-
-    return forwardedFor.split(',')[0].trim();
+    return '127.0.0.1';
 }
 
 // TODO: keepalives
@@ -36,7 +26,7 @@ export default class WSServer {
             console.log(`[WSWorld]: Listening on port ${port}`);
         });
 
-        this.wss.on('connection', (ws: WebSocket, req) => {
+        this.wss.on('connection', (ws: WebSocket, req: any) => {
             const ip: string = getIp(req) ?? 'unknown';
             console.log(`[WSWorld]: Connection from ${ip}`);
 
@@ -47,7 +37,7 @@ export default class WSServer {
             seed.p4(Math.floor(Math.random() * 0xFFFFFFFF));
             socket.send(seed.data);
 
-            ws.on('message', async (data: Buffer) => {
+            ws.on('message', async (data: any) => {
                 const packet = new Packet(data);
 
                 if (socket.state === 1) {
