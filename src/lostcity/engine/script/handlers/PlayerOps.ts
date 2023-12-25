@@ -1,17 +1,17 @@
-import World from '#lostcity/engine/World.js';
+import World from '#lostcity/engine/World.ts';
 
-import ScriptOpcode from '#lostcity/engine/script/ScriptOpcode.js';
-import ScriptPointer, { checkedHandler } from '#lostcity/engine/script/ScriptPointer.js';
-import ScriptProvider from '#lostcity/engine/script/ScriptProvider.js';
-import { CommandHandlers } from '#lostcity/engine/script/ScriptRunner.js';
-import ScriptState from '#lostcity/engine/script/ScriptState.js';
-import ServerTriggerType from '#lostcity/engine/script/ServerTriggerType.js';
+import ScriptOpcode from '#lostcity/engine/script/ScriptOpcode.ts';
+import ScriptPointer, { checkedHandler } from '#lostcity/engine/script/ScriptPointer.ts';
+import ScriptProvider from '#lostcity/engine/script/ScriptProvider.ts';
+import { CommandHandlers } from '#lostcity/engine/script/ScriptRunner.ts';
+import ScriptState from '#lostcity/engine/script/ScriptState.ts';
+import ServerTriggerType from '#lostcity/engine/script/ServerTriggerType.ts';
 
-import { ScriptArgument } from '#lostcity/entity/EntityQueueRequest.js';
-import { Position } from '#lostcity/entity/Position.js';
-import Player from '#lostcity/entity/Player.js';
+import { ScriptArgument } from '#lostcity/entity/EntityQueueRequest.ts';
+import { Position } from '#lostcity/entity/Position.ts';
+import Player from '#lostcity/entity/Player.ts';
 
-import Environment from '#lostcity/util/Environment.js';
+import Environment from '#lostcity/util/Environment.ts';
 
 const ActivePlayer = [ScriptPointer.ActivePlayer, ScriptPointer.ActivePlayer2];
 const ProtectedActivePlayer = [ScriptPointer.ProtectedActivePlayer, ScriptPointer.ProtectedActivePlayer2];

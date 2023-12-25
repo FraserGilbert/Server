@@ -1,8 +1,8 @@
-import fs from 'fs';
+import fs from 'node:fs';
 import { basename, dirname } from 'path';
 
-import { codeTimer } from '#lostcity/util/CodeTimer.js';
-import { listFilesExt, loadDirExtFull, loadFile } from '#lostcity/util/Parse.js';
+import { codeTimer } from '#lostcity/util/CodeTimer.ts';
+import { listFilesExt, loadDirExtFull, loadFile } from '#lostcity/util/Parse.ts';
 
 export function loadOrder(path: string): number[] {
     if (!fs.existsSync(path)) {
@@ -275,7 +275,7 @@ export function validateConfigPack(packPath: string, ext: string, regen = false,
         if (!names.includes(pack[i]) && !pack[i].startsWith('cert_')) {
             console.error(`\n${packPath}:${i + 1}`);
             console.error(`${pack[i]} was defined in the pack file, but it's missing a config`);
-            process.exit(1);
+            Deno.exit(1);
         }
     }
 
@@ -284,7 +284,7 @@ export function validateConfigPack(packPath: string, ext: string, regen = false,
         if (!pack.includes(names[i])) {
             console.error(`\n${packPath}`);
             console.error(`${names[i]} is missing from the .pack file`);
-            process.exit(1);
+            Deno.exit(1);
         }
     }
 

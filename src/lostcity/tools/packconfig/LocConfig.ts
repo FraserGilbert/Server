@@ -1,10 +1,10 @@
-import Packet from '#jagex2/io/Packet.js';
+import Packet from '#jagex2/io/Packet.ts';
 
-import ParamType from '#lostcity/cache/ParamType.js';
-import ScriptVarType from '#lostcity/cache/ScriptVarType.js';
+import ParamType from '#lostcity/cache/ParamType.ts';
+import ScriptVarType from '#lostcity/cache/ScriptVarType.ts';
 
-import { PACKFILE, LocModelShape, ConfigValue, ConfigLine, ParamValue } from '#lostcity/tools/packconfig/PackShared.js';
-import { lookupParamValue } from '#lostcity/tools/packconfig/ParamConfig.js';
+import { PACKFILE, LocModelShape, ConfigValue, ConfigLine, ParamValue } from '#lostcity/tools/packconfig/PackShared.ts';
+import { lookupParamValue } from '#lostcity/tools/packconfig/ParamConfig.ts';
 
 // these suffixes are simply the map editor keybinds
 enum LocShapeSuffix {

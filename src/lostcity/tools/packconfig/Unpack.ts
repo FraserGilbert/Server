@@ -1,11 +1,11 @@
-import fs from 'fs';
+import fs from 'node:fs';
 
-import Jagfile from '#jagex2/io/Jagfile.js';
-import { loadPack } from '#lostcity/util/NameMap.js';
+import Jagfile from '#jagex2/io/Jagfile.ts';
+import { loadPack } from '#lostcity/util/NameMap.ts';
 
 if (!fs.existsSync('dump/client/config')) {
     console.error('dump/client/config does not exist');
-    process.exit(1);
+    Deno.exit(1);
 }
 
 let decode194 = false;
@@ -58,7 +58,7 @@ for (let id = 0; id < count; id++) {
             floConfig.push(`editname=${flo.gjstr()}`);
         } else {
             console.error(`Unrecognized flo config code: ${code}`);
-            process.exit(1);
+            Deno.exit(1);
         }
     }
 }
@@ -157,7 +157,7 @@ for (let id = 0; id < count; id++) {
             idkConfig.push(`head${code - 60 + 1}=model_${idk.g2()}`);
         } else {
             console.error(`Unrecognized idk config code: ${code}`);
-            process.exit(1);
+            Deno.exit(1);
         }
     }
 }
@@ -351,7 +351,7 @@ for (let id = 0; id < count; id++) {
             locConfig.push('forcedecor=yes');
         } else {
             console.error(`Unrecognized loc config code: ${code}`);
-            process.exit(1);
+            Deno.exit(1);
         }
     }
 }
@@ -441,7 +441,7 @@ for (let id = 0; id < count; id++) {
             npcConfig.push(`resizev=${npc.g2()}`);
         } else {
             console.error(`Unrecognized npc config code: ${code}`);
-            process.exit(1);
+            Deno.exit(1);
         }
     }
 }
@@ -542,7 +542,7 @@ for (let id = 0; id < count; id++) {
             objConfig.push(`count${code - 100 + 1}=obj_${obj.g2()},${obj.g2()}`);
         } else {
             console.error(`Unrecognized obj config code: ${code}`);
-            process.exit(1);
+            Deno.exit(1);
         }
     }
 }
@@ -648,7 +648,7 @@ for (let id = 0; id < count; id++) {
             seqConfig.push(`replaycount=${seq.g1()}`);
         } else {
             console.error(`Unrecognized seq config code: ${code}`);
-            process.exit(1);
+            Deno.exit(1);
         }
     }
 }
@@ -704,7 +704,7 @@ for (let id = 0; id < count; id++) {
             spotanimConfig.push(`recol${code - 50 + 1}d=${spotanim.g2()}`);
         } else {
             console.error(`Unrecognized spotanim config code: ${code}`);
-            process.exit(1);
+            Deno.exit(1);
         }
     }
 }
@@ -758,7 +758,7 @@ for (let id = 0; id < count; id++) {
             varpConfig.push(`code10=${varp.gjstr()}`);
         } else {
             console.error(`Unrecognized varp config code: ${code}`);
-            process.exit(1);
+            Deno.exit(1);
         }
     }
 }

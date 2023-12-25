@@ -1,5 +1,5 @@
-import InvType from '#lostcity/cache/InvType.js';
-import ObjType from '#lostcity/cache/ObjType.js';
+import InvType from '#lostcity/cache/InvType.ts';
+import ObjType from '#lostcity/cache/ObjType.ts';
 
 type Item = { id: number, count: number }
 type TransactionResult = { slot: number, item: Item }

@@ -1,14 +1,15 @@
+import { IncomingMessage } from 'node:http';
+
 import { WebSocketServer, WebSocket } from 'ws';
-import { IncomingMessage } from 'http';
 
-import Packet from '#jagex2/io/Packet.js';
+import Packet from '#jagex2/io/Packet.ts';
 
-import Login from '#lostcity/engine/Login.js';
-import World from '#lostcity/engine/World.js';
+import Login from '#lostcity/engine/Login.ts';
+import World from '#lostcity/engine/World.ts';
 
-import ClientSocket from '#lostcity/server/ClientSocket.js';
+import ClientSocket from '#lostcity/server/ClientSocket.ts';
 
-import Environment from '#lostcity/util/Environment.js';
+import Environment from '#lostcity/util/Environment.ts';
 
 function getIp(req: IncomingMessage) {
     let forwardedFor = req.headers['x-forwarded-for'];

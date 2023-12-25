@@ -1,8 +1,8 @@
-import Packet from '#jagex2/io/Packet.js';
+import Packet from '#jagex2/io/Packet.ts';
 
-import ScriptVarType from '#lostcity/cache/ScriptVarType.js';
+import ScriptVarType from '#lostcity/cache/ScriptVarType.ts';
 
-import { PACKFILE, ConfigValue, ConfigLine, packStepError } from '#lostcity/tools/packconfig/PackShared.js';
+import { PACKFILE, ConfigValue, ConfigLine, packStepError } from '#lostcity/tools/packconfig/PackShared.ts';
 
 const stats: (string | null)[] = [
     'attack', 'defence', 'strength', 'hitpoints', 'ranged', 'prayer',

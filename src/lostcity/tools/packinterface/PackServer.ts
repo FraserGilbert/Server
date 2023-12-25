@@ -1,6 +1,6 @@
-import Packet from '#jagex2/io/Packet.js';
-import { loadDir, loadOrder, loadPack } from '#lostcity/util/NameMap.js';
-import { shouldBuild } from '#lostcity/util/PackIds.js';
+import Packet from '#jagex2/io/Packet.ts';
+import { loadDir, loadOrder, loadPack } from '#lostcity/util/NameMap.ts';
+import { shouldBuild } from '#lostcity/util/PackIds.ts';
 
 // binary formats
 const modelPack = loadPack('data/pack/model.pack');
@@ -199,7 +199,7 @@ if (shouldBuild('data/src/scripts', '.if', 'data/pack/server/interface.dat')) {
                 comId = interfacePack.indexOf(`${ifName}:${comName}`);
                 if (comId === -1 || typeof component[comId] === 'undefined') {
                     console.error(`Missing component ID ${ifName}:${comName} in data/pack/interface.pack`);
-                    process.exit(1);
+                    Deno.exit(1);
                 }
 
                 component[comId].root = ifName;
@@ -488,7 +488,7 @@ if (shouldBuild('data/src/scripts', '.if', 'data/pack/server/interface.dat')) {
                 if (modelId === -1) {
                     console.error('\nError packing interfaces');
                     console.error(com.root, 'Invalid model:', src.model);
-                    process.exit(1);
+                    Deno.exit(1);
                 }
                 data.p2(modelId + 0x100);
             } else {
@@ -500,7 +500,7 @@ if (shouldBuild('data/src/scripts', '.if', 'data/pack/server/interface.dat')) {
                 if (modelId === -1) {
                     console.error('\nError packing interfaces');
                     console.error(com.root, 'Invalid activemodel:', src.model);
-                    process.exit(1);
+                    Deno.exit(1);
                 }
                 data.p2(modelId + 0x100);
             } else {
@@ -512,7 +512,7 @@ if (shouldBuild('data/src/scripts', '.if', 'data/pack/server/interface.dat')) {
                 if (seqId === -1) {
                     console.error('\nError packing interfaces');
                     console.error(com.root, 'Invalid anim:', src.seqId);
-                    process.exit(1);
+                    Deno.exit(1);
                 }
                 data.p2(seqId + 0x100);
             } else {
@@ -524,7 +524,7 @@ if (shouldBuild('data/src/scripts', '.if', 'data/pack/server/interface.dat')) {
                 if (seqId === -1) {
                     console.error('\nError packing interfaces');
                     console.error(com.root, 'Invalid activeanim:', src.seqId);
-                    process.exit(1);
+                    Deno.exit(1);
                 }
                 data.p2(seqId + 0x100);
             } else {

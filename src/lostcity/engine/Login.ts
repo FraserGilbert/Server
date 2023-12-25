@@ -1,22 +1,23 @@
-import fs from 'fs';
-import fsp from 'fs/promises';
+import fs from 'node:fs';
+import fsp from 'node:fs/promises';
+
 import forge from 'node-forge';
 
-import Isaac from '#jagex2/io/Isaac.js';
-import Packet from '#jagex2/io/Packet.js';
+import Isaac from '#jagex2/io/Isaac.ts';
+import Packet from '#jagex2/io/Packet.ts';
 
 import { toBase37 } from '#jagex2/jstring/JString.js';
 
-import { CrcBuffer32 } from '#lostcity/cache/CrcTable.js';
+import { CrcBuffer32 } from '#lostcity/cache/CrcTable.ts';
 
-import World from '#lostcity/engine/World.js';
+import World from '#lostcity/engine/World.ts';
 
-import Player from '#lostcity/entity/Player.js';
+import Player from '#lostcity/entity/Player.ts';
 
-import ClientSocket from '#lostcity/server/ClientSocket.js';
-import { LoginClient } from '#lostcity/server/LoginServer.js';
+import ClientSocket from '#lostcity/server/ClientSocket.ts';
+import { LoginClient } from '#lostcity/server/LoginServer.ts';
 
-import Environment from '#lostcity/util/Environment.js';
+import Environment from '#lostcity/util/Environment.ts';
 
 const priv = forge.pki.privateKeyFromPem(fs.readFileSync('data/config/private.pem', 'ascii'));
 

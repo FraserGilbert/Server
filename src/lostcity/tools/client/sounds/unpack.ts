@@ -1,6 +1,6 @@
-import fs from 'fs';
-import Jagfile from '#jagex2/io/Jagfile.js';
-import Packet from '#jagex2/io/Packet.js';
+import fs from 'node:fs';
+import Jagfile from '#jagex2/io/Jagfile.ts';
+import Packet from '#jagex2/io/Packet.ts';
 
 if (!fs.existsSync('dump/src/sounds')) {
     fs.mkdirSync('dump/src/sounds', { recursive: true });

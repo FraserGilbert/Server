@@ -1,7 +1,7 @@
-import ScriptOpcode from '#lostcity/engine/script/ScriptOpcode.js';
-import { CommandHandlers } from '#lostcity/engine/script/ScriptRunner.js';
+import ScriptOpcode from '#lostcity/engine/script/ScriptOpcode.ts';
+import { CommandHandlers } from '#lostcity/engine/script/ScriptRunner.ts';
 
-import Environment from '#lostcity/util/Environment.js';
+import Environment from '#lostcity/util/Environment.ts';
 
 const DebugOps: CommandHandlers = {
     [ScriptOpcode.ERROR]: (state) => {

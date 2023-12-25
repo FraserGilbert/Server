@@ -1,5 +1,5 @@
-import fs from 'fs';
-import Jagfile from '#jagex2/io/Jagfile.js';
+import fs from 'node:fs';
+import Jagfile from '#jagex2/io/Jagfile.ts';
 
 const wordenc = Jagfile.load('dump/client/wordenc');
 

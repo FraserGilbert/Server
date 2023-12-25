@@ -1,10 +1,10 @@
-import Packet from '#jagex2/io/Packet.js';
+import Packet from '#jagex2/io/Packet.ts';
 
-import DbTableType from '#lostcity/cache/DbTableType.js';
-import ScriptVarType from '#lostcity/cache/ScriptVarType.js';
+import DbTableType from '#lostcity/cache/DbTableType.ts';
+import ScriptVarType from '#lostcity/cache/ScriptVarType.ts';
 
-import { PACKFILE, ConfigValue, ConfigLine, packStepError } from '#lostcity/tools/packconfig/PackShared.js';
-import { lookupParamValue } from '#lostcity/tools/packconfig/ParamConfig.js';
+import { PACKFILE, ConfigValue, ConfigLine, packStepError } from '#lostcity/tools/packconfig/PackShared.ts';
+import { lookupParamValue } from '#lostcity/tools/packconfig/ParamConfig.ts';
 
 function parseCsv(str: string): string[] {
     const result = [];
@@ -121,7 +121,7 @@ export function packDbRowConfigs(configs: Map<string, ConfigLine[]>) {
 
         if (data.length && !table) {
             packStepError(debugname, 'No table defined in dbrow config');
-            process.exit(1);
+            Deno.exit(1);
         }
 
         if (data.length) {
@@ -149,7 +149,7 @@ export function packDbRowConfigs(configs: Map<string, ConfigLine[]>) {
                         const value = lookupParamValue(type, values[k]);
                         if (value === null) {
                             packStepError(debugname, `Data invalid in row, double-check the reference exists: data=${fields[j].column},${values.join(',')}`);
-                            process.exit(1);
+                            Deno.exit(1);
                         }
     
                         if (type === ScriptVarType.STRING) {

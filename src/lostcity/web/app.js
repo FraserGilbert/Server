@@ -1,9 +1,8 @@
-import path from 'path';
+import path from 'node:path';
 
 import Fastify from 'fastify';
 import FormBody from '@fastify/formbody';
 import Multipart from '@fastify/multipart';
-import Autoload from '@fastify/autoload';
 import Static from '@fastify/static';
 import View from '@fastify/view';
 import Cookie from '@fastify/cookie';
@@ -11,28 +10,22 @@ import Session from '@fastify/session';
 import Cors from '@fastify/cors';
 import ejs from 'ejs';
 
-import Environment from '#lostcity/util/Environment.js';
+import Environment from '#lostcity/util/Environment.ts';
 
-let fastify = Fastify({
-    autoload: 15000
-});
+let fastify = Fastify();
 
 fastify.register(FormBody);
 fastify.register(Multipart);
 
-fastify.register(Autoload, {
-    dir: path.join(process.cwd(), 'src', 'lostcity', 'web', 'routes')
-});
-
 fastify.register(Static, {
-    root: path.join(process.cwd(), 'public')
+    root: path.join(Deno.cwd(), 'public')
 });
 
 fastify.register(View, {
     engine: {
         ejs
     },
-    root: path.join(process.cwd(), 'view'),
+    root: path.join(Deno.cwd(), 'view'),
     viewExt: 'ejs'
 });
 
@@ -51,13 +44,28 @@ if (!Environment.SKIP_CORS) {
     });
 }
 
+// ugh no autoloader :(
+fastify.register(import('./routes/about/index.js'), { prefix: '/about' });
+fastify.register(import('./routes/api/v1/world.js'), { prefix: '/api/v1/world' });
+fastify.register(import('./routes/faq/index.js'), { prefix: '/faq' });
+fastify.register(import('./routes/guides/index.js'), { prefix: '/guides' });
+fastify.register(import('./routes/hiscores/index.js'), { prefix: '/hiscores' });
+fastify.register(import('./routes/members/index.js'), { prefix: '/members' });
+fastify.register(import('./routes/news/index.js'), { prefix: '/news' });
+fastify.register(import('./routes/polls/index.js'), { prefix: '/polls' });
+fastify.register(import('./routes/rs2/index.js'), { prefix: '/rs2' });
+fastify.register(import('./routes/varrock/index.js'), { prefix: '/varrock' });
+
+fastify.register(import('./routes/cache.js'));
+fastify.register(import('./routes/website.js'));
+
 export function startWeb() {
-    fastify.listen({ port: process.env.WEB_PORT, host: '0.0.0.0' }, (err, address) => {
+    fastify.listen({ port: Environment.WEB_PORT, host: '0.0.0.0' }, (err, address) => {
         if (err) {
             console.error(err);
-            process.exit(1);
+            Deno.exit(1);
         }
 
-        console.log(`[Web]: Listening on port ${Number(process.env.WEB_PORT)}`);
+        console.log(`[Web]: Listening on port ${Environment.WEB_PORT}`);
     });
 }

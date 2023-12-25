@@ -1,9 +1,9 @@
 // noinspection DuplicatedCode
 
-import CollisionFlagMap from '#rsmod/collision/CollisionFlagMap.js';
-import RotationUtils from '#rsmod/utils/RotationUtils.js';
-import RectangleBoundaryUtils from '#rsmod/reach/RectangleBoundaryUtils.js';
-import CollisionFlag from '#rsmod/flag/CollisionFlag.js';
+import CollisionFlagMap from '#rsmod/collision/CollisionFlagMap.ts';
+import RotationUtils from '#rsmod/utils/RotationUtils.ts';
+import RectangleBoundaryUtils from '#rsmod/reach/RectangleBoundaryUtils.ts';
+import CollisionFlag from '#rsmod/flag/CollisionFlag.ts';
 
 export default class ReachStrategy {
     static WALL_STRATEGY: number = 0;

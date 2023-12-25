@@ -1,5 +1,5 @@
-import fs from 'fs';
-import { loadPack } from '#lostcity/util/NameMap.js';
+import fs from 'node:fs';
+import { loadPack } from '#lostcity/util/NameMap.ts';
 
 const models = loadPack('dump/pack/model.pack');
 
@@ -121,7 +121,7 @@ for (let i = 0; i < locs.length; i++) {
                 break;
             default:
                 console.error(type);
-                process.exit(1);
+                Deno.exit(1);
         }
 
         locs[i] = `model=${newModelName[id]}`; // simplify name

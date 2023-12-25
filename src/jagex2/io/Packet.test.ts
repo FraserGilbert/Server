@@ -1,6 +1,6 @@
-import Packet from '#jagex2/io/Packet.js';
+import Packet from '#jagex2/io/Packet.ts';
 import forge from 'node-forge';
-import fs from 'fs';
+import fs from 'node:fs';
 
 describe('Packet', () => {
     describe('test 1', () => {

@@ -1,13 +1,13 @@
-import fs from 'fs';
+import fs from 'node:fs';
 
-import BZip2 from '#jagex2/io/BZip2.js';
-import Packet from '#jagex2/io/Packet.js';
+import BZip2 from '#jagex2/io/BZip2.ts';
+import Packet from '#jagex2/io/Packet.ts';
 
 const args = process.argv.slice(2);
 
 if (args.length < 1) {
     console.log('Usage: node decompressFolder.js <path/to/folder>');
-    process.exit(1);
+    Deno.exit(1);
 }
 
 const path = args[0];

@@ -1,24 +1,24 @@
-import FontType from '#lostcity/cache/FontType.js';
-import LocType from '#lostcity/cache/LocType.js';
-import MesanimType from '#lostcity/cache/MesanimType.js';
-import { ParamHelper } from '#lostcity/cache/ParamHelper.js';
-import ParamType from '#lostcity/cache/ParamType.js';
-import SeqType from '#lostcity/cache/SeqType.js';
-import StructType from '#lostcity/cache/StructType.js';
+import FontType from '#lostcity/cache/FontType.ts';
+import LocType from '#lostcity/cache/LocType.ts';
+import MesanimType from '#lostcity/cache/MesanimType.ts';
+import { ParamHelper } from '#lostcity/cache/ParamHelper.ts';
+import ParamType from '#lostcity/cache/ParamType.ts';
+import SeqType from '#lostcity/cache/SeqType.ts';
+import StructType from '#lostcity/cache/StructType.ts';
 
-import World from '#lostcity/engine/World.js';
+import World from '#lostcity/engine/World.ts';
 
-import LocLayer from '#lostcity/engine/collision/LocLayer.js';
-import LocAngle from '#lostcity/engine/collision/LocAngle.js';
-import { LocShapes } from '#lostcity/engine/collision/LocShape.js';
+import LocLayer from '#lostcity/engine/collision/LocLayer.ts';
+import LocAngle from '#lostcity/engine/collision/LocAngle.ts';
+import { LocShapes } from '#lostcity/engine/collision/LocShape.ts';
 
-import ScriptOpcode from '#lostcity/engine/script/ScriptOpcode.js';
-import { CommandHandlers } from '#lostcity/engine/script/ScriptRunner.js';
-import ScriptState from '#lostcity/engine/script/ScriptState.js';
+import ScriptOpcode from '#lostcity/engine/script/ScriptOpcode.ts';
+import { CommandHandlers } from '#lostcity/engine/script/ScriptRunner.ts';
+import ScriptState from '#lostcity/engine/script/ScriptState.ts';
 
-import { Position } from '#lostcity/entity/Position.js';
+import { Position } from '#lostcity/entity/Position.ts';
 
-import CollisionFlag from '#rsmod/flag/CollisionFlag.js';
+import CollisionFlag from '#rsmod/flag/CollisionFlag.ts';
 
 const ServerOps: CommandHandlers = {
     [ScriptOpcode.MAP_CLOCK]: (state) => {

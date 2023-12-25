@@ -1,4 +1,4 @@
-import Packet from '#jagex2/io/Packet.js';
+import Packet from '#jagex2/io/Packet.ts';
 
 // partial frame class - only delays, not loading transforms
 export default class SeqFrame {

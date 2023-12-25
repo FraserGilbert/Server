@@ -1,8 +1,8 @@
-import path from 'path';
+import path from 'node:path';
 
-import Packet from '#jagex2/io/Packet.js';
+import Packet from '#jagex2/io/Packet.ts';
 
-import ScriptOpcode from '#lostcity/engine/script/ScriptOpcode.js';
+import ScriptOpcode from '#lostcity/engine/script/ScriptOpcode.ts';
 
 export interface ScriptInfo {
     scriptName: string,

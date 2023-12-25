@@ -1,4 +1,4 @@
-import fs from 'fs';
+import fs from 'node:fs';
 
 export default function (f, opts, next) {
     f.get('/', async (req, res) => {

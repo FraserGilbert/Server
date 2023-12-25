@@ -1,8 +1,8 @@
-import fs from 'fs';
+import fs from 'node:fs';
 
-import Packet from '#jagex2/io/Packet.js';
+import Packet from '#jagex2/io/Packet.ts';
 
-import { ConfigType } from '#lostcity/cache/ConfigType.js';
+import { ConfigType } from '#lostcity/cache/ConfigType.ts';
 
 export default class InvType extends ConfigType {
     private static configNames = new Map<string, number>();

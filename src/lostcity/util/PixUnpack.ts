@@ -1,6 +1,6 @@
 import Jimp from 'jimp';
 
-import Packet from '#jagex2/io/Packet.js';
+import Packet from '#jagex2/io/Packet.ts';
 
 export function pixSize(dat: Packet, idx: Packet) {
     dat.pos = 0;

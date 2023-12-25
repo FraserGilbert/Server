@@ -1,11 +1,11 @@
-import Jagfile from '#jagex2/io/Jagfile.js';
-import Packet from '#jagex2/io/Packet.js';
+import Jagfile from '#jagex2/io/Jagfile.ts';
+import Packet from '#jagex2/io/Packet.ts';
 
 const args = process.argv.slice(2);
 
 if (args.length < 2) {
     console.log('Usage: node jagList.js <path/to/file1.jag> <path/to/file2.jag>');
-    process.exit(1);
+    Deno.exit(1);
 }
 
 const jag1 = Jagfile.load(args[0]);

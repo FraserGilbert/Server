@@ -1,5 +1,5 @@
-import fs from 'fs';
-import { loadPack } from '#lostcity/util/NameMap.js';
+import fs from 'node:fs';
+import { loadPack } from '#lostcity/util/NameMap.ts';
 
 const sounds = [
     'bat_death',

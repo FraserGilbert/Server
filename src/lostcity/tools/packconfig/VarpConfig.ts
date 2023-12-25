@@ -1,9 +1,9 @@
-import Packet from '#jagex2/io/Packet.js';
+import Packet from '#jagex2/io/Packet.ts';
 
-import ScriptVarType from '#lostcity/cache/ScriptVarType.js';
-import VarPlayerType from '#lostcity/cache/VarPlayerType.js';
+import ScriptVarType from '#lostcity/cache/ScriptVarType.ts';
+import VarPlayerType from '#lostcity/cache/VarPlayerType.ts';
 
-import { PACKFILE, ConfigValue, ConfigLine } from '#lostcity/tools/packconfig/PackShared.js';
+import { PACKFILE, ConfigValue, ConfigLine } from '#lostcity/tools/packconfig/PackShared.ts';
 
 export function parseVarpConfig(key: string, value: string): ConfigValue | null | undefined {
     const stringKeys: string[] = [];

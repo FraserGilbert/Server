@@ -1,5 +1,5 @@
-import CollisionFlagMap from '#rsmod/collision/CollisionFlagMap.js';
-import CollisionFlag from '#rsmod/flag/CollisionFlag.js';
+import CollisionFlagMap from '#rsmod/collision/CollisionFlagMap.ts';
+import CollisionFlag from '#rsmod/flag/CollisionFlag.ts';
 
 describe('CollisionFlagMap', () => {
     test('test get collision flag', () => {

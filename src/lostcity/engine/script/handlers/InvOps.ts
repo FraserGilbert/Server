@@ -1,15 +1,15 @@
-import InvType from '#lostcity/cache/InvType.js';
-import ObjType from '#lostcity/cache/ObjType.js';
+import InvType from '#lostcity/cache/InvType.ts';
+import ObjType from '#lostcity/cache/ObjType.ts';
 
-import { Inventory } from '#lostcity/engine/Inventory.js';
-import World from '#lostcity/engine/World.js';
+import { Inventory } from '#lostcity/engine/Inventory.ts';
+import World from '#lostcity/engine/World.ts';
 
-import ScriptOpcode from '#lostcity/engine/script/ScriptOpcode.js';
-import { CommandHandlers } from '#lostcity/engine/script/ScriptRunner.js';
-import ScriptPointer, { checkedHandler } from '#lostcity/engine/script/ScriptPointer.js';
+import ScriptOpcode from '#lostcity/engine/script/ScriptOpcode.ts';
+import { CommandHandlers } from '#lostcity/engine/script/ScriptRunner.ts';
+import ScriptPointer, { checkedHandler } from '#lostcity/engine/script/ScriptPointer.ts';
 
-import Obj from '#lostcity/entity/Obj.js';
-import { Position } from '#lostcity/entity/Position.js';
+import Obj from '#lostcity/entity/Obj.ts';
+import { Position } from '#lostcity/entity/Position.ts';
 
 const ActivePlayer = [ScriptPointer.ActivePlayer, ScriptPointer.ActivePlayer2];
 const ProtectedActivePlayer = [ScriptPointer.ProtectedActivePlayer, ScriptPointer.ProtectedActivePlayer2];

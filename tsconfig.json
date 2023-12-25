@@ -26,6 +26,8 @@
     ],
     "sourceMap": true,
     "allowJs": true,
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
     "checkJs": false,
     "strict": true,
     "alwaysStrict": true,

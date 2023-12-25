@@ -1,14 +1,14 @@
 // noinspection DuplicatedCode
 
-import CollisionFlag from '#rsmod/flag/CollisionFlag.js';
-import CollisionFlagMap from '#rsmod/collision/CollisionFlagMap.js';
-import CollisionStrategy from '#rsmod/collision/CollisionStrategy.js';
-import ReachStrategy from '#rsmod/reach/ReachStrategy.js';
-import DirectionFlag from '#rsmod/flag/DirectionFlag.js';
-import CollisionStrategies from '#rsmod/collision/CollisionStrategies.js';
-import Route from '#rsmod/Route.js';
-import RotationUtils from '#rsmod/utils/RotationUtils.js';
-import RouteCoordinates from '#rsmod/RouteCoordinates.js';
+import CollisionFlag from '#rsmod/flag/CollisionFlag.ts';
+import CollisionFlagMap from '#rsmod/collision/CollisionFlagMap.ts';
+import CollisionStrategy from '#rsmod/collision/CollisionStrategy.ts';
+import ReachStrategy from '#rsmod/reach/ReachStrategy.ts';
+import DirectionFlag from '#rsmod/flag/DirectionFlag.ts';
+import CollisionStrategies from '#rsmod/collision/CollisionStrategies.ts';
+import Route from '#rsmod/Route.ts';
+import RotationUtils from '#rsmod/utils/RotationUtils.ts';
+import RouteCoordinates from '#rsmod/RouteCoordinates.ts';
 
 export default class PathFinder {
     private static DEFAULT_SEARCH_MAP_SIZE: number = 128;

@@ -1,16 +1,16 @@
-import fs from 'fs';
+import fs from 'node:fs';
 
-import InvType from '#lostcity/cache/InvType.js';
-import NpcType from '#lostcity/cache/NpcType.js';
-import World from '#lostcity/engine/World.js';
-import ScriptProvider from '#lostcity/engine/script/ScriptProvider.js';
-import ScriptRunner from '#lostcity/engine/script/ScriptRunner.js';
-import ServerTriggerType from '#lostcity/engine/script/ServerTriggerType.js';
-import Npc from '#lostcity/entity/Npc.js';
-import Player from '#lostcity/entity/Player.js';
-import ObjType from '#lostcity/cache/ObjType.js';
+import InvType from '#lostcity/cache/InvType.ts';
+import NpcType from '#lostcity/cache/NpcType.ts';
+import World from '#lostcity/engine/World.ts';
+import ScriptProvider from '#lostcity/engine/script/ScriptProvider.ts';
+import ScriptRunner from '#lostcity/engine/script/ScriptRunner.ts';
+import ServerTriggerType from '#lostcity/engine/script/ServerTriggerType.ts';
+import Npc from '#lostcity/entity/Npc.ts';
+import Player from '#lostcity/entity/Player.ts';
+import ObjType from '#lostcity/cache/ObjType.ts';
 
-import Environment from '#lostcity/util/Environment.js';
+import Environment from '#lostcity/util/Environment.ts';
 
 Environment.CLIRUNNER = true;
 
@@ -18,7 +18,7 @@ const args = process.argv.slice(2);
 
 if (args.length < 1) {
     console.error('Usage: drops.ts <npc name> [iterations]');
-    process.exit(1);
+    Deno.exit(1);
 }
 
 const npcName = args[0];
@@ -36,13 +36,13 @@ await World.cycle(false);
 const npcType = NpcType.getByName(npcName);
 if (!npcType) {
     console.error('NPC type not found');
-    process.exit(1);
+    Deno.exit(1);
 }
 
 const deathScript = ScriptProvider.getByTrigger(ServerTriggerType.AI_QUEUE3, npcType.id, -1);
 if (!deathScript) {
     console.error('Death script not found');
-    process.exit(1);
+    Deno.exit(1);
 }
 
 const npc = new Npc(0, 3222, 3221, 1, 1, World.getNextNid(), npcType.id, npcType.moverestrict, npcType.blockwalk);
@@ -72,4 +72,4 @@ for (let i = 0; i < items.length; i++) {
     }
 }
 
-process.exit(0);
+Deno.exit(0);

@@ -1,7 +1,7 @@
-import Jagfile from '#jagex2/io/Jagfile.js';
-import Packet from '#jagex2/io/Packet.js';
+import Jagfile from '#jagex2/io/Jagfile.ts';
+import Packet from '#jagex2/io/Packet.ts';
 
-import { convertImage } from '#lostcity/util/PixPack.js';
+import { convertImage } from '#lostcity/util/PixPack.ts';
 
 console.log('Packing title.jag');
 //console.time('title.jag');

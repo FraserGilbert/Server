@@ -1,11 +1,11 @@
-import Packet from '#jagex2/io/Packet.js';
-import Loc from '#lostcity/entity/Loc.js';
-import Npc from '#lostcity/entity/Npc.js';
-import Obj from '#lostcity/entity/Obj.js';
-import Player from '#lostcity/entity/Player.js';
-import { ServerProt } from '#lostcity/server/ServerProt.js';
-import World from '#lostcity/engine/World.js';
-import { LocShapes } from '#lostcity/engine/collision/LocShape.js';
+import Packet from '#jagex2/io/Packet.ts';
+import Loc from '#lostcity/entity/Loc.ts';
+import Npc from '#lostcity/entity/Npc.ts';
+import Obj from '#lostcity/entity/Obj.ts';
+import Player from '#lostcity/entity/Player.ts';
+import { ServerProt } from '#lostcity/server/ServerProt.ts';
+import World from '#lostcity/engine/World.ts';
+import { LocShapes } from '#lostcity/engine/collision/LocShape.ts';
 
 class ZoneEvent {
     type = -1;

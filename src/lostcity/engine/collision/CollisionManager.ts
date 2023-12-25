@@ -1,28 +1,28 @@
-import fs from 'fs';
+import fs from 'node:fs';
 
-import Packet from '#jagex2/io/Packet.js';
+import Packet from '#jagex2/io/Packet.ts';
 
-import StepValidator from '#rsmod/StepValidator.js';
-import PathFinder from '#rsmod/PathFinder.js';
-import CollisionFlagMap from '#rsmod/collision/CollisionFlagMap.js';
+import StepValidator from '#rsmod/StepValidator.ts';
+import PathFinder from '#rsmod/PathFinder.ts';
+import CollisionFlagMap from '#rsmod/collision/CollisionFlagMap.ts';
 
-import ZoneManager from '#lostcity/engine/zone/ZoneManager.js';
+import ZoneManager from '#lostcity/engine/zone/ZoneManager.ts';
 
-import FloorCollider from '#lostcity/engine/collision/FloorCollider.js';
-import WallCollider from '#lostcity/engine/collision/WallCollider.js';
-import LocCollider from '#lostcity/engine/collision/LocCollider.js';
-import LocAngle from '#lostcity/engine/collision/LocAngle.js';
-import LocLayer from '#lostcity/engine/collision/LocLayer.js';
-import NpcCollider from '#lostcity/engine/collision/NpcCollider.js';
-import { LocShapes } from '#lostcity/engine/collision/LocShape.js';
-import RoofCollider from '#lostcity/engine/collision/RoofCollider.js';
-import PlayerCollider from '#lostcity/engine/collision/PlayerCollider.js';
+import FloorCollider from '#lostcity/engine/collision/FloorCollider.ts';
+import WallCollider from '#lostcity/engine/collision/WallCollider.ts';
+import LocCollider from '#lostcity/engine/collision/LocCollider.ts';
+import LocAngle from '#lostcity/engine/collision/LocAngle.ts';
+import LocLayer from '#lostcity/engine/collision/LocLayer.ts';
+import NpcCollider from '#lostcity/engine/collision/NpcCollider.ts';
+import { LocShapes } from '#lostcity/engine/collision/LocShape.ts';
+import RoofCollider from '#lostcity/engine/collision/RoofCollider.ts';
+import PlayerCollider from '#lostcity/engine/collision/PlayerCollider.ts';
 
-import LocType from '#lostcity/cache/LocType.js';
+import LocType from '#lostcity/cache/LocType.ts';
 
-import Loc from '#lostcity/entity/Loc.js';
-import LineValidator from '#rsmod/LineValidator.js';
-import NaivePathFinder from '#rsmod/NaivePathFinder.js';
+import Loc from '#lostcity/entity/Loc.ts';
+import LineValidator from '#rsmod/LineValidator.ts';
+import NaivePathFinder from '#rsmod/NaivePathFinder.ts';
 
 export default class CollisionManager {
     private static readonly SHIFT_23 = Math.pow(2, 23);

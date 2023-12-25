@@ -1,33 +1,33 @@
-import Packet from '#jagex2/io/Packet.js';
+import Packet from '#jagex2/io/Packet.ts';
 
-import CollisionFlag from '#rsmod/flag/CollisionFlag.js';
+import CollisionFlag from '#rsmod/flag/CollisionFlag.ts';
 
-import LocType from '#lostcity/cache/LocType.js';
-import NpcType from '#lostcity/cache/NpcType.js';
-import VarNpcType from '#lostcity/cache/VarNpcType.js';
+import LocType from '#lostcity/cache/LocType.ts';
+import NpcType from '#lostcity/cache/NpcType.ts';
+import VarNpcType from '#lostcity/cache/VarNpcType.ts';
 
-import World from '#lostcity/engine/World.js';
+import World from '#lostcity/engine/World.ts';
 
-import Script from '#lostcity/engine/script/Script.js';
-import ScriptPointer from '#lostcity/engine/script/ScriptPointer.js';
-import ScriptProvider from '#lostcity/engine/script/ScriptProvider.js';
-import ScriptRunner from '#lostcity/engine/script/ScriptRunner.js';
-import ScriptState from '#lostcity/engine/script/ScriptState.js';
-import ServerTriggerType from '#lostcity/engine/script/ServerTriggerType.js';
+import Script from '#lostcity/engine/script/Script.ts';
+import ScriptPointer from '#lostcity/engine/script/ScriptPointer.ts';
+import ScriptProvider from '#lostcity/engine/script/ScriptProvider.ts';
+import ScriptRunner from '#lostcity/engine/script/ScriptRunner.ts';
+import ScriptState from '#lostcity/engine/script/ScriptState.ts';
+import ServerTriggerType from '#lostcity/engine/script/ServerTriggerType.ts';
 
-import BlockWalk from '#lostcity/entity/BlockWalk.js';
-import { EntityQueueRequest, ScriptArgument } from '#lostcity/entity/EntityQueueRequest.js';
-import Loc from '#lostcity/entity/Loc.js';
-import MoveRestrict from '#lostcity/entity/MoveRestrict.js';
-import NpcMode from '#lostcity/entity/NpcMode.js';
-import Obj from '#lostcity/entity/Obj.js';
-import PathingEntity from '#lostcity/entity/PathingEntity.js';
-import Player from '#lostcity/entity/Player.js';
-import { Direction, Position } from '#lostcity/entity/Position.js';
-import HuntType from '#lostcity/cache/HuntType.js';
-import HuntModeType from '#lostcity/entity/hunt/HuntModeType.js';
-import HuntVis from '#lostcity/entity/hunt/HuntVis.js';
-import HuntCheckNotTooStrong from '#lostcity/entity/hunt/HuntCheckNotTooStrong.js';
+import BlockWalk from '#lostcity/entity/BlockWalk.ts';
+import { EntityQueueRequest, ScriptArgument } from '#lostcity/entity/EntityQueueRequest.ts';
+import Loc from '#lostcity/entity/Loc.ts';
+import MoveRestrict from '#lostcity/entity/MoveRestrict.ts';
+import NpcMode from '#lostcity/entity/NpcMode.ts';
+import Obj from '#lostcity/entity/Obj.ts';
+import PathingEntity from '#lostcity/entity/PathingEntity.ts';
+import Player from '#lostcity/entity/Player.ts';
+import { Direction, Position } from '#lostcity/entity/Position.ts';
+import HuntType from '#lostcity/cache/HuntType.ts';
+import HuntModeType from '#lostcity/entity/hunt/HuntModeType.ts';
+import HuntVis from '#lostcity/entity/hunt/HuntVis.ts';
+import HuntCheckNotTooStrong from '#lostcity/entity/hunt/HuntCheckNotTooStrong.ts';
 
 export default class Npc extends PathingEntity {
     static ANIM = 0x2;

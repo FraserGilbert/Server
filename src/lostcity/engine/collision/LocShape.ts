@@ -1,4 +1,4 @@
-import LocLayer from '#lostcity/engine/collision/LocLayer.js';
+import LocLayer from '#lostcity/engine/collision/LocLayer.ts';
 
 enum LocShape {
     WALL_STRAIGHT = 0,

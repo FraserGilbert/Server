@@ -1,7 +1,7 @@
-import Jagfile from '#jagex2/io/Jagfile.js';
-import Packet from '#jagex2/io/Packet.js';
+import Jagfile from '#jagex2/io/Jagfile.ts';
+import Packet from '#jagex2/io/Packet.ts';
 
-import { loadDir, loadOrder, loadPack } from '#lostcity/util/NameMap.js';
+import { loadDir, loadOrder, loadPack } from '#lostcity/util/NameMap.ts';
 
 console.log('Packing interface.jag');
 //console.time('interface.jag');
@@ -484,7 +484,7 @@ for (let i = 0; i < interfaceOrder.length; i++) {
             if (modelId === -1) {
                 console.error('\nError packing interfaces');
                 console.error(com.root, 'Invalid model:', src.model);
-                process.exit(1);
+                Deno.exit(1);
             }
             data.p2(modelId + 0x100);
         } else {
@@ -496,7 +496,7 @@ for (let i = 0; i < interfaceOrder.length; i++) {
             if (modelId === -1) {
                 console.error('\nError packing interfaces');
                 console.error(com.root, 'Invalid activemodel:', src.model);
-                process.exit(1);
+                Deno.exit(1);
             }
             data.p2(modelId + 0x100);
         } else {
@@ -508,7 +508,7 @@ for (let i = 0; i < interfaceOrder.length; i++) {
             if (seqId === -1) {
                 console.error('\nError packing interfaces');
                 console.error(com.root, 'Invalid anim:', src.seqId);
-                process.exit(1);
+                Deno.exit(1);
             }
             data.p2(seqId + 0x100);
         } else {
@@ -520,7 +520,7 @@ for (let i = 0; i < interfaceOrder.length; i++) {
             if (seqId === -1) {
                 console.error('\nError packing interfaces');
                 console.error(com.root, 'Invalid activeanim:', src.seqId);
-                process.exit(1);
+                Deno.exit(1);
             }
             data.p2(seqId + 0x100);
         } else {

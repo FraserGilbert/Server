@@ -1,6 +1,6 @@
-import fs from 'fs';
+import fs from 'node:fs';
 
-import Packet from '#jagex2/io/Packet.js';
+import Packet from '#jagex2/io/Packet.ts';
 
 export default class SpotanimType {
     static configNames = new Map();

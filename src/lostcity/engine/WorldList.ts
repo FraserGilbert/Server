@@ -1,8 +1,8 @@
-import fs from 'fs';
+import fs from 'node:fs';
 
-import { LoginClient } from '#lostcity/server/LoginServer.js';
+import { LoginClient } from '#lostcity/server/LoginServer.ts';
 
-import Environment from '#lostcity/util/Environment.js';
+import Environment from '#lostcity/util/Environment.ts';
 
 // todo: typing
 const WorldList: any[] = [];

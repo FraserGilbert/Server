@@ -1,25 +1,25 @@
-import HuntType from '#lostcity/cache/HuntType.js';
-import ParamType from '#lostcity/cache/ParamType.js';
-import NpcType from '#lostcity/cache/NpcType.js';
-import { ParamHelper } from '#lostcity/cache/ParamHelper.js';
+import HuntType from '#lostcity/cache/HuntType.ts';
+import ParamType from '#lostcity/cache/ParamType.ts';
+import NpcType from '#lostcity/cache/NpcType.ts';
+import { ParamHelper } from '#lostcity/cache/ParamHelper.ts';
 
-import World from '#lostcity/engine/World.js';
+import World from '#lostcity/engine/World.ts';
 
-import ScriptOpcode from '#lostcity/engine/script/ScriptOpcode.js';
-import ScriptPointer, { checkedHandler } from '#lostcity/engine/script/ScriptPointer.js';
-import ScriptProvider from '#lostcity/engine/script/ScriptProvider.js';
-import { CommandHandlers } from '#lostcity/engine/script/ScriptRunner.js';
-import ScriptState from '#lostcity/engine/script/ScriptState.js';
-import ServerTriggerType from '#lostcity/engine/script/ServerTriggerType.js';
+import ScriptOpcode from '#lostcity/engine/script/ScriptOpcode.ts';
+import ScriptPointer, { checkedHandler } from '#lostcity/engine/script/ScriptPointer.ts';
+import ScriptProvider from '#lostcity/engine/script/ScriptProvider.ts';
+import { CommandHandlers } from '#lostcity/engine/script/ScriptRunner.ts';
+import ScriptState from '#lostcity/engine/script/ScriptState.ts';
+import ServerTriggerType from '#lostcity/engine/script/ServerTriggerType.ts';
 
-import Loc from '#lostcity/entity/Loc.js';
-import Obj from '#lostcity/entity/Obj.js';
-import { Position } from '#lostcity/entity/Position.js';
-import Npc from '#lostcity/entity/Npc.js';
-import NpcMode from '#lostcity/entity/NpcMode.js';
-import Player from '#lostcity/entity/Player.js';
+import Loc from '#lostcity/entity/Loc.ts';
+import Obj from '#lostcity/entity/Obj.ts';
+import { Position } from '#lostcity/entity/Position.ts';
+import Npc from '#lostcity/entity/Npc.ts';
+import NpcMode from '#lostcity/entity/NpcMode.ts';
+import Player from '#lostcity/entity/Player.ts';
 
-import Environment from '#lostcity/util/Environment.js';
+import Environment from '#lostcity/util/Environment.ts';
 
 const ActiveNpc = [ScriptPointer.ActiveNpc, ScriptPointer.ActiveNpc2];
 

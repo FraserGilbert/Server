@@ -1,6 +1,6 @@
-import NaivePathFinder from '#rsmod/NaivePathFinder.js';
-import StepValidator from '#rsmod/StepValidator.js';
-import CollisionFlagMap from '#rsmod/collision/CollisionFlagMap.js';
+import NaivePathFinder from '#rsmod/NaivePathFinder.ts';
+import StepValidator from '#rsmod/StepValidator.ts';
+import CollisionFlagMap from '#rsmod/collision/CollisionFlagMap.ts';
 
 describe('NaivePathFinder', () => {
     test('test intersects size 1', () => {

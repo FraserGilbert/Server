@@ -1,8 +1,8 @@
-import fs from 'fs';
+import fs from 'node:fs';
 import Jimp from 'jimp';
 
-import Jagfile from '#jagex2/io/Jagfile.js';
-import { pixSize, countPix, unpackPix } from '#lostcity/util/PixUnpack.js';
+import Jagfile from '#jagex2/io/Jagfile.ts';
+import { pixSize, countPix, unpackPix } from '#lostcity/util/PixUnpack.ts';
 
 fs.mkdirSync('dump/src/sprites/meta', { recursive: true });
 

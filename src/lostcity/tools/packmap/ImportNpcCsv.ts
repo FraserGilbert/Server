@@ -1,14 +1,14 @@
-import fs from 'fs';
+import fs from 'node:fs';
 import { basename } from 'path';
 
-import { loadDir } from '#lostcity/util/Parse.js';
+import { loadDir } from '#lostcity/util/Parse.ts';
 
 let allNpcs: { id: number, level: number, mapsquareX: number, mapsquareZ: number, localX: number, localZ: number }[] = [];
 
 const args = process.argv.slice(2);
 if (args.length !== 1) {
     console.log('Usage: ImportNpcCsv.js <npc_csv_file>');
-    process.exit(1);
+    Deno.exit(1);
 }
 
 const npcList = fs.readFileSync(args[0], 'ascii').replace(/\r/g, '').split('\n').slice(1).filter(line => line.length > 0);

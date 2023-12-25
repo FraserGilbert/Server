@@ -1,4 +1,4 @@
-import ScriptOpcode from '#lostcity/engine/script/ScriptOpcode.js';
+import ScriptOpcode from '#lostcity/engine/script/ScriptOpcode.ts';
 
 const ScriptOpcodePointers: {
     [key: string]: {

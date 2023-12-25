@@ -1,9 +1,9 @@
-import fs from 'fs';
+import fs from 'node:fs';
 
-import Packet from '#jagex2/io/Packet.js';
+import Packet from '#jagex2/io/Packet.ts';
 
-import { ConfigType } from '#lostcity/cache/ConfigType.js';
-import { ParamHelper, ParamHolder, ParamMap } from '#lostcity/cache/ParamHelper.js';
+import { ConfigType } from '#lostcity/cache/ConfigType.ts';
+import { ParamHelper, ParamHolder, ParamMap } from '#lostcity/cache/ParamHelper.ts';
 
 export default class StructType extends ConfigType implements ParamHolder {
     private static configNames = new Map<string, number>();

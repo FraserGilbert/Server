@@ -1,7 +1,7 @@
-import fs from 'fs';
+import fs from 'node:fs';
 import Jimp from 'jimp';
 
-import Packet from '#jagex2/io/Packet.js';
+import Packet from '#jagex2/io/Packet.ts';
 
 export function generatePixelOrder(img: Jimp) {
     let rowMajorScore = 0;

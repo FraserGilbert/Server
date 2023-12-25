@@ -1,8 +1,8 @@
-import Packet from '#jagex2/io/Packet.js';
+import Packet from '#jagex2/io/Packet.ts';
 
-import ScriptVarType from '#lostcity/cache/ScriptVarType.js';
+import ScriptVarType from '#lostcity/cache/ScriptVarType.ts';
 
-import { PACKFILE, ConfigValue, ConfigLine } from '#lostcity/tools/packconfig/PackShared.js';
+import { PACKFILE, ConfigValue, ConfigLine } from '#lostcity/tools/packconfig/PackShared.ts';
 
 export function parseVarsConfig(key: string, value: string): ConfigValue | null | undefined {
     const stringKeys: string[] = [];

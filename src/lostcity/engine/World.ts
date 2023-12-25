@@ -1,57 +1,57 @@
-import Packet from '#jagex2/io/Packet.js';
+import Packet from '#jagex2/io/Packet.ts';
 
 import { toBase37 } from '#jagex2/jstring/JString.js';
 
-import PathFinder from '#rsmod/PathFinder.js';
-import LineValidator from '#rsmod/LineValidator.js';
-import CollisionFlagMap from '#rsmod/collision/CollisionFlagMap.js';
+import PathFinder from '#rsmod/PathFinder.ts';
+import LineValidator from '#rsmod/LineValidator.ts';
+import CollisionFlagMap from '#rsmod/collision/CollisionFlagMap.ts';
 
-import CategoryType from '#lostcity/cache/CategoryType.js';
-import DbRowType from '#lostcity/cache/DbRowType.js';
-import DbTableType from '#lostcity/cache/DbTableType.js';
-import EnumType from '#lostcity/cache/EnumType.js';
-import FontType from '#lostcity/cache/FontType.js';
-import HuntType from '#lostcity/cache/HuntType.js';
-import IdkType from '#lostcity/cache/IdkType.js';
-import IfType from '#lostcity/cache/IfType.js';
-import InvType from '#lostcity/cache/InvType.js';
-import LocType from '#lostcity/cache/LocType.js';
-import MesanimType from '#lostcity/cache/MesanimType.js';
-import NpcType from '#lostcity/cache/NpcType.js';
-import ObjType from '#lostcity/cache/ObjType.js';
-import ParamType from '#lostcity/cache/ParamType.js';
-import SeqFrame from '#lostcity/cache/SeqFrame.js';
-import SeqType from '#lostcity/cache/SeqType.js';
-import StructType from '#lostcity/cache/StructType.js';
-import VarNpcType from '#lostcity/cache/VarNpcType.js';
-import VarPlayerType from '#lostcity/cache/VarPlayerType.js';
-import VarSharedType from '#lostcity/cache/VarSharedType.js';
+import CategoryType from '#lostcity/cache/CategoryType.ts';
+import DbRowType from '#lostcity/cache/DbRowType.ts';
+import DbTableType from '#lostcity/cache/DbTableType.ts';
+import EnumType from '#lostcity/cache/EnumType.ts';
+import FontType from '#lostcity/cache/FontType.ts';
+import HuntType from '#lostcity/cache/HuntType.ts';
+import IdkType from '#lostcity/cache/IdkType.ts';
+import IfType from '#lostcity/cache/IfType.ts';
+import InvType from '#lostcity/cache/InvType.ts';
+import LocType from '#lostcity/cache/LocType.ts';
+import MesanimType from '#lostcity/cache/MesanimType.ts';
+import NpcType from '#lostcity/cache/NpcType.ts';
+import ObjType from '#lostcity/cache/ObjType.ts';
+import ParamType from '#lostcity/cache/ParamType.ts';
+import SeqFrame from '#lostcity/cache/SeqFrame.ts';
+import SeqType from '#lostcity/cache/SeqType.ts';
+import StructType from '#lostcity/cache/StructType.ts';
+import VarNpcType from '#lostcity/cache/VarNpcType.ts';
+import VarPlayerType from '#lostcity/cache/VarPlayerType.ts';
+import VarSharedType from '#lostcity/cache/VarSharedType.ts';
 
-import { Inventory } from '#lostcity/engine/Inventory.js';
-import GameMap from '#lostcity/engine/GameMap.js';
+import { Inventory } from '#lostcity/engine/Inventory.ts';
+import GameMap from '#lostcity/engine/GameMap.ts';
 
-import CollisionManager from '#lostcity/engine/collision/CollisionManager.js';
+import CollisionManager from '#lostcity/engine/collision/CollisionManager.ts';
 
-import ScriptPointer from '#lostcity/engine/script/ScriptPointer.js';
-import ScriptProvider from '#lostcity/engine/script/ScriptProvider.js';
-import ScriptRunner from '#lostcity/engine/script/ScriptRunner.js';
-import ScriptState from '#lostcity/engine/script/ScriptState.js';
-import ServerTriggerType from '#lostcity/engine/script/ServerTriggerType.js';
+import ScriptPointer from '#lostcity/engine/script/ScriptPointer.ts';
+import ScriptProvider from '#lostcity/engine/script/ScriptProvider.ts';
+import ScriptRunner from '#lostcity/engine/script/ScriptRunner.ts';
+import ScriptState from '#lostcity/engine/script/ScriptState.ts';
+import ServerTriggerType from '#lostcity/engine/script/ServerTriggerType.ts';
 
-import BlockWalk from '#lostcity/entity/BlockWalk.js';
-import Loc from '#lostcity/entity/Loc.js';
-import Npc from '#lostcity/entity/Npc.js';
-import Obj from '#lostcity/entity/Obj.js';
-import Player from '#lostcity/entity/Player.js';
+import BlockWalk from '#lostcity/entity/BlockWalk.ts';
+import Loc from '#lostcity/entity/Loc.ts';
+import Npc from '#lostcity/entity/Npc.ts';
+import Obj from '#lostcity/entity/Obj.ts';
+import Player from '#lostcity/entity/Player.ts';
 
-import { ClientProtLengths } from '#lostcity/server/ClientProt.js';
-import ClientSocket from '#lostcity/server/ClientSocket.js';
-import { ServerProt } from '#lostcity/server/ServerProt.js';
+import { ClientProtLengths } from '#lostcity/server/ClientProt.ts';
+import ClientSocket from '#lostcity/server/ClientSocket.ts';
+import { ServerProt } from '#lostcity/server/ServerProt.ts';
 
-import Environment from '#lostcity/util/Environment.js';
-import { LoginClient } from '#lostcity/server/LoginServer.js';
-import NaivePathFinder from '#rsmod/NaivePathFinder.js';
-import StepValidator from '#rsmod/StepValidator.js';
+import Environment from '#lostcity/util/Environment.ts';
+import { LoginClient } from '#lostcity/server/LoginServer.ts';
+import NaivePathFinder from '#rsmod/NaivePathFinder.ts';
+import StepValidator from '#rsmod/StepValidator.ts';
 
 class World {
     members = Environment.MEMBERS_WORLD as boolean;
@@ -701,12 +701,12 @@ class World {
                     }
                 }
             } else {
-                process.exit(0);
+                Deno.exit(0);
             }
         }
 
         const end = Date.now();
-        // console.log(`tick ${this.currentTick} took ${end - start}ms: ${this.getTotalPlayers()} players`);
+        console.log(`tick ${this.currentTick} took ${end - start}ms: ${this.getTotalPlayers()} players`);
 
         this.currentTick++;
         this.lastTickMs = end - start;

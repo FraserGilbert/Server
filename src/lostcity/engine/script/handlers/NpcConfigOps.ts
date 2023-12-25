@@ -1,9 +1,9 @@
-import NpcType from '#lostcity/cache/NpcType.js';
-import { ParamHelper } from '#lostcity/cache/ParamHelper.js';
-import ParamType from '#lostcity/cache/ParamType.js';
+import NpcType from '#lostcity/cache/NpcType.ts';
+import { ParamHelper } from '#lostcity/cache/ParamHelper.ts';
+import ParamType from '#lostcity/cache/ParamType.ts';
 
-import ScriptOpcode from '#lostcity/engine/script/ScriptOpcode.js';
-import { CommandHandlers } from '#lostcity/engine/script/ScriptRunner.js';
+import ScriptOpcode from '#lostcity/engine/script/ScriptOpcode.ts';
+import { CommandHandlers } from '#lostcity/engine/script/ScriptRunner.ts';
 
 const NpcConfigOps: CommandHandlers = {
     [ScriptOpcode.NC_NAME]: (state) => {

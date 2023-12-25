@@ -1,56 +1,56 @@
 import 'dotenv/config';
-import fs from 'fs';
+import fs from 'node:fs';
 
-import Packet from '#jagex2/io/Packet.js';
+import Packet from '#jagex2/io/Packet.ts';
 import { fromBase37, toBase37 } from '#jagex2/jstring/JString.js';
 
-import CollisionFlag from '#rsmod/flag/CollisionFlag.js';
+import CollisionFlag from '#rsmod/flag/CollisionFlag.ts';
 
-import CategoryType from '#lostcity/cache/CategoryType.js';
-import FontType from '#lostcity/cache/FontType.js';
-import DbRowType from '#lostcity/cache/DbRowType.js';
-import DbTableType from '#lostcity/cache/DbTableType.js';
-import EnumType from '#lostcity/cache/EnumType.js';
-import HuntType from '#lostcity/cache/HuntType.js';
-import IfType from '#lostcity/cache/IfType.js';
-import InvType from '#lostcity/cache/InvType.js';
-import LocType from '#lostcity/cache/LocType.js';
-import MesanimType from '#lostcity/cache/MesanimType.js';
-import NpcType from '#lostcity/cache/NpcType.js';
-import ObjType from '#lostcity/cache/ObjType.js';
-import ParamType from '#lostcity/cache/ParamType.js';
-import ScriptVarType from '#lostcity/cache/ScriptVarType.js';
-import SeqType from '#lostcity/cache/SeqType.js';
-import StructType from '#lostcity/cache/StructType.js';
-import VarPlayerType from '#lostcity/cache/VarPlayerType.js';
+import CategoryType from '#lostcity/cache/CategoryType.ts';
+import FontType from '#lostcity/cache/FontType.ts';
+import DbRowType from '#lostcity/cache/DbRowType.ts';
+import DbTableType from '#lostcity/cache/DbTableType.ts';
+import EnumType from '#lostcity/cache/EnumType.ts';
+import HuntType from '#lostcity/cache/HuntType.ts';
+import IfType from '#lostcity/cache/IfType.ts';
+import InvType from '#lostcity/cache/InvType.ts';
+import LocType from '#lostcity/cache/LocType.ts';
+import MesanimType from '#lostcity/cache/MesanimType.ts';
+import NpcType from '#lostcity/cache/NpcType.ts';
+import ObjType from '#lostcity/cache/ObjType.ts';
+import ParamType from '#lostcity/cache/ParamType.ts';
+import ScriptVarType from '#lostcity/cache/ScriptVarType.ts';
+import SeqType from '#lostcity/cache/SeqType.ts';
+import StructType from '#lostcity/cache/StructType.ts';
+import VarPlayerType from '#lostcity/cache/VarPlayerType.ts';
 
-import BlockWalk from '#lostcity/entity/BlockWalk.js';
-import Entity from '#lostcity/entity/Entity.js';
-import { EntityTimer, PlayerTimerType } from '#lostcity/entity/EntityTimer.js';
-import { EntityQueueRequest, QueueType, ScriptArgument } from '#lostcity/entity/EntityQueueRequest.js';
-import Loc from '#lostcity/entity/Loc.js';
-import Npc from '#lostcity/entity/Npc.js';
-import MoveRestrict from '#lostcity/entity/MoveRestrict.js';
-import Obj from '#lostcity/entity/Obj.js';
-import PathingEntity from '#lostcity/entity/PathingEntity.js';
-import { Position } from '#lostcity/entity/Position.js';
+import BlockWalk from '#lostcity/entity/BlockWalk.ts';
+import Entity from '#lostcity/entity/Entity.ts';
+import { EntityTimer, PlayerTimerType } from '#lostcity/entity/EntityTimer.ts';
+import { EntityQueueRequest, QueueType, ScriptArgument } from '#lostcity/entity/EntityQueueRequest.ts';
+import Loc from '#lostcity/entity/Loc.ts';
+import Npc from '#lostcity/entity/Npc.ts';
+import MoveRestrict from '#lostcity/entity/MoveRestrict.ts';
+import Obj from '#lostcity/entity/Obj.ts';
+import PathingEntity from '#lostcity/entity/PathingEntity.ts';
+import { Position } from '#lostcity/entity/Position.ts';
 
-import { ClientProt, ClientProtLengths } from '#lostcity/server/ClientProt.js';
-import ClientSocket from '#lostcity/server/ClientSocket.js';
-import { ServerProt } from '#lostcity/server/ServerProt.js';
+import { ClientProt, ClientProtLengths } from '#lostcity/server/ClientProt.ts';
+import ClientSocket from '#lostcity/server/ClientSocket.ts';
+import { ServerProt } from '#lostcity/server/ServerProt.ts';
 
-import { Inventory } from '#lostcity/engine/Inventory.js';
-import World from '#lostcity/engine/World.js';
+import { Inventory } from '#lostcity/engine/Inventory.ts';
+import World from '#lostcity/engine/World.ts';
 
-import Script from '#lostcity/engine/script/Script.js';
-import ScriptProvider from '#lostcity/engine/script/ScriptProvider.js';
-import ScriptRunner from '#lostcity/engine/script/ScriptRunner.js';
-import ScriptState from '#lostcity/engine/script/ScriptState.js';
-import ServerTriggerType from '#lostcity/engine/script/ServerTriggerType.js';
-import IdkType from '#lostcity/cache/IdkType.js';
-import ScriptPointer from '#lostcity/engine/script/ScriptPointer.js';
+import Script from '#lostcity/engine/script/Script.ts';
+import ScriptProvider from '#lostcity/engine/script/ScriptProvider.ts';
+import ScriptRunner from '#lostcity/engine/script/ScriptRunner.ts';
+import ScriptState from '#lostcity/engine/script/ScriptState.ts';
+import ServerTriggerType from '#lostcity/engine/script/ServerTriggerType.ts';
+import IdkType from '#lostcity/cache/IdkType.ts';
+import ScriptPointer from '#lostcity/engine/script/ScriptPointer.ts';
 
-import Environment from '#lostcity/util/Environment.js';
+import Environment from '#lostcity/util/Environment.ts';
 
 const levelExperience = new Int32Array(99);
 
@@ -88,7 +88,7 @@ if (!Environment.CI_MODE) {
     console.time('Preloaded client data');
     if (!fs.existsSync('data/pack/client') || !fs.existsSync('data/pack/client/maps')) {
         console.log('Please build the client cache with client:pack!');
-        process.exit(1);
+        Deno.exit(1);
     }
 
     const allMaps = fs.readdirSync('data/pack/client/maps');

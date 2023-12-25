@@ -1,6 +1,6 @@
-import fs from 'fs';
+import fs from 'node:fs';
 
-import Packet from '#jagex2/io/Packet.js';
+import Packet from '#jagex2/io/Packet.ts';
 
 const npcIds: number[] = [];
 let npcCount = 0;
@@ -31,7 +31,7 @@ fs.readdirSync('dump').sort((a, b) => parseInt(a.slice(0, a.length - '.npc.bin'.
 
     if (total > npcCount) {
         console.error('Too many npcs', total, npcCount);
-        process.exit(1);
+        Deno.exit(1);
     }
 
     npcCount = 0;
@@ -144,7 +144,7 @@ fs.readdirSync('dump').sort((a, b) => parseInt(a.slice(0, a.length - '.npc.bin'.
 
     if (buf.pos !== buf.length) {
         console.error('size mismatch in getnpc', buf.pos, buf.length);
-        process.exit(1);
+        Deno.exit(1);
     }
 
     console.log(npcCount, 'npcs');

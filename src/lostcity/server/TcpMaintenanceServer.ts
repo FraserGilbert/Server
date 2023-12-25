@@ -1,10 +1,10 @@
 import net, { Server } from 'net';
 
-import Packet from '#jagex2/io/Packet.js';
+import Packet from '#jagex2/io/Packet.ts';
 
-import ClientSocket from '#lostcity/server/ClientSocket.js';
+import ClientSocket from '#lostcity/server/ClientSocket.ts';
 
-import Environment from '#lostcity/util/Environment.js';
+import Environment from '#lostcity/util/Environment.ts';
 
 export default class TcpServer {
     tcp: Server;

@@ -1,6 +1,6 @@
-import PathFinder from '#rsmod/PathFinder.js';
-import CollisionFlagMap from '#rsmod/collision/CollisionFlagMap.js';
-import CollisionFlag from '#rsmod/flag/CollisionFlag.js';
+import PathFinder from '#rsmod/PathFinder.ts';
+import CollisionFlagMap from '#rsmod/collision/CollisionFlagMap.ts';
+import CollisionFlag from '#rsmod/flag/CollisionFlag.ts';
 
 export function buildCollisionMap(x1: number, z1: number, x2: number, z2: number) {
     let map = new CollisionFlagMap();

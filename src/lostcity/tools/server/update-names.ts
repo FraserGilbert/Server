@@ -1,5 +1,5 @@
-import { loadDir } from '#lostcity/util/NameMap.js';
-import fs from 'fs';
+import { loadDir } from '#lostcity/util/NameMap.ts';
+import fs from 'node:fs';
 
 const older: string[] = [];
 fs.readFileSync('data/pack/obj.pack', 'ascii').replace(/\r/g, '').split('\n').filter(x => x).map(line => line.split('=')).

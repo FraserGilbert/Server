@@ -1,14 +1,14 @@
-import fs from 'fs';
-import fsp from 'fs/promises';
-import net from 'net';
+import fs from 'node:fs';
+import fsp from 'node:fs/promises';
+import net from 'node:net';
 
-import Packet from '#jagex2/io/Packet.js';
+import Packet from '#jagex2/io/Packet.ts';
 
-import { fromBase37, toBase37 } from '#jagex2/jstring/JString.js';
+import { fromBase37 } from '#jagex2/jstring/JString.js';
 
-import NetworkStream from '#lostcity/server/NetworkStream.js';
+import NetworkStream from '#lostcity/server/NetworkStream.ts';
 
-import Environment from '#lostcity/util/Environment.js';
+import Environment from '#lostcity/util/Environment.ts';
 
 export class LoginServer {
     private server: net.Server;

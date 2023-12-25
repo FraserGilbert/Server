@@ -1,10 +1,10 @@
-import fs from 'fs';
+import fs from 'node:fs';
 
-import Packet from '#jagex2/io/Packet.js';
+import Packet from '#jagex2/io/Packet.ts';
 
-import { ConfigType } from '#lostcity/cache/ConfigType.js';
-import DbTableType from '#lostcity/cache/DbTableType.js';
-import ScriptVarType from '#lostcity/cache/ScriptVarType.js';
+import { ConfigType } from '#lostcity/cache/ConfigType.ts';
+import DbTableType from '#lostcity/cache/DbTableType.ts';
+import ScriptVarType from '#lostcity/cache/ScriptVarType.ts';
 
 export default class DbRowType extends ConfigType {
     private static configNames = new Map<string, number>();

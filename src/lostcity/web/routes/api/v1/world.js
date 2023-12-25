@@ -1,4 +1,4 @@
-import World from '#lostcity/engine/World.js';
+import World from '#lostcity/engine/World.ts';
 
 export default function (f, opts, next) {
     f.get('/world', async (req, res) => {

@@ -1,14 +1,14 @@
-import Packet from '#jagex2/io/Packet.js';
+import Packet from '#jagex2/io/Packet.ts';
 
-import ParamType from '#lostcity/cache/ParamType.js';
-import ScriptVarType from '#lostcity/cache/ScriptVarType.js';
+import ParamType from '#lostcity/cache/ParamType.ts';
+import ScriptVarType from '#lostcity/cache/ScriptVarType.ts';
 
-import MoveRestrict from '#lostcity/entity/MoveRestrict.js';
-import NpcMode from '#lostcity/entity/NpcMode.js';
+import MoveRestrict from '#lostcity/entity/MoveRestrict.ts';
+import NpcMode from '#lostcity/entity/NpcMode.ts';
 
-import { PACKFILE, ParamValue, ConfigValue, ConfigLine } from '#lostcity/tools/packconfig/PackShared.js';
-import { lookupParamValue } from '#lostcity/tools/packconfig/ParamConfig.js';
-import BlockWalk from '#lostcity/entity/BlockWalk.js';
+import { PACKFILE, ParamValue, ConfigValue, ConfigLine } from '#lostcity/tools/packconfig/PackShared.ts';
+import { lookupParamValue } from '#lostcity/tools/packconfig/ParamConfig.ts';
+import BlockWalk from '#lostcity/entity/BlockWalk.ts';
 
 export function parseNpcConfig(key: string, value: string): ConfigValue | null | undefined {
     const stringKeys = [

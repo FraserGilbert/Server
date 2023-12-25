@@ -1,6 +1,6 @@
-import net from 'net';
+import net from 'node:net';
 
-import Packet from '#jagex2/io/Packet.js';
+import Packet from '#jagex2/io/Packet.ts';
 
 export default class NetworkStream {
     private queue: Uint8Array[] = []; // queue of data events

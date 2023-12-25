@@ -1,6 +1,6 @@
-import fs from 'fs';
+import fs from 'node:fs';
 
-import { loadDir } from '#lostcity/util/NameMap.js';
+import { loadDir } from '#lostcity/util/NameMap.ts';
 
 export function getLatestModified(path: string, extension: string) {
     const files = fs.readdirSync(path);

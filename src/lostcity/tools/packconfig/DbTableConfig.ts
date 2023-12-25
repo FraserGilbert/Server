@@ -1,9 +1,9 @@
-import Packet from '#jagex2/io/Packet.js';
+import Packet from '#jagex2/io/Packet.ts';
 
-import ScriptVarType from '#lostcity/cache/ScriptVarType.js';
+import ScriptVarType from '#lostcity/cache/ScriptVarType.ts';
 
-import { PACKFILE, ConfigValue, ConfigLine } from '#lostcity/tools/packconfig/PackShared.js';
-import { lookupParamValue } from '#lostcity/tools/packconfig/ParamConfig.js';
+import { PACKFILE, ConfigValue, ConfigLine } from '#lostcity/tools/packconfig/PackShared.ts';
+import { lookupParamValue } from '#lostcity/tools/packconfig/ParamConfig.ts';
 
 function parseCsv(str: string): string[] {
     const result = [];

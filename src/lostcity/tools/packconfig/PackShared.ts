@@ -1,13 +1,13 @@
-import fs from 'fs';
+import fs from 'node:fs';
 
-import Packet from '#jagex2/io/Packet.js';
+import Packet from '#jagex2/io/Packet.ts';
 
-import { shouldBuild, validateCategoryPack, validateConfigPack, validateFilesPack, validateInterfacePack, validateScriptPack } from '#lostcity/util/PackFile.js';
+import { shouldBuild, validateCategoryPack, validateConfigPack, validateFilesPack, validateInterfacePack, validateScriptPack } from '#lostcity/util/PackFile.ts';
 
-import ParamType from '#lostcity/cache/ParamType.js';
+import ParamType from '#lostcity/cache/ParamType.ts';
 
-import { packParamConfigs, parseParamConfig } from '#lostcity/tools/packconfig/ParamConfig.js';
-import { loadDir } from '#lostcity/util/NameMap.js';
+import { packParamConfigs, parseParamConfig } from '#lostcity/tools/packconfig/ParamConfig.ts';
+import { loadDir } from '#lostcity/util/NameMap.ts';
 
 console.log('Validating .pack files');
 // console.time('Validated .pack files');
@@ -58,7 +58,7 @@ loadDir('data/src/scripts', '.constant', (src) => {
 
         if (CONSTANTS.has(name)) {
             console.error(`Duplicate constant found: ${name}`);
-            process.exit(1);
+            Deno.exit(1);
         }
 
         CONSTANTS.set(name, value);
@@ -73,18 +73,18 @@ const vars = PACKFILE.get('vars')!;
 for (let i = 0; i < varp.length; i++) {
     if (varn.includes(varp[i])) {
         console.error(`Varp and varn name conflict: ${varp[i]}\nPick a different name for one of them!`);
-        process.exit(1);
+        Deno.exit(1);
     }
 
     if (vars.includes(varp[i])) {
         console.error(`Varp and vars name conflict: ${varp[i]}\nPick a different name for one of them!`);
-        process.exit(1);
+        Deno.exit(1);
     }
 }
 for (let i = 0; i < varn.length; i++) {
     if (vars.includes(varn[i])) {
         console.error(`Varn and vars name conflict: ${varp[i]}\nPick a different name for one of them!`);
-        process.exit(1);
+        Deno.exit(1);
     }
 }
 
@@ -117,13 +117,13 @@ export function readFiles(files: string[]): Map<string, string> {
 export function parseStepError(file: string, lineNumber: number, message: string) {
     console.error(`\nError during parsing - see ${file}:${lineNumber + 1}`);
     console.error(message);
-    process.exit(1);
+    Deno.exit(1);
 }
 
 export function packStepError(debugname: string, message: string) {
     console.error(`\nError during packing - [${debugname}]`);
     console.error(message);
-    process.exit(1);
+    Deno.exit(1);
 }
 
 export type ParamValue = { id: number, type: number, value: string | number | boolean };

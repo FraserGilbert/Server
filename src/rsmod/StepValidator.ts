@@ -1,6 +1,6 @@
-import CollisionFlagMap from '#rsmod/collision/CollisionFlagMap.js';
-import CollisionStrategy from '#rsmod/collision/CollisionStrategy.js';
-import CollisionFlag from '#rsmod/flag/CollisionFlag.js';
+import CollisionFlagMap from '#rsmod/collision/CollisionFlagMap.ts';
+import CollisionStrategy from '#rsmod/collision/CollisionStrategy.ts';
+import CollisionFlag from '#rsmod/flag/CollisionFlag.ts';
 
 export default class StepValidator {
     private readonly flags: CollisionFlagMap;

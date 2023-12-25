@@ -1,32 +1,32 @@
-import path from 'path';
+import path from 'node:path';
 
-import Script from '#lostcity/engine/script/Script.js';
-import ScriptOpcode from '#lostcity/engine/script/ScriptOpcode.js';
-import ScriptPointer from '#lostcity/engine/script/ScriptPointer.js';
-import ScriptState from '#lostcity/engine/script/ScriptState.js';
+import Script from '#lostcity/engine/script/Script.ts';
+import ScriptOpcode from '#lostcity/engine/script/ScriptOpcode.ts';
+import ScriptPointer from '#lostcity/engine/script/ScriptPointer.ts';
+import ScriptState from '#lostcity/engine/script/ScriptState.ts';
 
-import CoreOps from '#lostcity/engine/script/handlers/CoreOps.js';
-import DbOps from '#lostcity/engine/script/handlers/DbOps.js';
-import DebugOps from '#lostcity/engine/script/handlers/DebugOps.js';
-import EnumOps from '#lostcity/engine/script/handlers/EnumOps.js';
-import InvOps from '#lostcity/engine/script/handlers/InvOps.js';
-import LocOps from '#lostcity/engine/script/handlers/LocOps.js';
-import LocConfigOps from '#lostcity/engine/script/handlers/LocConfigOps.js';
-import NpcOps from '#lostcity/engine/script/handlers/NpcOps.js';
-import NpcConfigOps from '#lostcity/engine/script/handlers/NpcConfigOps.js';
-import NumberOps from '#lostcity/engine/script/handlers/NumberOps.js';
-import ObjOps from '#lostcity/engine/script/handlers/ObjOps.js';
-import ObjConfigOps from '#lostcity/engine/script/handlers/ObjConfigOps.js';
-import PlayerOps from '#lostcity/engine/script/handlers/PlayerOps.js';
-import ServerOps from '#lostcity/engine/script/handlers/ServerOps.js';
-import StringOps from '#lostcity/engine/script/handlers/StringOps.js';
+import CoreOps from '#lostcity/engine/script/handlers/CoreOps.ts';
+import DbOps from '#lostcity/engine/script/handlers/DbOps.ts';
+import DebugOps from '#lostcity/engine/script/handlers/DebugOps.ts';
+import EnumOps from '#lostcity/engine/script/handlers/EnumOps.ts';
+import InvOps from '#lostcity/engine/script/handlers/InvOps.ts';
+import LocOps from '#lostcity/engine/script/handlers/LocOps.ts';
+import LocConfigOps from '#lostcity/engine/script/handlers/LocConfigOps.ts';
+import NpcOps from '#lostcity/engine/script/handlers/NpcOps.ts';
+import NpcConfigOps from '#lostcity/engine/script/handlers/NpcConfigOps.ts';
+import NumberOps from '#lostcity/engine/script/handlers/NumberOps.ts';
+import ObjOps from '#lostcity/engine/script/handlers/ObjOps.ts';
+import ObjConfigOps from '#lostcity/engine/script/handlers/ObjConfigOps.ts';
+import PlayerOps from '#lostcity/engine/script/handlers/PlayerOps.ts';
+import ServerOps from '#lostcity/engine/script/handlers/ServerOps.ts';
+import StringOps from '#lostcity/engine/script/handlers/StringOps.ts';
 
-import Entity from '#lostcity/entity/Entity.js';
-import { ScriptArgument } from '#lostcity/entity/EntityQueueRequest.js';
-import Loc from '#lostcity/entity/Loc.js';
-import Obj from '#lostcity/entity/Obj.js';
-import Npc from '#lostcity/entity/Npc.js';
-import Player from '#lostcity/entity/Player.js';
+import Entity from '#lostcity/entity/Entity.ts';
+import { ScriptArgument } from '#lostcity/entity/EntityQueueRequest.ts';
+import Loc from '#lostcity/entity/Loc.ts';
+import Obj from '#lostcity/entity/Obj.ts';
+import Npc from '#lostcity/entity/Npc.ts';
+import Player from '#lostcity/entity/Player.ts';
 
 export type CommandHandler = (state: ScriptState) => void;
 export type CommandHandlers = {

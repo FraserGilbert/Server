@@ -1,6 +1,6 @@
-import fs from 'fs';
+import fs from 'node:fs';
 
-import Player from '#lostcity/entity/Player.js';
+import Player from '#lostcity/entity/Player.ts';
 
 const saves = fs.readdirSync('data/players');
 

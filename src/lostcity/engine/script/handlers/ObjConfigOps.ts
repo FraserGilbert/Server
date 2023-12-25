@@ -1,9 +1,9 @@
-import ObjType from '#lostcity/cache/ObjType.js';
-import { ParamHelper } from '#lostcity/cache/ParamHelper.js';
-import ParamType from '#lostcity/cache/ParamType.js';
+import ObjType from '#lostcity/cache/ObjType.ts';
+import { ParamHelper } from '#lostcity/cache/ParamHelper.ts';
+import ParamType from '#lostcity/cache/ParamType.ts';
 
-import ScriptOpcode from '#lostcity/engine/script/ScriptOpcode.js';
-import { CommandHandlers } from '#lostcity/engine/script/ScriptRunner.js';
+import ScriptOpcode from '#lostcity/engine/script/ScriptOpcode.ts';
+import { CommandHandlers } from '#lostcity/engine/script/ScriptRunner.ts';
 
 const ObjConfigOps: CommandHandlers = {
     [ScriptOpcode.OC_NAME]: (state) => {

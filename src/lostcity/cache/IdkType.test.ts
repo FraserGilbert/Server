@@ -1,8 +1,8 @@
-import fs from 'fs';
+import fs from 'node:fs';
 
-import Packet from '#jagex2/io/Packet.js';
+import Packet from '#jagex2/io/Packet.ts';
 
-import IdkType from '#lostcity/cache/IdkType.js';
+import IdkType from '#lostcity/cache/IdkType.ts';
 
 describe('IdkType', () => {
     describe('static load', () => {

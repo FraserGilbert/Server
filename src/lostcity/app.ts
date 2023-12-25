@@ -1,19 +1,19 @@
 import 'dotenv/config';
-import fs from 'fs';
+import fs from 'node:fs';
+
+import World from '#lostcity/engine/World.ts';
+
+import TcpServer from '#lostcity/server/TcpServer.ts';
+import WSServer from '#lostcity/server/WSServer.ts';
+
+import Environment from '#lostcity/util/Environment.ts';
 
 import { startWeb } from '#lostcity/web/app.js';
-
-import World from '#lostcity/engine/World.js';
-
-import TcpServer from '#lostcity/server/TcpServer.js';
-import WSServer from '#lostcity/server/WSServer.js';
-
-import Environment from '#lostcity/util/Environment.js';
 
 if (!fs.existsSync('.env')) {
     console.error('Missing .env file');
     console.error('Please make sure you have a .env file in the main directory, copy and rename .env.example if you don\'t have one');
-    process.exit(1);
+    Deno.exit(1);
 }
 
 fs.mkdirSync('data/players', { recursive: true });
@@ -34,7 +34,7 @@ const wsServer = new WSServer();
 wsServer.start();
 
 let exiting = false;
-process.on('SIGINT', function() {
+Deno.addSignalListener('SIGINT', function() {
     if (exiting) {
         return;
     }

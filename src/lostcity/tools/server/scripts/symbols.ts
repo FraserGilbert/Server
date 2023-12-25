@@ -1,14 +1,14 @@
-import fs from 'fs';
-import {loadDir, loadPack} from '#lostcity/util/NameMap.js';
-import {crawlConfigNames, regenPack} from '#lostcity/util/PackIds.js';
-import ParamType from '#lostcity/cache/ParamType.js';
-import DbTableType from '#lostcity/cache/DbTableType.js';
-import ScriptVarType from '#lostcity/cache/ScriptVarType.js';
-import ScriptOpcode from '#lostcity/engine/script/ScriptOpcode.js';
-import VarPlayerType from '#lostcity/cache/VarPlayerType.js';
-import VarNpcType from '#lostcity/cache/VarNpcType.js';
-import VarSharedType from '#lostcity/cache/VarSharedType.js';
-import ScriptOpcodePointers from '#lostcity/engine/script/ScriptOpcodePointers.js';
+import fs from 'node:fs';
+import {loadDir, loadPack} from '#lostcity/util/NameMap.ts';
+import {crawlConfigNames, regenPack} from '#lostcity/util/PackIds.ts';
+import ParamType from '#lostcity/cache/ParamType.ts';
+import DbTableType from '#lostcity/cache/DbTableType.ts';
+import ScriptVarType from '#lostcity/cache/ScriptVarType.ts';
+import ScriptOpcode from '#lostcity/engine/script/ScriptOpcode.ts';
+import VarPlayerType from '#lostcity/cache/VarPlayerType.ts';
+import VarNpcType from '#lostcity/cache/VarNpcType.ts';
+import VarSharedType from '#lostcity/cache/VarSharedType.ts';
+import ScriptOpcodePointers from '#lostcity/engine/script/ScriptOpcodePointers.ts';
 
 fs.writeFileSync('data/pack/script.pack', regenPack(loadPack('data/pack/script.pack'), crawlConfigNames('.rs2', true)));
 

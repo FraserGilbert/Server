@@ -1,4 +1,4 @@
-import Script from '#lostcity/engine/script/Script.js';
+import Script from '#lostcity/engine/script/Script.ts';
 
 export type QueueType = 'engine' | 'weak' | 'normal' | 'strong' | 'npc' | null;
 export type ScriptArgument = number | string;

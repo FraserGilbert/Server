@@ -1,7 +1,7 @@
-import fs from 'fs';
+import fs from 'node:fs';
 
-import Packet from '#jagex2/io/Packet.js';
-import { fromBase37 } from '#jagex2/jstring/JString.js';
+import Packet from '#jagex2/io/Packet.ts';
+import { fromBase37 } from '#jagex2/jstring/JString.ts';
 
 const playerIds: number[] = [];
 let playerCount = 0;
@@ -97,7 +97,7 @@ for (const [username, ticks] of players) {
 
         if (total > playerCount) {
             console.error('Too many players', total, playerCount);
-            process.exit(1);
+            Deno.exit(1);
         }
 
         playerCount = 0;
@@ -174,7 +174,7 @@ for (const [username, ticks] of players) {
 
             if (!buf.available) {
                 console.error('not enough data in getplayer', id, entityUpdateCount, i);
-                process.exit(1);
+                Deno.exit(1);
             }
 
             let mask = buf.g1();
@@ -299,7 +299,7 @@ for (const [username, ticks] of players) {
 
         if (buf.pos !== buf.length) {
             console.error('size mismatch in getplayer', buf.pos, buf.length);
-            process.exit(1);
+            Deno.exit(1);
         }
 
         console.log(playerCount, 'players');

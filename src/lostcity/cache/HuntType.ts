@@ -1,15 +1,15 @@
-import fs from 'fs';
+import fs from 'node:fs';
 
-import Packet from '#jagex2/io/Packet.js';
+import Packet from '#jagex2/io/Packet.ts';
 
-import { ConfigType } from '#lostcity/cache/ConfigType.js';
+import { ConfigType } from '#lostcity/cache/ConfigType.ts';
 
-import HuntCheckNotTooStrong from '#lostcity/entity/hunt/HuntCheckNotTooStrong.js';
-import HuntModeType from '#lostcity/entity/hunt/HuntModeType.js';
-import HuntNobodyNear from '#lostcity/entity/hunt/HuntNobodyNear.js';
-import HuntVis from '#lostcity/entity/hunt/HuntVis.js';
+import HuntCheckNotTooStrong from '#lostcity/entity/hunt/HuntCheckNotTooStrong.ts';
+import HuntModeType from '#lostcity/entity/hunt/HuntModeType.ts';
+import HuntNobodyNear from '#lostcity/entity/hunt/HuntNobodyNear.ts';
+import HuntVis from '#lostcity/entity/hunt/HuntVis.ts';
 
-import NpcMode from '#lostcity/entity/NpcMode.js';
+import NpcMode from '#lostcity/entity/NpcMode.ts';
 
 export default class HuntType extends ConfigType {
     private static configNames: Map<string, number> = new Map();

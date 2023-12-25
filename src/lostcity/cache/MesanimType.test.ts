@@ -1,8 +1,8 @@
-import fs from 'fs';
+import fs from 'node:fs';
 
-import Packet from '#jagex2/io/Packet.js';
+import Packet from '#jagex2/io/Packet.ts';
 
-import MesanimType from '#lostcity/cache/MesanimType.js';
+import MesanimType from '#lostcity/cache/MesanimType.ts';
 
 describe('MesanimType', () => {
     describe('static load', () => {

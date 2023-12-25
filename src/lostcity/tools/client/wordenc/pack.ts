@@ -1,7 +1,7 @@
-import fs from 'fs';
+import fs from 'node:fs';
 
-import Jagfile from '#jagex2/io/Jagfile.js';
-import Packet from '#jagex2/io/Packet.js';
+import Jagfile from '#jagex2/io/Jagfile.ts';
+import Packet from '#jagex2/io/Packet.ts';
 
 console.log('Packing wordenc.jag');
 //console.time('wordenc.jag');

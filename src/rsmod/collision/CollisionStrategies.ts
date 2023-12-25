@@ -1,5 +1,5 @@
-import CollisionFlag from '#rsmod/flag/CollisionFlag.js';
-import CollisionStrategy from '#rsmod/collision/CollisionStrategy.js';
+import CollisionFlag from '#rsmod/flag/CollisionFlag.ts';
+import CollisionStrategy from '#rsmod/collision/CollisionStrategy.ts';
 
 class Normal implements CollisionStrategy {
     canMove(tileFlag: number, blockFlag: number): boolean {

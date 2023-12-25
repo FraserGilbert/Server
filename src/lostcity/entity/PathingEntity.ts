@@ -1,20 +1,20 @@
-import ReachStrategy from '#rsmod/reach/ReachStrategy.js';
-import RouteCoordinates from '#rsmod/RouteCoordinates.js';
+import ReachStrategy from '#rsmod/reach/ReachStrategy.ts';
+import RouteCoordinates from '#rsmod/RouteCoordinates.ts';
 
-import World from '#lostcity/engine/World.js';
+import World from '#lostcity/engine/World.ts';
 
-import BlockWalk from '#lostcity/entity/BlockWalk.js';
-import Entity from '#lostcity/entity/Entity.js';
-import Loc from '#lostcity/entity/Loc.js';
-import Npc from '#lostcity/entity/Npc.js';
-import MoveRestrict from '#lostcity/entity/MoveRestrict.js';
-import Obj from '#lostcity/entity/Obj.js';
-import Player from '#lostcity/entity/Player.js';
-import { Direction, Position } from '#lostcity/entity/Position.js';
-import CollisionFlag from '#rsmod/flag/CollisionFlag.js';
-import LocType from '#lostcity/cache/LocType.js';
-import CollisionStrategy from '#rsmod/collision/CollisionStrategy.js';
-import CollisionStrategies from '#rsmod/collision/CollisionStrategies.js';
+import BlockWalk from '#lostcity/entity/BlockWalk.ts';
+import Entity from '#lostcity/entity/Entity.ts';
+import Loc from '#lostcity/entity/Loc.ts';
+import Npc from '#lostcity/entity/Npc.ts';
+import MoveRestrict from '#lostcity/entity/MoveRestrict.ts';
+import Obj from '#lostcity/entity/Obj.ts';
+import Player from '#lostcity/entity/Player.ts';
+import { Direction, Position } from '#lostcity/entity/Position.ts';
+import CollisionFlag from '#rsmod/flag/CollisionFlag.ts';
+import LocType from '#lostcity/cache/LocType.ts';
+import CollisionStrategy from '#rsmod/collision/CollisionStrategy.ts';
+import CollisionStrategies from '#rsmod/collision/CollisionStrategies.ts';
 
 export default abstract class PathingEntity extends Entity {
     // constructor properties

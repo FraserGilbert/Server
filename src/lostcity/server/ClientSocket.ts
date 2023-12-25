@@ -1,10 +1,11 @@
-import { Socket } from 'net';
+import { Socket } from 'node:net';
+
 import { WebSocket } from 'ws';
 
-import Isaac from '#jagex2/io/Isaac.js';
-import Packet from '#jagex2/io/Packet.js';
+import Isaac from '#jagex2/io/Isaac.ts';
+import Packet from '#jagex2/io/Packet.ts';
 
-import Player from '#lostcity/entity/Player.js';
+import Player from '#lostcity/entity/Player.ts';
 
 export default class ClientSocket {
     static TCP = 0;

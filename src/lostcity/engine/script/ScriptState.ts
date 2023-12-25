@@ -1,17 +1,17 @@
-import DbTableType from '#lostcity/cache/DbTableType.js';
+import DbTableType from '#lostcity/cache/DbTableType.ts';
 
-import Script from '#lostcity/engine/script/Script.js';
-import ScriptPointer from '#lostcity/engine/script/ScriptPointer.js';
-import ServerTriggerType from '#lostcity/engine/script/ServerTriggerType.js';
+import Script from '#lostcity/engine/script/Script.ts';
+import ScriptPointer from '#lostcity/engine/script/ScriptPointer.ts';
+import ServerTriggerType from '#lostcity/engine/script/ServerTriggerType.ts';
 
-import Entity from '#lostcity/entity/Entity.js';
-import { ScriptArgument } from '#lostcity/entity/EntityQueueRequest.js';
-import Loc from '#lostcity/entity/Loc.js';
-import Obj from '#lostcity/entity/Obj.js';
-import Npc from '#lostcity/entity/Npc.js';
-import Player from '#lostcity/entity/Player.js';
+import Entity from '#lostcity/entity/Entity.ts';
+import { ScriptArgument } from '#lostcity/entity/EntityQueueRequest.ts';
+import Loc from '#lostcity/entity/Loc.ts';
+import Obj from '#lostcity/entity/Obj.ts';
+import Npc from '#lostcity/entity/Npc.ts';
+import Player from '#lostcity/entity/Player.ts';
 
-import { toInt32 } from '#lostcity/util/Numbers.js';
+import { toInt32 } from '#lostcity/util/Numbers.ts';
 
 export interface GosubStackFrame {
     script: Script,

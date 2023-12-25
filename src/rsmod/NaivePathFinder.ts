@@ -1,10 +1,10 @@
 // https://gist.github.com/Z-Kris/2eb1c2fbc22aa7486a57089c82f293f8
 // https://gist.github.com/Z-Kris/fe476d75a51374f12dca999700f009f7
 
-import RouteCoordinates from '#rsmod/RouteCoordinates.js';
-import CollisionStrategy from '#rsmod/collision/CollisionStrategy.js';
-import Route from '#rsmod/Route.js';
-import StepValidator from '#rsmod/StepValidator.js';
+import RouteCoordinates from '#rsmod/RouteCoordinates.ts';
+import CollisionStrategy from '#rsmod/collision/CollisionStrategy.ts';
+import Route from '#rsmod/Route.ts';
+import StepValidator from '#rsmod/StepValidator.ts';
 
 export default class NaivePathFinder {
     private readonly stepValidator: StepValidator

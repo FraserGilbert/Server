@@ -1,4 +1,4 @@
-import fs from 'fs';
+import fs from 'node:fs';
 
 function rmIfExists(path: string) {
     if (fs.existsSync(path)) {

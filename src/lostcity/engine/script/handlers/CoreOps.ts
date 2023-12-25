@@ -1,13 +1,13 @@
-import VarPlayerType from '#lostcity/cache/VarPlayerType.js';
+import VarPlayerType from '#lostcity/cache/VarPlayerType.ts';
 
-import World from '#lostcity/engine/World.js';
+import World from '#lostcity/engine/World.ts';
 
-import Script from '#lostcity/engine/script/Script.js';
-import ScriptOpcode from '#lostcity/engine/script/ScriptOpcode.js';
-import ScriptPointer from '#lostcity/engine/script/ScriptPointer.js';
-import ScriptProvider from '#lostcity/engine/script/ScriptProvider.js';
-import { CommandHandlers } from '#lostcity/engine/script/ScriptRunner.js';
-import ScriptState from '#lostcity/engine/script/ScriptState.js';
+import Script from '#lostcity/engine/script/Script.ts';
+import ScriptOpcode from '#lostcity/engine/script/ScriptOpcode.ts';
+import ScriptPointer from '#lostcity/engine/script/ScriptPointer.ts';
+import ScriptProvider from '#lostcity/engine/script/ScriptProvider.ts';
+import { CommandHandlers } from '#lostcity/engine/script/ScriptRunner.ts';
+import ScriptState from '#lostcity/engine/script/ScriptState.ts';
 
 const ProtectedActivePlayer = [ScriptPointer.ProtectedActivePlayer, ScriptPointer.ProtectedActivePlayer2];
 

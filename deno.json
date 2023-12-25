@@ -1,0 +1,10 @@
+{
+    "imports": {
+        "#jagex2/": "./src/jagex2/",
+        "#lostcity/": "./src/lostcity/",
+        "#rsmod/": "./src/rsmod/"
+    },
+    "tasks": {
+        "dev": "deno run --allow-env --allow-net --allow-sys --allow-write --allow-read --watch src/lostcity/app.ts",
+    }
+}

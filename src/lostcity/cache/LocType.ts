@@ -1,9 +1,9 @@
-import fs from 'fs';
+import fs from 'node:fs';
 
-import Packet from '#jagex2/io/Packet.js';
+import Packet from '#jagex2/io/Packet.ts';
 
-import { ConfigType } from '#lostcity/cache/ConfigType.js';
-import { ParamHelper, ParamMap } from '#lostcity/cache/ParamHelper.js';
+import { ConfigType } from '#lostcity/cache/ConfigType.ts';
+import { ParamHelper, ParamMap } from '#lostcity/cache/ParamHelper.ts';
 
 export default class LocType extends ConfigType {
     static configNames: Map<string, number> = new Map();

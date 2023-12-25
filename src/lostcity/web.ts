@@ -1,7 +1,8 @@
-import 'dotenv/config';
-import fs from 'fs';
+import fs from 'node:fs';
 
-import { startWeb } from '#lostcity/web/app.js';
+import 'dotenv/config';
+
+import { startWeb } from '#lostcity/web/app.ts';
 
 fs.mkdirSync('data/players', { recursive: true });
 
