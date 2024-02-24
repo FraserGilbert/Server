@@ -1,0 +1,18 @@
+[opnpc1,crest_caleb]
+@family_crest_caleb;
+
+[label,family_crest_caleb]
+~chatnpc(quiz,"Who are you? What are you after?");
+
+def_int $option = ~p_choice2(
+    "Nothing, I will be on my way.",1,
+    "I see you are a chef, will you cook me anything?",2
+);
+
+if($option = 1){
+    ~chatplayer(neutral,"Nothing, I will be on my way.");
+}
+else if($option = 2){
+    ~chatplayer(quiz,"I see you are a chef.|Could you cook me something?");
+    ~chatnpc(default,"I would, but I am very busy.|Trying to prepare my special fish salad.|Which I hope will significantly increase my renown as a master chef.");
+}

@@ -147,9 +147,9 @@
 146=phoenixgang_progress
 147=zanaris_progress
 148=crest_progress
-149=open_book
+149=crest_demon
 150=grandtree_progress
-151=varp_151
+151=open_book
 152=varp_152
 153=glider_takeoff
 154=shantay_jail_progress
@@ -293,3 +293,5 @@
 292=trail_clue
 293=chompybird_progress
 294=chompybird_kills
+295=varp_151
+296=crest_levers

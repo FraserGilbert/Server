@@ -98,22 +98,28 @@ const LocOps: CommandHandlers = {
 
     [ScriptOpcode.LOC_FIND]: state => {
         const [coord, locId] = state.popInts(2);
-
+        console.log(`LocId: ${locId}\nCoord:${coord}\n`);
         if (coord < 0 || coord > Position.max) {
             throw new Error(`attempted to use coord that was out of range: ${coord}. Range should be: 0 to ${Position.max}`);
         }
 
         const pos = Position.unpackCoord(coord);
         const loc = World.getLoc(pos.x, pos.z, pos.level, locId);
+        console.log(`Loc: ${loc}\nPos:${pos}\n`);
         if (!loc || loc.respawn !== -1) {
             state.pushInt(0);
             return;
         }
-
-        state._activeLoc = loc;
-        state.pointerAdd(ScriptPointer.ActiveLoc);
+        console.log('Before state change',state.activeLoc);
+        state.activeLoc = loc;
+        console.log('After state change',state.activeLoc);
+        console.log(state.intOperand);
+        console.log(ActiveLoc[state.intOperand]);
+        state.pointerAdd(ActiveLoc[state.intOperand]);
         state.pushInt(1);
     },
+
+
 
     [ScriptOpcode.LOC_FINDALLZONE]: state => {
         const coord = state.popInt();

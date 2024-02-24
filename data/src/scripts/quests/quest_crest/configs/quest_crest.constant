@@ -1,0 +1,11 @@
+//Coordinates of the levers during the witchaven dungeon puzzle
+^crest_north_lever_coord = 0_42_151_34_46
+^crest_most_northern_lever_coord = 0_42_151_34_54
+^crest_south_lever_coord = 0_42_151_36_5
+
+//elemental blast spells during Chronozon fight
+^crest_fire_blast = 3;
+^crest_earth_blast = 2;
+^crest_water_blast = 1;
+^crest_wind_blast = 0;
+

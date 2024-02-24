@@ -1,0 +1,129 @@
+[witchaven_north_lever_down]
+name=Lever
+desc=This lever is down.
+model=model_loc_33
+active=yes
+op1=Pull
+category=crest_levers
+
+
+[witchaven_north_lever_up]
+name=Lever
+desc=This lever is up.
+model=model_loc_34
+active=yes
+op1=Pull
+category=crest_levers
+
+
+[witchaven_south_lever_down]
+name=Lever
+desc=This lever is down.
+model=model_loc_33
+active=yes
+op1=Pull
+category=crest_levers
+
+[witchaven_south_lever_up]
+name=Lever
+desc=This lever is up.
+model=model_loc_34
+active=yes
+op1=Pull
+category=crest_levers
+
+
+[witchaven_most_north_lever_down]
+name=Lever
+desc=This lever is down.
+model=model_loc_33
+active=yes
+op1=Pull
+category=crest_levers
+
+
+[witchaven_most_north_lever_up]
+name=Lever
+desc=This lever is up.
+model=model_loc_34
+active=yes
+op1=Pull
+category=crest_levers
+
+[witchaven_south_west_door]
+name=Door
+desc=This door is closed by an unknown mechanism.
+model=model_loc_3
+active=yes
+op1=Open
+recol1s=2
+recol1d=45
+recol2s=24
+recol2d=4762
+
+[loc_2428]
+name=Door
+desc=This door is closed by an unknown mechanism.
+model=model_loc_3
+active=yes
+op1=Open
+recol1s=2
+recol1d=45
+recol2s=24
+recol2d=4762
+
+[witchaven_south_east_door]
+name=Door
+desc=This door is closed by an unknown mechanism.
+model=model_loc_3
+active=yes
+op1=Open
+recol1s=2
+recol1d=45
+recol2s=24
+recol2d=4762
+
+[witchaven_goldmine_door]
+name=Door
+desc=This door is closed by an unknown mechanism.
+model=model_loc_3
+active=yes
+op1=Open
+recol1s=2
+recol1d=45
+recol2s=24
+recol2d=4762
+
+[witchaven_north_door]
+name=Door
+desc=This door is closed by an unknown mechanism.
+model=model_loc_3
+active=yes
+op1=Open
+recol1s=2
+recol1d=45
+recol2s=24
+recol2d=4762
+
+[loc_2432]
+name=Gate
+desc=This gate is closed shut.
+model=model_loc_52
+active=yes
+op1=Open
+recol1s=2
+recol1d=45
+recol2s=24
+recol2d=4762
+
+[loc_2433]
+name=Gate
+desc=This gate is closed shut.
+model=model_loc_52
+active=yes
+op1=Open
+mirror=yes
+recol1s=2
+recol1d=45
+recol2s=24
+recol2d=4762

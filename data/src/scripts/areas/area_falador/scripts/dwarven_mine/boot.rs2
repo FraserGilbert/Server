@@ -1,0 +1,19 @@
+[opnpc1,crest_boot]
+@boot;
+
+[label,boot]
+~chatnpc(neutral,"Hello tall person.");
+def_int $option = ~p_choice2(
+    "Hello short person",1,
+    "Why are you called boot?",2
+);
+
+if($option = 1){
+    ~chatplayer(neutral,"Hello short person.");
+}
+
+else if ($option = 2){
+    ~chatplayer(quiz,"Why are you called Boot?");
+    ~chatnpc(neutral,"I'm called Boot, because when I was very young, I used to sleep, in a large boot.");
+    ~chatplayer(neutral,"Yeah, great, I didn't want your life story.");
+}

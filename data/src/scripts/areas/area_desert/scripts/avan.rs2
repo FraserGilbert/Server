@@ -1,0 +1,102 @@
+[opnpc1,npc_663]
+
+def_int $test = 1;
+
+if($test = 1){
+    @family_crest_avan;
+}
+
+else if($test = 2){
+    @multi2(
+        "Why are you hanging around in a scorpion pit?", avan_b1_s1,
+        "I'm looking for a man named Avan.", avan_b1_s2
+    );
+}
+
+else if($test = 3){
+    @avan_after_boot;
+}
+
+else if($test = 4){
+    @avan_no_jewellery;
+}
+
+[label,family_crest_avan];
+~chatnpc(angry,"Can't you see I'm busy?");
+
+//OSRS dialogue below just for reference
+//~chatnpc(angry,"What? Can't you see I'm busy?");
+//~chatplayer(neutral,"Well, sooooorry...");
+
+[label,avan_b1_s1];
+~chatplayer(neutral,"Why are you hanging around in a scorpion pit?");
+~chatnpc(neutral,"It's a good place to find gold.");
+
+[label,avan_b1_s2]
+~chatplayer(neutral,"I'm looking for a man named Avan.");
+~chatnpc(neutral,"I'm called Avan yes.");
+~chatplayer(neutral,"You have part of a crest.|I have been sent to fetch it.");
+~chatnpc(neutral,"Is one of my good for nothing brothers after it again?");
+~chatplayer(neutral,"No your father would like it back.");
+~chatnpc(neutral,"Oh Dad wants it this time.|Well I'll tell you what I'll do.");
+~chatnpc(neutral,"I'm trying to obtain the perfect jewellty.|There is a lady I am trying to impress.");
+~chatnpc(neutral,"What I want is a gold ring with a red stone in.|And a necklace to match.");
+~chatnpc(neutral," Not just any gold mind you.|The gold in these rocks doesn't seem to be of the best quality.| I want as good a quality as you can get.");
+~chatplayer(neutral,"Any ideas where I can find that?");
+~chatnpc(neutral,"Well I have been looking for such gold for a while.|My latest lead was a dwarf named Boot.|Though he has gone back to his home in the mountain now.");
+~chatplayer(neutral,"Ok I will try to get what you are after.");
+
+[label,avan_no_jewellery]
+~chatnpc(neutral,"So how are you getting the jewellry?");
+~chatplayer(neutral,"I'm still after that perfect gold.");
+~chatnpc(neutral,"I'm still after that perfect gold.|My latest lead was a dwarf named Boot.|Though he has gone back to his home in the mountain now.");
+
+[label,avan_after_boot]
+~chatnpc(neutral,"So how are you getting the jewellry?");
+~chatplayer(neutral,"I have spoken to boot about the perfect gold.|I haven't bought you your jewellry yet though.");
+~chatnpc(neutral,"Remember I want a gold ring with a red stone in.|And a necklace to match.");
+
+[label,avan_yes_jewellery]
+~chatnpc(neutral,"So how are you getting the jewellry?");
+~chatplayer(neutral,"I have it.");
+~mesbox("You hand Avan the perfect gold ring and necklace.");
+~chatnpc(neutral,"These are brilliant.|These are a fine piece of work.|Such marvelous gold to.| I suppose you will be after the last piece of crest now.");
+~chatnpc(neutral,"I heard my brother Johnathon is now a young mage.|He is hunting some demon in the wilderness.");
+~chatnpc(neutral,"But he's not doing a very good job of it.|He spends most his time recovering in an inn on the edge of the wilderness.");
+
+[label,avan_no_crest_in_inv]
+~chatnpc(neutral,"How are you doing getting the rest of the crest?");
+@multi2(
+    "I am still working on it.", avan_b2_s1,
+    "I have lost the piece you gave me.",avan_b2_s2
+);
+
+[label,avan_b2_s1]
+~chatplayer(neutral,"I am still working on it.");
+~chatnpc(neutral,"Well good luck in your quest.");
+
+[label,avan_b2_s2]
+~chatplayer(neutral,"I have lost the piece you gave me.");
+~chatnpc(neutral,"Ah well here is another one.");
+
+
+[label,avan_crest_complete]
+~chatnpc(neutral," I have heard word from my father.|Thankyou for helping to restore our family honour.");
+
+[label,avan_steel_guantlets]
+~chatplayer(neutral,"Your father said that you could improve these Gauntlets in some way for me.");
+~chatnpc(neutral," Indeed I can.|In my quest to find the perfect gold I learned a lot.|I can make it so when you're wearing these.|You gain more experience when smithing gold.");
+@multi2(
+    "That sounds good, improve them for me.", avan_b3_s1,
+    "I think I'll check my other options with your brothers.",avan_b3_s2
+);
+
+[label,avan_b3_s1]
+~chatplayer(neutral,"That sounds good, improve them for me.");
+inv_del(inv,obj_778,1);
+inv_add(inv,gauntlets_of_goldsmithing,1);
+~mesbox("Avan takes your gauntlets, takes you a small hammer, and pounds them into a slightly new shape, then hands them back to you.");
+
+[label,avan_b3_s2]
+~chatplayer(neutral,"I think I'll check my other options with your brothers.");
+~chatnpc(neutral,"Ok if you insist on getting help from the likes of them.");

@@ -112,6 +112,32 @@ if (npc_type = delrith) {
     }
 }
 
+// Chronozon fight where you must use all 4 elemental blast spells to defeat.
+if(npc_type = crest_chronozon & $spell = ^fire_blast){
+   if (testbit(%crest_demon, 3) = false){
+        %crest_demon = setbit(%crest_demon, 3);
+   }
+   mes("Chronozon weakens...");
+}
+if(npc_type = crest_chronozon & $spell = ^earth_blast){
+    if (testbit(%crest_demon, 2) = false){
+        %crest_demon = setbit(%crest_demon, 2);
+    }
+    mes("Chronozon weakens...");
+}
+if(npc_type = crest_chronozon & $spell = ^water_blast){
+   if (testbit(%crest_demon, 1) = false){
+        %crest_demon = setbit(%crest_demon, 1);
+   }
+   mes("Chronozon weakens...");
+}
+if(npc_type = crest_chronozon & $spell = ^wind_blast){
+   if (testbit(%crest_demon, 0) = false){
+        %crest_demon = setbit(%crest_demon, 0);
+   }
+   mes("Chronozon weakens...");
+}
+
 // check if crumble undead & npc is undead
 if ($spell = ^crumble_undead & npc_param(undead) = ^false) {
     mes("This spell only affects skeletons, zombies, ghosts and shades.");

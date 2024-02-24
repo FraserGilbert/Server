@@ -1,0 +1,51 @@
+[opnpc1,crest_dimintheis]
+@family_crest_dimintheis;
+
+[label,family_crest_dimintheis]
+~chatnpc(default,"Hello. My name is Dimintheis, of the noble family Fitzharmon.");
+def_int $option = ~p_choice3("Why would a nobleman live in a dump like this?",1,"You're rich then? Can I have some money?",2,"Hi, I am a bold adventurer.",3);
+
+//If Why would a nobleman live in a dump like this? selected
+if($option = 1){
+    ~chatplayer(quiz,"Why would a nobleman live in a dump like this?");
+    ~chatnpc(sad,"The King has taken my estate from me until such time as I can show my family crest to him.");
+    
+    $option = ~p_choice2("Why would he do that?",1,"So where is this crest?",2);
+    
+    if($option = 1){
+        ~chatplayer(quiz,"Why would he do that?");
+        ~chatnpc(default,"Well, there is a long standing rule of chivalry amongst the Varrockian aristocracy, where each noble family is in possession of a unique crest, which signifies the honour and lineage of the family. More than this");
+        ~chatnpc(default,"however, it also represents the lawful rights of each family to prove their ownership of their wealth and lands. If the family crest is lost, then the family's estate is handed over to the current monarch until the crest is");
+        ~chatnpc(neutral,"restored.");
+        ~chatnpc(default,"This dates back to the times when there was much in- fighting amongst the noble families and their clans, and was introduced as a way of reducing the bloodshed that was devestating the ranks of the ruling classes at that");
+        ~chatnpc(default,"time. When you captured a rival family's clan, you also captured their lands and wealth.");
+    }
+    else if($option = 2){
+
+    }
+}
+else if($option = 2){
+    ~chatplayer(neutral,"You're rich then? Can I have some money?");
+    ~chatnpc(angry,"Gah! Lousy Beggar! Your sort is what's ruining this great land! Why don't you just go and get a job if you need the money so badly?");
+}
+
+else if($option = 3){
+    ~chatplayer(neutral,"Hi, I am a bold adventurer.");
+    ~chatnpc(neutral,"An adventurer hmmm? How lucky. I may have an adventure for you. I desperately need my family crest returning to me. It is of utmost importance.");
+    
+    $option = ~p_choice3("Why are you so desperate for it?",1,"So where is this crest?",2,"I'm not interested in that adventure right now",3);
+    
+    if($option = 1){
+        //todo
+    }
+
+    else if($option = 2){
+        //todo
+    }
+
+    else if($option = 3){
+        ~chatplayer(neutral,"I'm not interested in that adventure right now.");
+        ~chatnpc(sad,"I realise it was a lot to ask of a stranger.");
+    }
+}
+    

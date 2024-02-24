@@ -1,0 +1,44 @@
+[ai_queue1,crest_chronozon](int $arg)
+if (finduid(%npc_attacking_uid) = false) {
+    return;
+}
+npc_setmode(opplayer2);
+
+[ai_queue3,crest_chronozon](int $arg)
+if (finduid(%npc_attacking_uid) = false) {
+    gosub(npc_death);
+    return;
+}
+
+@chronozon_death;
+
+
+[label,chronozon_death]
+if (testbit(%crest_demon, 0) = true &
+    testbit(%crest_demon, 1) = true &
+    testbit(%crest_demon, 2) = true &
+    testbit(%crest_demon, 3) = true
+    ){
+        @chronozon_correct_elemental_spells;
+    }
+    else {
+        @chronozon_wrong_elemental_spells;
+    }
+
+[label,chronozon_wrong_elemental_spells];
+if(npc_finduid(~npc_within_distance(coord, crest_chronozon, 9)) = true){
+    @restore_chronozon;
+}
+
+
+[label,restore_chronozon]
+npc_statheal(hitpoints, npc_basestat(hitpoints),0);
+npc_setmode(opplayer2);
+
+
+[label,chronozon_correct_elemental_spells];
+gosub(npc_death);
+// Drop crest part
+obj_add(npc_coord, obj_781, 1, 200);
+obj_add(npc_coord, ashes, 1, 200);
+

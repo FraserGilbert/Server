@@ -1,0 +1,159 @@
+[opnpc1,crest_johnathon]
+@family_crest_johnathon;
+
+[label,family_crest_johnathon]
+
+def_int $test = 5;
+
+if($test = 1){
+
+    ~chatnpc(sad,"I am so very tired, leave me to rest.");
+
+    //OSRS dialogues for future reference
+    //~chatnpc(sad,"I am so very tired... Leave me be... to rest...");
+}
+
+else if(inv_total(inv,obj_781) > 1){
+  ~chatplayer(neutral,"I have your part of the crest now.");
+  ~chatnpc(neutral,"Well done take it to my father.");
+
+}
+
+else if($test = 2){
+    ~chatplayer(neutral,"Greetings, are you Johnathon Fitzharmon?");
+    ~chatnpc(neutral,"That is I.");
+    ~chatplayer(neutral,"I seek your fragment of the Fitzharmon family crest.");
+    ~chatnpc(neutral,"The poison it is too much.| arrgh my head is all of a spin");
+        
+}
+
+else if($test = 3){
+    if( inv_total(inv, 1doseantipoison) = 0 &
+        inv_total(inv, 2doseantipoison) = 0 &
+        inv_total(inv, 3doseantipoison) = 0 &
+        inv_total(inv, 4doseantipoison) = 0 
+    ){
+        ~chatnpc(neutral,"Arrgh what has that spider done to me.|I feel so ill, I can hardly think.");
+    }
+}
+
+else if($test = 4){
+    ~chatnpc(neutral,"I'm trying to kill the demon chronozon you mentioned.");
+    @multi3(
+        "So is this Chronozon hard to defeat?", johnathon_b1_s2,
+        "Where can I find Chronozon?", johnathon_b1_s3, 
+        "Wish me luck.", johnathon_after_poison_b1_s4
+    );
+}
+
+else if($test = 5){
+    ~chatnpc(neutral,"Hello again. My family now considers you a hero.");
+     if(inv_total(inv,obj_778) >= 1){
+        @johnathon_steel_guantlets;
+    }
+}
+
+
+
+
+[opnpcu,crest_johnathon]
+if( last_useitem = 1doseantipoison |
+    last_useitem = 2doseantipoison |
+    last_useitem = 3doseantipoison |
+    last_useitem = 4doseantipoison
+    ){
+
+    inv_del(inv, last_useitem, 1);
+
+    ~chatnpc(neutral,"Wow I'm feeling a lot better now.");
+    ~chatnpc(neutral,"Thankyou, what can I do for you?");
+    ~chatplayer(neutral,"I'm after your part of the fitzharmon family crest.");
+    ~chatnpc(neutral,"Ooh I don't think I have that anymore.|I have been trying to slay chronozon the blood demon and I think I dropped a lot of my things near him when he drove me away.|He will have it now.");
+
+    @multi4(
+        "So is this Chronozon hard to defeat?", johnathon_b1_s1, 
+        "Where can I find Chronozon?", johnathon_b1_s2,
+        "So how did you end up getting poisoned?", johnathon_b1_s3, 
+        "I will be on my way now.", johnathon_b1_s4
+    );
+
+} 
+else {
+    @nothing_interesting_happens;
+}
+
+[label,johnathon_b1_s1]
+~chatplayer(neutral,"So is this Chronozon hard to defeat?");
+~chatnpc(neutral,"Well you will need to be a good mage.|And I don't seem to be able to manage it.|He will need to be hit by the 4 elemental spells of death before he can be defeated.");
+def_int $test1 = 4;
+if($test1 = 4){
+    @multi2(
+        "Where can I find Chronozon?", johnathon_b1_s3, 
+        "Wish me luck.", johnathon_after_poison_b1_s4
+    );
+} 
+else {
+    @multi3(
+            "Where can I find Chronozon?", johnathon_b1_s2,
+            "So how did you end up getting poisoned?", johnathon_b1_s3, 
+            "I will be on my way now.", johnathon_b1_s4
+    );
+}
+
+
+[label,johnathon_b1_s2]
+~chatplayer(neutral,"Where can I find Chronozon?");
+~chatnpc(neutral,"He is in the wilderness, somewhere below the obelisk of air.");
+def_int $test2 = 4;
+if($test2 = 4){
+    @multi2(
+        "So is this Chronozon hard to defeat?", johnathon_b1_s1, 
+        "Wish me luck.", johnathon_after_poison_b1_s4
+    );
+} 
+else {
+    @multi3(
+            "So is this Chronozon hard to defeat?", johnathon_b1_s1,
+            "So how did you end up getting poisoned?", johnathon_b1_s3, 
+            "I will be on my way now.", johnathon_b1_s4
+    );
+}
+
+
+[label,johnathon_b1_s3]
+~chatplayer(neutral,"So how did you end up getting poisoned?");
+~chatnpc(neutral,"There are spiders towards the entrance to Chronozon's cave. I must have taken a nip from one of them.");
+@multi3(
+        "So is this Chronozon hard to defeat?", johnathon_b1_s1, 
+        "Where can I find Chronozon?", johnathon_b1_s2,
+        "I will be on my way now.", johnathon_b1_s4
+);
+
+
+[label,johnathon_b1_s4]
+~chatplayer(neutral,"I will be on my way now.");
+
+[label,johnathon_after_poison_b1_s4]
+~chatplayer(neutral,"Wish me luck.");
+~chatnpc(neutral,"Good luck.");
+
+[label,johnathon_steel_guantlets]
+~chatplayer(neutral,"Your father tells me, you can improve these gauntlets a bit.");
+~chatnpc(neutral,"He would be right.|Though I didn't get good enough at the death spells to defeat chronozo.|I am pretty good at the chaos spells.|I can enchant your gauntlets so that your bolt spells are more effective.");
+@multi2(
+    "That sounds good to me.",johnathon_yes_choas_gauntlets,
+    "I shall see what options your brothers can offer me first.",johnathon_no_choas_gauntlets
+);
+
+[label,johnathon_yes_choas_gauntlets]
+~chatplayer(neutral,"That sounds good to me.");
+//need to still get the interface for how the choas gauntlet dialogue are written
+inv_del(inv,obj_778,1);
+inv_add(inv,obj_777,1);
+~objbox(obj_777,"Johnathon takes your gauntlets from you, and begins a low chant over them. You see them begin to glow and sparkle, before he returns them to you.");
+
+
+[label,johnathon_no_choas_gauntlets]
+~chatplayer(neutral,"I shall see what options your brothers can offer me first.");
+~chatnpc(neutral,"Boring crafting and cooking enhacements knowing them.");
+

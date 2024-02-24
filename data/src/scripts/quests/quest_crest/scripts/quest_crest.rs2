@@ -1,0 +1,66 @@
+[oploc1,witchaven_north_lever_down]
+mes("north lever is pulled up");
+facesquare(movecoord(coord, 0, 1, 0));      //Face the direction of the lever
+anim(human_leverdown, 0);                   //Queue leverdown player animation
+sound_synth(lever, 0, 0);                   //Queue lever sound
+loc_change(witchaven_north_lever_up, 20);                   //Change lever to opposite lever direction (in this case up)
+
+[oploc1,witchaven_north_lever_up]
+mes("north lever is pulled down");
+facesquare(movecoord(coord, 0, 1, 0));      //Face the direction of the lever
+anim(human_leverdown, 0);                   //Queue leverdown player animation
+sound_synth(lever, 0, 0);                   //Queue lever sound
+//loc_change(witchaven_north_lever_down, 20);                   //Change lever to opposite lever direction (in this case down)
+
+[oploc1,witchaven_south_lever_down]
+facesquare(movecoord(coord, 0, 1, 0));      //Face the direction of the lever
+anim(human_leverdown, 0);                   //Queue leverdown player animation
+sound_synth(lever, 0, 0);                   //Queue lever sound
+loc_change(witchaven_south_lever_up, 20);                   //Change lever to opposite lever direction (in this case up)
+
+[oploc1,witchaven_south_lever_up]
+facesquare(movecoord(coord, 0, 1, 0));      //Face the direction of the lever
+anim(human_leverdown, 0);                   //Queue leverdown player animation
+sound_synth(lever, 0, 0);                   //Queue lever sound
+loc_change(witchaven_south_lever_down, 20);                   //Change lever to opposite lever direction (in this case down)
+
+[oploc1,witchaven_most_north_lever_down]
+facesquare(movecoord(coord, 0, 1, 0));      //Face the direction of the lever
+anim(human_leverdown, 0);                   //Queue leverdown player animation
+sound_synth(lever, 0, 0);                   //Queue lever sound
+loc_change(witchaven_most_north_lever_up, 20);                   //Change lever to opposite lever direction (in this case down)
+
+[oploc1,witchaven_most_north_lever_up]
+facesquare(movecoord(coord, 0, 1, 0));      //Face the direction of the lever
+anim(human_leverdown, 0);                   //Queue leverdown player animation
+sound_synth(lever, 0, 0);                   //Queue lever sound
+loc_change(witchaven_most_north_lever_down, 20);                   //Change lever to opposite lever direction (in this case down)
+
+//southern door
+[oploc1,witchaven_north_door]
+mes("north door");
+mes(~coord_tostring(loc_coord));
+if(.loc_find(^crest_north_lever_coord,witchaven_north_lever_up) = true){
+  ~open_and_close_door(loc_1535, ~check_axis(coord, loc_coord, loc_angle), false);
+} else {
+  mes("door is locked.");
+  mes(~coord_tostring(loc_coord));
+}
+
+
+[oploc1,witchaven_south_west_door]
+mes("south west door");
+ ~open_and_close_door(loc_1535, ~check_axis(coord, loc_coord, loc_angle), false);
+
+[oploc1,witchaven_south_east_door]
+mes("south east door");
+  ~open_and_close_door(loc_1535, ~check_axis(coord, loc_coord, loc_angle), false);
+
+
+
+//north lever = 2727 9690 (0_42_151_34_46)
+//northern lever = 2722 9718 (0_42_151_34_54)
+//sourthern lever = 2724 9669 (0_42_151_36_5)
+
+[oploc1,witchaven_goldmine_door]
+~open_and_close_door(loc_1535, ~check_axis(coord, loc_coord, loc_angle), false);
