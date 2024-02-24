@@ -106,13 +106,13 @@ const LocOps: CommandHandlers = {
         const pos = Position.unpackCoord(coord);
         const loc = World.getLoc(pos.x, pos.z, pos.level, locId);
         console.log(`Loc: ${loc}\nPos:${pos}\n`);
-        if (!loc || loc.respawn !== -1) {
+        if (!loc) {
             state.pushInt(0);
             return;
         }
         console.log('Before state change',state.activeLoc);
         state.activeLoc = loc;
-        console.log('After state change',state.activeLoc);
+        console.log('After1 state change',state.activeLoc);
         console.log(state.intOperand);
         console.log(ActiveLoc[state.intOperand]);
         state.pointerAdd(ActiveLoc[state.intOperand]);

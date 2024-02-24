@@ -2008,7 +2008,7 @@ export default class Player extends PathingEntity {
                                 const lx = parseInt(args2[3]);
                                 const lz = parseInt(args2[4]);
 
-                                params.push(Position.packCoord(level, (mx << 6) + lx, (mz << 6) + lz));
+                                params[i] = Position.packCoord(level, (mx << 6) + lx, (mz << 6) + lz);
                                 break;
                             }
                             case ScriptVarType.INTERFACE: {
@@ -2499,7 +2499,11 @@ export default class Player extends PathingEntity {
             if (Environment.LOCAL_DEV && !opTrigger && !apTrigger) {
                 let debugname = '_';
                 if (this.target instanceof Npc) {
-                    debugname = NpcType.get(this.target.type)?.debugname ?? this.target.type.toString();
+                    if (this.targetOp === ServerTriggerType.APNPCT || this.targetOp === ServerTriggerType.OPNPCT) {
+                        debugname = Component.get(this.targetSubject)?.comName ?? this.targetSubject.toString();
+                    } else {
+                        debugname = NpcType.get(this.target.type)?.debugname ?? this.target.type.toString();
+                    }
                 } else if (this.target instanceof Loc) {
                     debugname = LocType.get(this.target.type)?.debugname ?? this.target.type.toString();
                 } else if (this.target instanceof Obj) {
@@ -2662,13 +2666,21 @@ export default class Player extends PathingEntity {
 
             this.write(ServerProt.UPDATE_ZONE_FULL_FOLLOWS, x, z, this.loadedX, this.loadedZ);
 
-            const { locDelCached, locAddCached } = World.getZone(x << 3, z << 3, this.level);
+            const { locDelCached, locAddCached, staticObjAddCached, staticObjDelCached } = World.getZone(x << 3, z << 3, this.level);
 
             for (const [packed, buf] of locDelCached) {
                 this.netOut.push(buf.copy());
             }
 
             for (const [packed, buf] of locAddCached) {
+                this.netOut.push(buf.copy());
+            }
+
+            for (const buf of staticObjAddCached) {
+                this.netOut.push(buf.copy());
+            }
+
+            for (const buf of staticObjDelCached) {
                 this.netOut.push(buf.copy());
             }
 
@@ -2682,6 +2694,8 @@ export default class Player extends PathingEntity {
             const z = zone >> 11;
 
             const { buffer, locAddTimer, locDelTimer, locChangeTimer } = World.getZone(x << 3, z << 3, this.level);
+
+            // shared events
             if (buffer.length > 0) {
                 this.write(ServerProt.UPDATE_ZONE_PARTIAL_ENCLOSED, x, z, this.loadedX, this.loadedZ, buffer);
 
@@ -2689,9 +2703,9 @@ export default class Player extends PathingEntity {
             } else if (locAddTimer.size > 0 || locDelTimer.size > 0 || locChangeTimer.size > 0) {
                 World.getZone(x << 3, z << 3, this.level).debug();
             }
-        }
 
-        // todo: obj events
+            // local events
+        }
     }
 
     // ----

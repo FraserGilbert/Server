@@ -85,6 +85,10 @@ export default class Npc extends PathingEntity {
     target: Player | Npc | Loc | Obj | null = null;
     targetOp: number = -1;
 
+    nextPatrolTick: number = -1;
+    nextPatrolPoint : number = 0;
+    delayedPatrol : boolean = false;
+
     heroPoints: {
         uid: number;
         points: number;
@@ -383,7 +387,27 @@ export default class Npc extends PathingEntity {
     }
 
     patrolMode(): void {
-        // TODO points
+        const type = NpcType.get(this.type);
+        const patrolPoints = type.patrolCoord;
+        const patrolDelay = type.patrolDelay[this.nextPatrolPoint];
+        let dest = Position.unpackCoord(patrolPoints[this.nextPatrolPoint]);
+
+        if(!(this.x == dest.x && this.z == dest.z) && World.currentTick > this.nextPatrolTick) {
+            this.teleJump(dest.x, dest.z, dest.level);
+        }
+        if ((this.x == dest.x && this.z == dest.z) && !this.delayedPatrol) {
+            this.nextPatrolTick = World.currentTick + patrolDelay;
+            this.delayedPatrol = true;
+        }
+        if(this.nextPatrolTick > World.currentTick) { 
+            return;
+        }
+
+        this.nextPatrolPoint = (this.nextPatrolPoint + 1) % patrolPoints.length;
+        this.nextPatrolTick = World.currentTick + 30; // 30 ticks until we force the npc to the next patrol coord
+        this.delayedPatrol = false;
+        dest = Position.unpackCoord(patrolPoints[this.nextPatrolPoint]); // recalc dest
+        this.queueWaypoint(dest.x, dest.z);
     }
 
     playerEscapeMode(): void {
@@ -427,7 +451,7 @@ export default class Npc extends PathingEntity {
             this.defaultMode();
             return;
         }
-
+        this.facePlayer(target.pid); // face the player
         this.queueWaypoints(World.naivePathFinder.findPath(this.level, this.x, this.z, target.x, target.z, this.width, this.length, target.width, target.length, extraFlag, collisionStrategy).waypoints);
     }
 
